@@ -10,9 +10,9 @@ products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: 7bf3bf55abe5a015df9b9e99fe838388a4fe6360
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1101'
-ht-degree: 91%
+ht-degree: 100%
 
 ---
 
@@ -23,9 +23,9 @@ ht-degree: 91%
 |  |  |
 |--- |--- |
 | Prodotti | Adobe Experience Manager (AEM) Dispatcher |
-| Versione | 4.3.7. |
+| Versione | 4.3.7 |
 | Tipo | Versione secondaria |
-| Data | giovedì 27 marzo 2024 |
+| Data | 27 marzo 2024 |
 | URL di download | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services (IIS)](release-notes.md#iis)</li></ul> |
 | Compatibilità | AEM 6.1 o superiore |
 
@@ -45,10 +45,10 @@ Per istruzioni dettagliate, vedi [Installazione di Dispatcher](dispatcher-instal
 
 **Miglioramenti**:
 
-* DISP-1009 - impostazione di nuovo della lunghezza dell&#39;intestazione
-* DISP-1013 - aggiunta del supporto openssl 3.0 per linux
-* DISP-1014 - elaborazione response.location con reindirizzamento non valido
-* DISP-1017 - modifica della definizione della DTD
+* DISP-1009: impostare di nuovo la lunghezza dell’intestazione
+* DISP-1013: aggiunta del supporto openssl 3.0 per linux
+* DISP-1014: l’elaborazione response.location genera un reindirizzamento non valido
+* DISP-1017: modifica della definizione della DTD
 
 ### Versione 4.3.6 (25 luglio 2023) {#jyly}
 
