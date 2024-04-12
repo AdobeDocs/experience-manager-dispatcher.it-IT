@@ -3,9 +3,9 @@ title: Configurazione di Dispatcher
 description: Scopri come configurare Dispatcher. Scopri il supporto per IPv4 e IPv6, i file di configurazione, le variabili di ambiente, la denominazione dell’istanza, la definizione delle farm, l’identificazione degli host virtuali e altro ancora.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 002458d52df4680ded5cb84a8119bc000e3ca88a
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8857'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -1324,7 +1324,7 @@ Per informazioni sulle proprietà glob, vedi [Progettazione di modelli per le pr
 >
 >Questa funzione è disponibile con la versione **4.1.11** di Dispatcher.
 
-La proprietà `/headers` ti consente di definire i tipi di intestazioni HTTP che verranno memorizzate in cache da Dispatcher. Alla prima richiesta di una risorsa non memorizzata in cache, tutte le intestazioni che corrispondono a uno dei valori configurati (vedi l’esempio di configurazione sotto riportato) vengono memorizzate in un file separato, accanto al file della cache. Alle successive richieste della risorsa memorizzata in cache, le intestazioni memorizzate vengono aggiunte alla risposta.
+La proprietà `/headers` ti consente di definire i tipi di intestazioni HTTP che verranno memorizzate in cache da Dispatcher. Alla prima richiesta di una risorsa non memorizzata in cache, tutte le intestazioni che corrispondono a uno dei valori configurati (vedi l’esempio di configurazione sotto riportato) vengono memorizzate in un file separato, accanto al file della cache. Alle richieste successive alla risorsa memorizzata nella cache, le intestazioni archiviate vengono aggiunte alla risposta.
 
 Di seguito è riportato un esempio di configurazione predefinita:
 
