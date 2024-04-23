@@ -9,7 +9,7 @@ content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: 7bf3bf55abe5a015df9b9e99fe838388a4fe6360
+source-git-commit: 230f656999d95b3d5f95e97bfb7383b95bcf0a75
 workflow-type: ht
 source-wordcount: '1101'
 ht-degree: 100%
@@ -26,7 +26,7 @@ ht-degree: 100%
 | Versione | 4.3.7 |
 | Tipo | Versione secondaria |
 | Data | 27 marzo 2024 |
-| URL di download | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services (IIS)](release-notes.md#iis)</li></ul> |
+| URL di download | <ul><li>[Apache 2.4](#apache)</li><li>[Microsoft Internet Information Services (IIS)](#iis)</li></ul> |
 | Compatibilità | AEM 6.1 o superiore |
 
 ## Requisiti e prerequisiti di sistema {#system-requirements-and-prerequisites}
