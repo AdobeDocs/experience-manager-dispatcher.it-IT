@@ -10,10 +10,10 @@ feature-set: Experience Manager
 feature: Dispatcher
 topic: Administration
 role: Admin
-source-git-commit: a21b527700b3a5c3a11eadaefc729e754ba2b37b
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '84'
-ht-degree: 100%
+source-wordcount: '78'
+ht-degree: 98%
 
 ---
 
@@ -28,9 +28,9 @@ ht-degree: 100%
 + Configurazione {#configuring}
    + [Configurazione di Dispatcher](dispatcher-configuration.md)
    + [Annullamento della validità delle pagine in cache da AEM](page-invalidate.md)
-   + [Ottimizzazione delle prestazioni della cache di un sito web](https://helpx.adobe.com/it/experience-manager/6-5/sites/deploying/using/configuring-performance.html)
+   + [Ottimizzazione delle prestazioni della cache di un sito web](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
    + [Caching di contenuto protetto](permissions-cache.md)
-   + [Utilizzo di Dispatcher con più domini ](dispatcher-domains.md)
+   + [Utilizzo di Dispatcher con più domini](dispatcher-domains.md)
    + [Utilizzo di SSL con Dispatcher](dispatcher-ssl.md)
    + [Configurazione di Dispatcher per impedire attacchi CSRF](configuring-dispatcher-to-prevent-csrf.md)
 + Risoluzione dei problemi {#troubleshooting}

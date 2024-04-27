@@ -1,9 +1,6 @@
 ---
 title: Risoluzione dei problemi di Dispatcher
-seo-title: Troubleshooting AEM Dispatcher Problems
 description: Scopri come risolvere i problemi di Dispatcher.
-seo-description: Learn to troubleshoot AEM Dispatcher issues.
-uuid: 9c109a48-d921-4b6e-9626-1158cebc41e7
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
 template: /apps/docs/templates/contentpage
@@ -11,12 +8,11 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '560'
-ht-degree: 100%
+source-wordcount: '538'
+ht-degree: 96%
 
 ---
 
@@ -30,7 +26,7 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->Per ulteriori informazioni, verifica anche la [Knowledge base del Dispatcher](https://helpx.adobe.com/it/experience-manager/kb/index/dispatcher.html), la [Risoluzione dei problemi di svuotamento del Dispatcher](https://experienceleague.adobe.com/search.html?lang=it#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]) e le [Domande frequenti sui problemi principali del Dispatcher](dispatcher-faq.md).
+>Controlla la [Knowledge Base di Dispatcher](https://helpx.adobe.com/it/experience-manager/kb/index/dispatcher.html), [Risoluzione dei problemi di flushing di Dispatcher](https://experienceleague.adobe.com/search.html?lang=it#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager])e [Domande frequenti sui principali problemi di Dispatcher](dispatcher-faq.md) per ulteriori informazioni.
 
 ## Controlla la configurazione di base {#check-the-basic-configuration}
 
@@ -44,10 +40,10 @@ Come sempre, i primi passaggi consistono nel controllare la configurazione di ba
    * Hai più Dispatcher?
 
       * Hai stabilito quale Dispatcher gestisce il Sito Web/la pagina che stai esaminando?
+
    * Hai implementato i filtri?
 
       * Questi filtri stanno influenzando il problema che stai esaminando?
-
 
 ## Strumenti di diagnostica IIS {#iis-diagnostic-tools}
 

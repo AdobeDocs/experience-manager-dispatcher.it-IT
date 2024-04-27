@@ -2,10 +2,10 @@
 title: Configurazione di Dispatcher
 description: Scopri come configurare Dispatcher. Scopri il supporto per IPv4 e IPv6, i file di configurazione, le variabili di ambiente, la denominazione dell’istanza, la definizione delle farm, l’identificazione degli host virtuali e altro ancora.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 002458d52df4680ded5cb84a8119bc000e3ca88a
-workflow-type: ht
-source-wordcount: '8857'
-ht-degree: 100%
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
+workflow-type: tm+mt
+source-wordcount: '8854'
+ht-degree: 96%
 
 ---
 
@@ -19,7 +19,7 @@ Le sezioni seguenti descrivono come configurare vari aspetti di Dispatcher.
 
 ## Supporto per IPv4 e IPv6 {#support-for-ipv-and-ipv}
 
-Tutti gli elementi di AEM e Dispatcher possono essere installati nelle reti IPv4 e IPv6. Vedi [IPV4 e IPV6](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=it#ipv-and-ipv).
+Tutti gli elementi di AEM e Dispatcher possono essere installati nelle reti IPv4 e IPv6. Vedi [IPV4 e IPV6](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#ipv-and-ipv).
 
 ## File di configurazione di Dispatcher {#dispatcher-configuration-files}
 
@@ -133,7 +133,7 @@ Ad esempio, se il file dispatcher.any si trova nella stessa directory della cach
 /docroot "${PWD}/cache"
 ```
 
-Altro esempio: se crei una variabile di ambiente denominata `PUBLISH_IP` che memorizza il nome host dell’istanza AEM Publish, puoi utilizzare la seguente configurazione della proprietà [/renders](#defining-page-renderers-renders):
+Un altro esempio è la creazione di una variabile di ambiente denominata `PUBLISH_IP` che memorizza il nome host dell’istanza di pubblicazione AEM, la seguente configurazione [/renders](#defining-page-renderers-renders) La proprietà può essere utilizzata:
 
 ```xml
 /renders {
@@ -194,7 +194,7 @@ Ogni proprietà farm può contenere le seguenti proprietà figlio:
 |--- |--- |
 | [/homepage](#specify-a-default-page-iis-only-homepage) | Home page predefinita (opzionale)(solo IIS) |
 | [/clientheaders](#specifying-the-http-headers-to-pass-through-clientheaders) | Le intestazioni della richiesta HTTP del client da inviare. |
-| [/virtualhosts](#identifying-virtual-hosts-virtualhosts) | Host virtuali di questa farm. |
+| [/virtualhosts](#identifying-virtual-hosts-virtualhosts) | Host virtuali della farm. |
 | [/sessionmanagement](#enabling-secure-sessions-sessionmanagement) | Supporto per la gestione e l’autenticazione delle sessioni. |
 | [/renders](#defining-page-renderers-renders) | I server che forniscono le pagine sottoposte a rendering (in genere istanze AEM Publish). |
 | [/filter](#configuring-access-to-content-filter) | Definisce gli URL ai quali Dispatcher consente l’accesso. |
@@ -259,7 +259,7 @@ Comment Type: draft
 
 La proprietà `/clientheaders` definisce un elenco di intestazioni HTTP che Dispatcher trasmette dalla richiesta HTTP del client al renderer (istanza di AEM).
 
-Per impostazione predefinita, Dispatcher inoltra le intestazioni HTTP standard all’istanza di AEM. In alcuni casi, potrebbe essere utile inoltrare intestazioni aggiuntive o rimuovere intestazioni specifiche:
+Per impostazione predefinita, Dispatcher inoltra le intestazioni HTTP standard all’istanza di AEM. In alcuni casi, potrebbe essere utile inoltrare altre intestazioni o rimuovere intestazioni specifiche:
 
 * Aggiungi le intestazioni, ad esempio intestazioni personalizzate, che l’istanza di AEM si aspetta di trovare nella richiesta HTTP.
 * Rimuovi le intestazioni, ad esempio intestazioni di autenticazione, che sono rilevanti solo per il server web.
@@ -402,9 +402,9 @@ Utilizzando questo esempio, la tabella che segue mostra gli host virtuali risolt
 
 >[!CAUTION]
 >
->`/allowAuthorized` Imposta su `"0"` nella sezione `/cache` per abilitare questa funzione. Come descritto nella sezione [Caching quando si utilizza l’autenticazione](#caching-when-authentication-is-used), quando si imposta `/allowAuthorized 0 ` le richieste che includono informazioni di autenticazione **non** vengono memorizzate nella cache. Se viene richiesta la memorizzazione in cache sensibile alle autorizzazioni, consulta la pagina [Caching di contenuto protetto](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/permissions-cache.html?lang=it).
+>`/allowAuthorized` Imposta su `"0"` nella sezione `/cache` per abilitare questa funzione. Come descritto nella sezione [Caching quando si utilizza l’autenticazione](#caching-when-authentication-is-used), quando si imposta `/allowAuthorized 0 ` le richieste che includono informazioni di autenticazione **non** vengono memorizzate nella cache. Se viene richiesta la memorizzazione in cache sensibile alle autorizzazioni, consulta la pagina [Caching di contenuto protetto](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/permissions-cache).
 
-Crea una sessione protetta per l’accesso alla farm di rendering, in modo che gli utenti debbano effettuare il login per accedere a qualsiasi pagina della farm. Una volta effettuato il login, gli utenti possono accedere alle pagine della farm. Per informazioni sull’utilizzo di questa funzione con i gruppi utenti chiusi (CUG), vedi [Creazione di un gruppo utenti chiuso](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/cug.html?lang=it#creating-the-user-group-to-be-used). Inoltre, vedi [Elenco di controllo della sicurezza](/help/using/security-checklist.md) di Dispatcher prima di andare “live”.
+Crea una sessione protetta per l’accesso alla farm di rendering, in modo che gli utenti debbano effettuare il login per accedere a qualsiasi pagina della farm. Una volta effettuato il login, gli utenti possono accedere alle pagine della farm. Per informazioni sull’utilizzo di questa funzione con i gruppi utenti chiusi (CUG), vedi [Creazione di un gruppo utenti chiuso](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/cug#creating-the-user-group-to-be-used). Inoltre, vedi [Elenco di controllo della sicurezza](/help/using/security-checklist.md) di Dispatcher prima di andare “live”.
 
 La proprietà `/sessionmanagement` è una sottoproprietà di `/farms`.
 
@@ -420,7 +420,7 @@ La directory in cui sono memorizzate le informazioni della sessione. Se la direc
 
 >[!CAUTION]
 >
-> Durante la configurazione del sottoparametro della directory, **non** puntare alla cartella principale (`/directory "/"`), in quanto ciò può causare gravi problemi. È sempre necessario specificare il percorso della cartella in cui sono memorizzate le informazioni della sessione. Esempio:
+> Durante la configurazione del sottoparametro della directory, **non** posizionare il puntatore del mouse sulla cartella principale (`/directory "/"`) in quanto può causare gravi problemi. È sempre necessario specificare il percorso della cartella in cui sono memorizzate le informazioni della sessione. Esempio:
 
 ```xml
 /sessionmanagement
@@ -513,7 +513,7 @@ Specifica il timeout di connessione per l’accesso all’istanza di AEM espress
 
 Specifica il tempo in millisecondi che una risposta può richiedere. Il valore predefinito è `"600000"` e Dispatcher deve attendere 10 minuti. L’impostazione `"0"` elimina completamente il timeout .
 
-Se viene raggiunto il timeout durante l’analisi delle intestazioni di risposta, viene restituito lo stato HTTP 504 (Gateway non valido). Se viene raggiunto il timeout durante la lettura del corpo della risposta, Dispatcher restituisce la risposta incompleta al client. Elimina anche eventuali file di cache che potrebbero essere stati scritti.
+Se viene raggiunto il timeout durante l’analisi delle intestazioni di risposta, viene restituito lo stato HTTP 504 (Gateway non valido). Se viene raggiunto il timeout durante la lettura del corpo della risposta, Dispatcher restituisce la risposta incompleta al client. Elimina anche eventuali file memorizzati in cache che potrebbero essere stati scritti.
 
 **/ipv4**
 
@@ -525,7 +525,7 @@ L’ELB (Elastic Load Balancing) di Amazon è un servizio che risponde a getaddr
 
 **/secure**
 
-Se per la proprietà `/secure` è impostato il valore `"1"`, Dispatcher utilizza HTTPS per comunicare con l’istanza AEM. Per ulteriori dettagli, consulta anche [Configurazione di Dispatcher per utilizzare SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
+Se per la proprietà `/secure` è impostato il valore `"1"`, Dispatcher utilizza HTTPS per comunicare con l’istanza AEM. Per ulteriori dettagli, consulta [Configurazione di Dispatcher per utilizzare SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
 
 **/always-resolve**
 
@@ -555,7 +555,7 @@ Utilizza la sezione `/filter` per specificare le richieste HTTP che Dispatcher p
 
 >[!CAUTION]
 >
->Per ulteriori considerazioni sulla limitazione dell’accesso tramite Dispatcher, vedi [Elenco di controllo della sicurezza di Dispatcher](security-checklist.md). Inoltre, leggi [Elenco di controllo della sicurezza AEM](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/security-checklist.html?lang=it#security) per ulteriori dettagli sulla sicurezza relativi all’installazione di AEM.
+>Per ulteriori considerazioni sulla limitazione dell’accesso tramite Dispatcher, vedi [Elenco di controllo della sicurezza di Dispatcher](security-checklist.md). Vedi anche [Elenco di controllo della sicurezza AEM](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/security-checklist#security) per maggiori dettagli sulla sicurezza relativi all’installazione dell’AEM.
 
 La sezione `/filter` consiste di una serie di regole che negano o consentono l’accesso al contenuto in base ai modelli presenti nella parte della riga della richiesta HTTP. Utilizza una strategia di inserire nell’elenco Consentiti per la tua sezione `/filter`:
 
@@ -588,7 +588,7 @@ Ogni elemento della sezione `/filter` include un tipo e un modello corrispondent
 >
 >`/glob "* *.css *"`
 >
->usa
+>Utilizzare
 >
 >`/url "*.css"`
 
@@ -670,7 +670,7 @@ Se hai comunque bisogno di accedere a singole pagine all’interno dell’area r
 
 >[!NOTE]
 >
->Quando a una richiesta sono applicati più modelli di filtri, l’ultimo modello applicato è quello valido.
+>Quando a una richiesta sono applicati più modelli di filtro, l’ultimo modello applicato è quello valido.
 
 #### Esempio di filtro: utilizzo di espressioni regolari {#example-filter-using-regular-expressions}
 
@@ -680,7 +680,7 @@ Questo filtro abilita le estensioni nelle directory di contenuto non pubblico ut
 /005  {  /type "allow" /extension '(css|gif|ico|js|png|swf|jpe?g)' }
 ```
 
-#### Esempio di filtro: filtro per elementi aggiuntivi dell’URL di una richiesta {#example-filter-filter-additional-elements-of-a-request-url}
+#### Esempio di filtro: filtra gli elementi aggiuntivi dell’URL di una richiesta {#example-filter-filter-additional-elements-of-a-request-url}
 
 Di seguito è riportato un esempio di regola che blocca l’acquisizione del contenuto dal percorso `/content` e dal relativo sottoalbero, utilizzando i filtri per percorso, selettori ed estensioni:
 
@@ -797,15 +797,15 @@ Se scegli di estendere l’accesso, considera le seguenti raccomandazioni:
 
    * `/libs/opensocial/proxy*`
 
-A seconda dell’installazione, ci potrebbero essere risorse aggiuntive in `/libs`, `/apps` o altrove che devono essere rese disponibili. Puoi utilizzare il file `access.log` come metodo per determinare le risorse a cui si accede esternamente.
+A seconda dell’installazione, ci potrebbero essere più risorse in `/libs`, `/apps` o altrove, che devono essere messi a disposizione. Puoi utilizzare il file `access.log` come metodo per determinare le risorse a cui si accede esternamente.
 
 >[!CAUTION]
 >
->L’accesso alle console e alle directory può rappresentare un rischio per la sicurezza degli ambienti di produzione. A meno che tu non abbia esplicite giustificazioni, devono rimanere disattivati (impostati come commento).
+>L’accesso alle console e alle directory può rappresentare un rischio per la sicurezza degli ambienti di produzione. A meno che tu non abbia una giustificazione esplicita, devono rimanere disattivati (esclusi).
 
 >[!CAUTION]
 >
->Se utilizzi [ report in un ambiente di pubblicazione](https://experienceleague.adobe.com/docs/experience-manager-65/administering/operations/reporting.html?lang=it#using-reports-in-a-publish-environment), configura Dispatcher per negare l’accesso a `/etc/reports` ai visitatori esterni.
+>Se utilizzi [ report in un ambiente di pubblicazione](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/sites/administering/operations/reporting#using-reports-in-a-publish-environment), configura Dispatcher per negare l’accesso a `/etc/reports` ai visitatori esterni.
 
 ### Limitazione delle stringhe di query {#restricting-query-strings}
 
@@ -937,7 +937,7 @@ La sezione `/vanity_urls` contiene le seguenti proprietà:
 
 >[!NOTE]
 >
->Se il rendering è un’istanza di AEM, è necessario installare il [pacchetto VanityURLS-Components da Software Distribution](https://experience.adobe.com/#/downloads/content/software-distribution/it/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components) per abilitare il servizio URL personalizzato. (Per ulteriori informazioni, vedi [Distribuzione di software](https://experienceleague.adobe.com/docs/experience-manager-65/administering/contentmanagement/package-manager.html?lang=it#software-distribution)).
+>Se il rendering è un’istanza di AEM, è necessario installare il [pacchetto VanityURLS-Components da Software Distribution](https://experience.adobe.com/#/downloads/content/software-distribution/it/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components) per abilitare il servizio URL personalizzato. (Per ulteriori informazioni, vedi [Distribuzione di software](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/sites/administering/contentmanagement/package-manager#software-distribution)).
 
 Utilizza la procedura seguente per abilitare l’accesso agli URL personalizzati.
 
@@ -1150,7 +1150,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 Utilizza la proprietà `/statfileslevel` per annullare la validità dei file memorizzati in cache in base al loro percorso:
 
 * Dispatcher crea file `.stat`in ogni cartella, partendo dalla cartella principale dei documenti fino al livello specificato. La cartella principale dei documenti è al livello 0.
-* I file vengono invalidati toccando il file `.stat`. L’ultima data di modifica del file `.stat` viene confrontata con l’ultima data di modifica di un documento memorizzato in cache. Il documento viene recuperato, se il file `.stat` è più recente.
+* I file vengono invalidati toccando il file `.stat`. L’ultima data di modifica del file `.stat` viene confrontata con l’ultima data di modifica di un documento memorizzato in cache. Il documento viene recuperato se `.stat` il file è più recente.
 
 * Quando un file che si trova a un determinato livello viene invalidato, vengono toccati **tutti** i file `.stat` a partire dalla docroot **fino** al livello del file invalidato o della proprietà configurata `statsfilevel` (a seconda di quale dei due valori è più basso).
 
@@ -1167,7 +1167,7 @@ Quando un file in `/content/myWebsite/xx` viene invalidato, viene toccato ogni f
 
 >[!NOTE]
 >
->L’annullamento della validità può essere impedito inviando un’ulteriore intestazione `CQ-Action-Scope:ResourceOnly`. Questo metodo può essere utilizzato per effettuare il flushing di determinate risorse senza invalidare altre parti della cache. Per ulteriori informazioni, vedi [questa pagina](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) e [Annullamento manuale della validità della cache di Dispatcher](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/page-invalidate.html?lang=it#configuring).
+>L’annullamento della validità può essere impedito inviando un’ulteriore intestazione `CQ-Action-Scope:ResourceOnly`. Questo metodo può essere utilizzato per effettuare il flushing di determinate risorse senza invalidare altre parti della cache. Consulta [questa pagina](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) e [Annullamento manuale della validità della cache di Dispatcher](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/page-invalidate#configuring) per ulteriori dettagli.
 
 >[!NOTE]
 >
@@ -1195,7 +1195,7 @@ Questa configurazione causa la seguente attività quando `/content/wknd/us/en` �
 
 * Tutti i file con pattern en.*vengono rimossi dalla cartella `/content/wknd/us`.
 * La cartella `/content/wknd/us/en./_jcr_content` viene rimossa.
-* Tutti gli altri file che corrispondono alla configurazione `/invalidate` non vengono eliminati immediatamente. Questi file vengono eliminati al momento della richiesta successiva. Nell’esempio `/content/wknd.html` non viene eliminata subito, ma verrà eliminata nel momento in cui `/content/wknd.html` verrà richiesta.
+* Tutti gli altri file che corrispondono alla configurazione `/invalidate` non vengono eliminati immediatamente. Questi file vengono eliminati al momento della richiesta successiva. Nell’esempio, `/content/wknd.html` non viene eliminato. Viene invece eliminato quando `/content/wknd.html` è richiesto.
 
 Se offri file PDF e ZIP generati automaticamente per il download, potresti dover annullare automaticamente anche questi. Esempio di configurazione:
 
@@ -1229,7 +1229,7 @@ Lo script viene richiamato con i seguenti argomenti:
 
 Questo metodo può essere utilizzato per coprire diversi casi d’uso. Ad esempio, l’annullamento della validità di altre cache specifiche per l’applicazione o la gestione di casi in cui l’URL esternalizzato di una pagina e la sua posizione nella docroot non corrispondono al percorso del contenuto.
 
-Di seguito è riportato un esempio di script che registra in un file ogni richiesta di annullamento della validità.
+Di seguito è riportato un esempio di script che registra in un file ogni richiesta invalidata.
 
 ```xml
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
@@ -1324,7 +1324,7 @@ Per informazioni sulle proprietà glob, vedi [Progettazione di modelli per le pr
 >
 >Questa funzione è disponibile con la versione **4.1.11** di Dispatcher.
 
-La proprietà `/headers` ti consente di definire i tipi di intestazioni HTTP che verranno memorizzate in cache da Dispatcher. Alla prima richiesta di una risorsa non memorizzata in cache, tutte le intestazioni che corrispondono a uno dei valori configurati (vedi l’esempio di configurazione sotto riportato) vengono memorizzate in un file separato, accanto al file della cache. Alle richieste successive alla risorsa memorizzata nella cache, le intestazioni archiviate vengono aggiunte alla risposta.
+La proprietà `/headers` ti consente di definire i tipi di intestazioni HTTP che verranno memorizzate in cache da Dispatcher. Alla prima richiesta di una risorsa non memorizzata in cache, tutte le intestazioni che corrispondono a uno dei valori configurati (vedi l’esempio di configurazione sotto riportato) vengono memorizzate in un file separato, accanto al file della cache. Alle successive richieste della risorsa memorizzata in cache, le intestazioni memorizzate vengono aggiunte alla risposta.
 
 Di seguito è riportato un esempio di configurazione predefinita:
 
@@ -1380,7 +1380,7 @@ Con la proprietà `/invalidate` predefinita, ogni attivazione invalida efficacem
 
 La proprietà `/gracePeriod` definisce il numero di secondi in cui una risorsa obsoleta e invalidata automaticamente può ancora essere distribuita dalla cache dopo l’ultima attivazione. La proprietà può essere utilizzata in una configurazione in cui, altrimenti, un batch di attivazioni annullerebbe ripetutamente l’intera cache. Il valore consigliato è 2 secondi.
 
-Per ulteriori informazioni, vedi anche le precedenti sezioni `/invalidate` e `/statfileslevel`.
+Per ulteriori dettagli, consulta `/invalidate` e `/statfileslevel`prima.
 
 ### Configurazione dell’annullamento della validità della cache basata sul tempo: /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
@@ -1412,7 +1412,7 @@ In tal modo non verrà utilizzato l’annullamento della validità del file `.st
 
 >[!NOTE]
 >
->Tieni presente che impostare `/enableTTL` a 1 abilita la memorizzazione in cache TTL solo sul lato dispatcher. Di conseguenza, le informazioni TTL contenute nel file aggiuntivo (vedi sopra) non vengono fornite ad alcun altro agente utente che richiede tale tipo di file dal dispatcher. Se desideri fornire intestazioni alla memorizzazione in cache per sistemi downstream come una CDN o un browser, devi configurare la sezione `/cache/headers` di conseguenza.
+>Tieni presente l’impostazione `/enableTTL` su 1 abilita il caching TTL solo sul lato Dispatcher. Di conseguenza, le informazioni TTL contenute nel file aggiuntivo (vedi sopra) non vengono fornite a nessun altro agente utente che richieda tale tipo di file a Dispatcher. Se desideri fornire intestazioni alla memorizzazione in cache per sistemi downstream come una CDN o un browser, devi configurare la sezione `/cache/headers` di conseguenza.
 
 >[!NOTE]
 >
@@ -1520,13 +1520,13 @@ Quando una pagina è composta da contenuto proveniente da più nodi di contenuto
 }
 ```
 
-### httpOnly {#httponly}
+### `httpOnly` {#httponly}
 
 Quando le connessioni permanenti sono abilitate, il modulo Dispatcher imposta il cookie `renderid`. Questo cookie non ha il flag `httponly`, che però deve essere aggiunto per rafforzare la sicurezza. È possibile aggiungere il flag `httponly` impostando la proprietà `httpOnly` nel nodo `/stickyConnections` di un file di configurazione `dispatcher.any`. Il valore della proprietà (`0` oppure `1`) definisce se al cookie `renderid` viene aggiunto l’attributo `HttpOnly`. Il valore predefinito è `0`, il che significa che l’attributo non viene aggiunto.
 
-Per ulteriori informazioni sul flag `httponly`, leggi [questa pagina](https://www.owasp.org/index.php/HttpOnly).
+Per ulteriori informazioni sul flag `httponly`, leggi [questa pagina](https://owasp.org/www-community/HttpOnly).
 
-### Flag secure {#secure}
+### `secure` {#secure}
 
 Quando le connessioni permanenti sono abilitate, il modulo Dispatcher imposta il cookie `renderid`. Questo cookie non ha il flag `secure`, che deve essere aggiunto per migliorare la sicurezza. Per aggiungere il flag `secure`, imposta la proprietà `secure` nel nodo `/stickyConnections` di un file di configurazione `dispatcher.any`. Il valore della proprietà (`0` oppure `1`) definisce se al cookie `renderid` viene aggiunto l’attributo `secure`. Il valore predefinito è `0`, il che significa che l’attributo viene aggiunto **se** la richiesta in ingresso è sicura. Se il valore è impostato su `1`, il flag secure viene aggiunto indipendentemente dal fatto che la richiesta in ingresso sia sicura o meno.
 
@@ -1550,7 +1550,7 @@ Utilizzare la proprietà `/health_check` per specificare un URL che viene verifi
 
 La proprietà `/retryDelay` imposta il tempo (in secondi) che Dispatcher deve attendere prima di ogni successivo turno di tentativi di connessione con i rendering nella farm. Per ogni turno, il numero massimo di tentativi di Dispatcher di connettersi a un rendering è pari al numero di rendering nella farm.
 
-Dispatcher utilizza il valore `"1"`, se `/retryDelay` non è definito in modo esplicito. Il valore predefinito è in genere appropriato.
+Dispatcher utilizza il valore `"1"`, se `/retryDelay` non è definito in modo esplicito. Il valore predefinito è appropriato.
 
 ```xml
 /retryDelay "1"
@@ -1619,7 +1619,7 @@ Se si imposta `/ignoreEINTR` su `"1"`, Dispatcher continua a tentare di leggere 
 
 ## Progettazione di modelli per le proprietà glob {#designing-patterns-for-glob-properties}
 
-Diverse sezioni nel file di configurazione di Dispatcher utilizzano le proprietà `glob` come criteri di selezione per le richieste client. I valori delle proprietà `glob` sono modelli che Dispatcher confronta con un aspetto della richiesta, ad esempio il percorso della risorsa richiesta o l’indirizzo IP del client. Ad esempio, gli elementi nella sezione `/filter` utilizzano i modelli `glob` per identificare i percorsi delle pagine su cui Dispatcher agisce o che rifiuta.
+Diverse sezioni nel file di configurazione di Dispatcher possono utilizzare `glob` come criteri di selezione per le richieste client. I valori delle proprietà `glob` sono modelli che Dispatcher confronta con un aspetto della richiesta, ad esempio il percorso della risorsa richiesta o l’indirizzo IP del client. Ad esempio, gli elementi nella sezione `/filter` utilizzano i modelli `glob` per identificare i percorsi delle pagine su cui Dispatcher agisce o che rifiuta.
 
 I valori `glob` possono includere caratteri jolly e caratteri alfanumerici per definire il modello.
 
@@ -1751,7 +1751,7 @@ Vedi la documentazione del server web di Apache sulla rotazione/piping dei regis
 >
 >Al momento dell’installazione, il livello di registro predefinito è alto (ovvero livello 3 = debug), in modo che Dispatcher registri tutti gli errori e gli avvisi. Ciò è molto utile nelle fasi iniziali.
 >
->Tuttavia, tale livello richiede risorse aggiuntive. Quando Dispatcher funziona senza problemi *in base alle tue esigenze*, puoi abbassare il livello del registro.
+>Tuttavia, un tale livello richiede più risorse. Quando Dispatcher funziona senza problemi *in base alle tue esigenze*, puoi abbassare il livello del registro.
 
 ### Registrazione della traccia {#trace-logging}
 

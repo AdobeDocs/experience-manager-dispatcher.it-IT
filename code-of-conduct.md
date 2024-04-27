@@ -1,17 +1,17 @@
 ---
-source-git-commit: 053f90d9a0574c7d470cec6794498919e3340713
-workflow-type: ht
-source-wordcount: '431'
-ht-degree: 100%
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
+workflow-type: tm+mt
+source-wordcount: '421'
+ht-degree: 62%
 
 ---
 # Codice di condotta Adobe
 
-## La nostra promessa
+## Adobe in garanzia
 
-Nell’ottica di promuovere un ambiente aperto e accogliente, in qualità di gestori e collaboratori ci impegniamo a rendere la procedura di partecipazione il più semplice possibile per tutti, indipendentemente da età, aspetto fisico, disabilità, etnia, identità ed espressione di genere, livello di esperienza, nazionalità, aspetto personale, razza, religione o identità e orientamento sessuali.
+Per promuovere un ambiente aperto e accogliente, sia i collaboratori che i responsabili si impegnano a rendere la partecipazione a un progetto e la community un’esperienza priva di molestie per tutti. Questa esperienza è indipendente da età, corporatura, disabilità, etnia, identità ed espressione di genere, livello di esperienza, nazionalità, aspetto personale, razza, religione o identità e orientamento sessuale.
 
-## I nostri standard
+## Standard Adobe
 
 Di seguito sono elencati alcuni esempi di comportamento che contribuiscono alla creazione di un ambiente positivo:
 
@@ -29,11 +29,11 @@ Di seguito sono elencati esempi di comportamenti inaccettabili da parte dei part
 * Pubblicazione di informazioni private altrui, ad esempio un indirizzo fisico o elettronico, senza autorizzazione esplicita
 * Altri comportamenti che possono essere ragionevolmente considerati inopportuni in un contesto professionale
 
-## Le nostre responsabilità
+## Responsabilità dell&#39;Adobe
 
 I gestori dei progetti hanno la responsabilità di chiarire gli standard di comportamento accettabile e sono tenuti ad adottare misure correttive eque ed adeguate in risposta a qualsiasi evento di comportamento inaccettabile.
 
-I gestori dei progetti hanno il diritto e la responsabilità di rimuovere, modificare o rifiutare commenti, commit, codice, modifiche wiki, problemi e altri contributi non allineati al presente Codice di condotta o di escludere in modo temporaneo o permanente qualsiasi collaboratore per qualsiasi comportamento che ritenga inappropriato, minaccioso, offensivo o dannoso.
+I responsabili del progetto hanno il diritto e la responsabilità di rimuovere, modificare o rifiutare commenti, commit, codice, modifiche wiki, problemi o altri contributi non allineati al presente Codice di condotta. In alternativa, interrompi temporaneamente o definitivamente qualsiasi collaboratore per altri comportamenti che ritenga inappropriati, minacciosi, offensivi o dannosi.
 
 ## Ambito
 
@@ -41,10 +41,11 @@ Il presente Codice di Condotta ha validità sia negli spazi in cui si svolge il 
 
 ## Applicazione
 
-Eventuali comportamenti offensivi, vessatori o altrimenti inaccettabili possono essere segnalati contattando il team del progetto all’indirizzo Grp-opensourceoffice@adobe.com. Tutte le segnalazioni saranno prese in considerazione ed esaminate e avranno come esito la produzione di una risposta ritenuta necessaria e appropriata alle circostanze. Il team del progetto è tenuto a mantenere la riservatezza in merito all’autore della segnalazione. Ulteriori dettagli su specifiche politiche di applicazione possono essere pubblicati separatamente.
+Eventuali comportamenti offensivi, vessatori o altrimenti inaccettabili possono essere segnalati contattando il team del progetto all’indirizzo Grp-opensourceoffice@adobe.com. Tutti i reclami vengono esaminati e analizzati e possono dare luogo a una risposta ritenuta necessaria e appropriata alle circostanze. Il team del progetto è obbligato a mantenere la riservatezza in merito a chi denuncia un incidente. Ulteriori dettagli su specifiche politiche di applicazione possono essere pubblicati separatamente.
 
 I gestori dei progetti che non seguono o non applicano in buona fede il Codice di condotta potrebbero essere soggetti a misure temporanee o permanenti determinate dagli altri membri della leadership del progetto.
 
 ## Attribuzione
 
-Il presente Codice di condotta è adattato dal [Codice di Comportamento del Collaboratore](https://contributor-covenant.org), versione 1.4, disponibile all’indirizzo [https://contributor-covenant.org/version/1/4](https://contributor-covenant.org/version/1/4/).
+Il presente Codice di condotta è adattato dal [Convenzione collaboratore](https://www.contributor-covenant.org/), versione 1.4, disponibile all’indirizzo [Convenzione collaboratore](https://www.contributor-covenant.org/version/1/4/code-of-conduct/).
+
