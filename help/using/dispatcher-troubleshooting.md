@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '538'
-ht-degree: 96%
+ht-degree: 100%
 
 ---
 
@@ -26,7 +26,7 @@ ht-degree: 96%
 
 >[!NOTE]
 >
->Controlla la [Knowledge Base di Dispatcher](https://helpx.adobe.com/it/experience-manager/kb/index/dispatcher.html), [Risoluzione dei problemi di flushing di Dispatcher](https://experienceleague.adobe.com/search.html?lang=it#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager])e [Domande frequenti sui principali problemi di Dispatcher](dispatcher-faq.md) per ulteriori informazioni.
+>Per ulteriori informazioni, controlla la [Knowledge Base di Dispatcher](https://helpx.adobe.com/it/experience-manager/kb/index/dispatcher.html), la [Risoluzione dei problemi di svuotamento di Dispatcher](https://experienceleague.adobe.com/search.html?lang=it#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]) e le [Domande frequenti sui problemi principali di Dispatcher](dispatcher-faq.md).
 
 ## Controlla la configurazione di base {#check-the-basic-configuration}
 

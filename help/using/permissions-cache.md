@@ -7,9 +7,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '910'
-ht-degree: 89%
+ht-degree: 100%
 
 ---
 
@@ -69,8 +69,8 @@ Per implementare il caching sensibile alle autorizzazioni, esegui le operazioni 
 
 >[!NOTE]
 >
->Se davanti a Dispatcher è presente una rete CDN (o qualsiasi altra cache), è necessario impostare di conseguenza le intestazioni di memorizzazione in cache in modo che la rete CDN non memorizzi in cache il contenuto privato. Ad esempio: `Header always set Cache-Control private`.
->Per AEM as a Cloud Service, vedere [Memorizzazione in cache](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) per ulteriori dettagli su come impostare le intestazioni di memorizzazione in cache privata.
+>Quando è presente una CDN (o qualsiasi altra cache) davanti a Dispatcher, è consigliabile impostare le intestazioni di memorizzazione nella cache in modo tale che la CDN non memorizzi il contenuto privato. Ad esempio: `Header always set Cache-Control private`.
+>Per AEM as a Cloud Service consulta la pagina [Memorizzazione in cache](https://experienceleague.adobe.com/it/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) per ulteriori dettagli su come impostare intestazioni private di memorizzazione in cache.
 
 ## Crea il servlet Auth Checker {#create-the-auth-checker-servlet}
 
@@ -78,7 +78,7 @@ Crea e distribuisci un servlet che esegua l’autenticazione e l’autorizzazion
 
 Il servlet deve essere accessibile a tutti gli utenti. Pertanto, il tuo servlet deve estendere la classe `org.apache.sling.api.servlets.SlingSafeMethodsServlet` che fornisce l’accesso in sola lettura al sistema.
 
-Il servlet riceve solo richieste HEAD dal rendering, pertanto devi implementare solo `doHead` metodo.
+Il servlet riceve solo richieste HEAD dal rendering, pertanto devi semplicemente implementare il metodo `doHead`.
 
 Il rendering include l’URI della risorsa richiesta come parametro della richiesta HTTP. Ad esempio, un servlet di autorizzazione è accessibile tramite `/bin/permissioncheck`. Per eseguire un controllo di sicurezza sulla pagina /content/geometrixx-outdoors/en.html, il rendering include il seguente URL nella richiesta HTTP:
 
@@ -147,7 +147,7 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 
 >[!NOTE]
 >
->Se i tuoi requisiti consentono la memorizzazione in cache dei documenti autenticati, imposta la proprietà /allowAuthorized sotto la sezione /cache su `/allowAuthorized 1`. Consulta l’argomento [Memorizzazione in cache quando viene utilizzata l’autenticazione](/help/using/dispatcher-configuration.md) per ulteriori dettagli.
+>Se i tuoi requisiti consentono la memorizzazione in cache dei documenti autenticati, imposta la proprietà /allowAuthorized sotto la sezione /cache su `/allowAuthorized 1`. Per ulteriori dettagli, consulta l’argomento [Memorizzazione in cache quando viene utilizzata l’autenticazione](/help/using/dispatcher-configuration.md).
 
 La sezione auth_checker del file dispatcher.any controlla il comportamento del caching sensibile alle autorizzazioni. La sezione auth_checker include le seguenti sottosezioni:
 

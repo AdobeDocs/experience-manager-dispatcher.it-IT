@@ -10,9 +10,9 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1302'
-ht-degree: 90%
+ht-degree: 100%
 
 ---
 
@@ -129,14 +129,14 @@ Per configurare SSL reciproco, è necessario disporre di certificati firmati da 
 
 Per configurare l’autenticazione SSL reciproca, esegui i seguenti passaggi:
 
-1. [Installa](dispatcher-install.md) la versione più recente di Dispatcher per la piattaforma in uso. Utilizza un file binario di Dispatcher che supporta SSL (SSL compare nel nome del file, ad esempio `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
-1. [Crea o ottieni un certificato firmato da una CA](dispatcher-ssl.md#main-pars-title-3) per Dispatcher e l’istanza di rendering.
+1. [Installa](dispatcher-install.md) la versione più recente di Dispatcher per la piattaforma in uso. Utilizza un file binario di Dispatcher che supporta SSL (SSL compare nel nome file, ad esempio `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
+1. [Crea o ottieni un certificato firmato dalla CA](dispatcher-ssl.md#main-pars-title-3) per Dispatcher e l’istanza di rendering.
 1. [Crea un archivio chiavi contenente il certificato di rendering](dispatcher-ssl.md#main-pars-title-6) e configura il servizio HTTP del rendering.
 1. [Configura il modulo server Web di Dispatcher](dispatcher-ssl.md#main-pars-title-4) per SSL reciproco.
 
 ### Creazione o conseguimento di certificati firmati da una CA {#creating-or-obtaining-ca-signed-certificates}
 
-Crea o ottieni i certificati firmati da una CA che autenticano l’istanza Publish e Dispatcher.
+Crea o ottieni i certificati firmati da una CA che autentichino l’istanza di pubblicazione e di Dispatcher.
 
 #### Creazione della tua CA {#creating-your-ca}
 
@@ -157,10 +157,10 @@ Se fungi da CA, utilizza [OpenSSL](https://www.openssl.org/) per creare l’Auto
 
 Utilizza OpenSSL per creare le richieste di certificato da inviare alla CA di terze parti o per firmare con la tua CA.
 
-Quando crei un certificato, OpenSSL utilizza la proprietà Common Name per identificare il titolare del certificato. Per il certificato dell’istanza di rendering, utilizza il nome host del computer dell’istanza come Common Name se configuri Dispatcher per accettare il certificato. Esegui questa operazione solo se corrisponde al nome host dell’istanza Publishing. Consulta la [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) proprietà.
+Quando crei un certificato, OpenSSL utilizza la proprietà Common Name per identificare il titolare del certificato. Per il certificato dell’istanza di rendering, utilizza il nome host del computer dell’istanza come nome comune se configuri Dispatcher per accettare il certificato. Esegui questa operazione solo se corrisponde al nome host dell’istanza di pubblicazione. Consulta la proprietà [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11).
 
 1. Apri un terminale e cambia la directory corrente con la directory che contiene il file CH.sh delle librerie OpenSSL.
-1. Immetti il seguente comando e fornisci i valori quando richiesto. Se necessario, utilizza il nome host dell’istanza di pubblicazione come Common Name. Il nome host è un nome risolvibile DNS per l&#39;indirizzo IP del rendering:
+1. Immetti il seguente comando e fornisci i valori quando richiesto. Se necessario, utilizza il nome host dell’istanza di pubblicazione come nome comune. Il nome host è un nome risolvibile DNS per l&#39;indirizzo IP del rendering:
 
    ```shell
    ./CA.sh -newreq
@@ -247,7 +247,7 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
 #### Configurazione dell’istanza di rendering {#configuring-the-render-instance}
 
-Per configurare il servizio HTTP dell’istanza di rendering in modo che utilizzi SSL, utilizza il certificato di rendering con le istruzioni contenute nella *`Enable SSL on the Publish Instance`* sezione:
+Per configurare il servizio HTTP dell’istanza di rendering per l’utilizzo di SSL, utilizza il certificato di rendering con le istruzioni contenute nella sezione *`Enable SSL on the Publish Instance`*:
 
 * AEM 6.2: [abilitazione di HTTP su SSL](https://experienceleague.adobe.com/it/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
 * AEM 6.1: [abilitazione di HTTP su SSL](https://experienceleague.adobe.com/it/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)

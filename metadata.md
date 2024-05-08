@@ -6,9 +6,9 @@ git-repo: https://github.com/AdobeDocs/experience-manager-dispatcher.it-IT
 index: y
 recommendations: noDisplay
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '109'
-ht-degree: 73%
+ht-degree: 100%
 
 ---
 
@@ -20,9 +20,9 @@ Il file metadata.md include metadati a livello di archivio che vengono trasmessi
 | Metadati | Funzione |
 |--- |--- |
 | solution-title | Utilizzato nell’intestazione dell’articolo come collegamento |
-| solution-hub-url | Apre la pagina hub della guida |
+| solution-hub-url | Apre la pagina principale della guida |
 | solution-icon | Visualizza l’icona della soluzione accanto al titolo della soluzione. Non ancora implementato |
 | getting-started-url | Collegamento alla pagina della guida introduttiva |
-| tutorials-url | Collegamento alle esercitazioni video: esercitazioni della guida o KT |
+| tutorials-url | Collegamento ai tutorial video: sia tutorial di supporto o di KT |
 | mini-toc-levels | Determina quanti livelli di intestazione vengono visualizzati nella barra a destra. Il valore predefinito è 2. |
-| git-repo | Specifica la posizione dell’archivio primario per uso interno |
+| git-repo | Specifica la posizione dell’archivio principale per uso interno |

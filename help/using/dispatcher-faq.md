@@ -1,11 +1,11 @@
 ---
 title: Problemi principali di Dispatcher
-description: Problemi principali di Adobe Experience Manager Dispatcher.
+description: Problemi principali di Adobe Experience Manager Dispatcher
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1542'
-ht-degree: 87%
+ht-degree: 100%
 
 ---
 
@@ -17,7 +17,7 @@ ht-degree: 87%
 
 ### Cos’è Dispatcher?
 
-Il Dispatcher è uno strumento di caching e/o bilanciamento del carico di Adobe Experience Manager che consente di realizzare un ambiente di authoring web veloce e dinamico. Per il caching, il Dispatcher funziona come parte di un server HTTP, come Apache. Ha lo scopo di memorizzare (o &quot;memorizzare in cache&quot;) la maggior parte del contenuto statico del sito web e di accedere al layout del motore del sito web il più raramente possibile. In un ruolo di bilanciamento del carico, il Dispatcher distribuisce le richieste degli utenti (carico) tra le diverse istanze AEM (rendering).
+Il Dispatcher è uno strumento di caching e/o bilanciamento del carico di Adobe Experience Manager che consente di realizzare un ambiente di authoring web veloce e dinamico. Per il caching, il Dispatcher funziona come parte di un server HTTP, come Apache. Ha lo scopo di archiviare (o “memorizzare in cache”) più contenuto statico possibile del sito web, limitando gli accessi al motore di layout del sito web. In un ruolo di bilanciamento del carico, il Dispatcher distribuisce le richieste degli utenti (carico) tra le diverse istanze AEM (rendering).
 
 Per il caching, il modulo Dispatcher utilizza la funzionalità del server web che consente di gestire il contenuto statico. Dispatcher inserisce i documenti memorizzati in cache nella directory principale dei documenti del server web.
 
@@ -80,9 +80,9 @@ Per alcune applicazioni, può essere possibile utilizzare sia le connessioni per
 
 ### Un’istanza di Dispatcher e un’istanza di AEM Publish possono risiedere sulla stessa macchina fisica?
 
-Sì, se la macchina è sufficientemente potente. È tuttavia necessario configurare Dispatcher e l’istanza di pubblicazione AEM su computer diversi.
+Sì, se la macchina è sufficientemente potente. Tuttavia, si consiglia di installare Dispatcher e l’istanza di pubblicazione di AEM su computer diversi.
 
-Di solito, l’istanza Publishing risiede all’interno del firewall e Dispatcher risiede nella DMZ. Se decidi di installare l’istanza Publishing e Dispatcher sulla stessa macchina fisica, accertati che le impostazioni del firewall vietino l’accesso diretto all’istanza Publishing da reti esterne.
+In genere, l’istanza di pubblicazione risiede all’interno del firewall e Dispatcher risiede nella DMZ. Se decidi di installare l’istanza di pubblicazione e Dispatcher sulla stessa macchina fisica, accertati che le impostazioni del firewall vietino l’accesso diretto all’istanza di pubblicazione da reti esterne.
 
 ### Posso memorizzare in cache solo file con estensioni specifiche?
 
@@ -104,7 +104,7 @@ Content-Length: 0
 Dispatcher elimina i file e le cartelle memorizzati in cache con nomi che corrispondono al valore dell’intestazione CQ-Handle. Ad esempio, il CQ-Handle `/content/geomtrixx-outdoors/en` corrisponde ai seguenti elementi:
 
 Tutti i file (con qualsiasi estensione) denominati en nella directory geometrixx-outdoors.
-Qualsiasi directory denominata `_jcr_content` sotto la directory en (che, se esiste, contiene i rendering memorizzati nella cache dei sottonodi della pagina).
+Tutte le directory denominate `_jcr_content` sotto la directory en (che, se esiste, contiene i rendering memorizzati nella cache dei sottonodi della pagina).
 La directory `en` viene eliminata solo se `CQ-Action` è `Delete` o `Deactivate`.
 
 Per ulteriori dettagli su questo argomento, vedi [Annullamento manuale della validità della cache di Dispatcher](page-invalidate.md).
@@ -115,7 +115,7 @@ Visita la pagina [Caching di contenuto protetto](permissions-cache.md).
 
 ### Come posso proteggere le comunicazioni tra le istanze Dispatcher e CQ?
 
-Visita le pagine [Elenco di controllo di protezione di Dispatcher](security-checklist.md) e [Elenco di controllo di protezione di AEM](https://experienceleague.adobe.com/en/docs/experience-manager-64/administering/security/security-checklist).
+Visita le pagine [Elenco di controllo di protezione di Dispatcher](security-checklist.md) e [Elenco di controllo di protezione di AEM](https://experienceleague.adobe.com/it/docs/experience-manager-64/administering/security/security-checklist).
 
 ### Problema di Dispatcher `jcr:content` modificato in `jcr%3acontent`
 
@@ -129,7 +129,7 @@ Ulteriori informazioni: [https://sling.apache.org/documentation/the-sling-engine
 
 ### Come si configurano gli agenti di Dispatcher Flush su un’istanza Publish?
 
-Visita la pagina [Replica](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-your-replication-agents).
+Visita la pagina [Replica](https://experienceleague.adobe.com/it/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-your-replication-agents).
 
 ### Come si risolvono i problemi di flushing di Dispatcher?
 
@@ -139,7 +139,7 @@ Se le operazioni di eliminazione provocano il flush di Dispatcher, [utilizza la 
 
 ### Come si eliminano le risorse DAM dalla cache di Dispatcher?
 
-È possibile utilizzare la funzione “replica a catena”. Quando questa funzione è abilitata, l’agente di Dispatcher per lo scaricamento invia una richiesta di scaricamento quando viene ricevuta una replica dall’autore.
+È possibile utilizzare la funzione “replica a catena”. Quando questa funzione è abilitata, l’agente di svuotamento del Dispatcher invia una richiesta di svuotamento quando riceve una replica dall’autore.
 
 Per abilitare questa funzione:
 
