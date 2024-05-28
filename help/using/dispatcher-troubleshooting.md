@@ -9,10 +9,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '538'
-ht-degree: 100%
+source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+workflow-type: tm+mt
+source-wordcount: '539'
+ht-degree: 90%
 
 ---
 
@@ -20,9 +20,9 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->Le versioni di Dispatcher sono indipendenti da AEM, tuttavia la documentazione di Dispatcher è incorporata nella documentazione di AEM. Utilizza sempre la documentazione di Dispatcher incorporata nella documentazione della più recente versione di AEM.
+>Le versioni di Dispatcher sono indipendenti da AEM. Tuttavia, la documentazione di Dispatcher è incorporata nella documentazione di AEM. Utilizza sempre la documentazione di Dispatcher incorporata nella documentazione della più recente versione di AEM.
 >
->Potresti essere stato reindirizzato a questa pagina se hai seguito un collegamento alla documentazione di Dispatcher incorporato nella documentazione di una versione precedente di AEM.
+>Potresti essere stato reindirizzato a questa pagina se hai seguito un collegamento alla documentazione di Dispatcher. Tale collegamento è incorporato nella documentazione di una versione precedente dell’AEM.
 
 >[!NOTE]
 >
@@ -30,7 +30,7 @@ ht-degree: 100%
 
 ## Controlla la configurazione di base {#check-the-basic-configuration}
 
-Come sempre, i primi passaggi consistono nel controllare la configurazione di base:
+Come sempre, i primi passaggi consistono nel verificare le nozioni di base:
 
 * [Verifica il funzionamento di base](/help/using/dispatcher-configuration.md#confirming-basic-operation)
 * Verifica tutti i file di registro del server web e del Dispatcher. Se necessario, aumenta il `loglevel` utilizzato per la [registrazione](/help/using/dispatcher-configuration.md#logging) del Dispatcher.
@@ -78,7 +78,7 @@ Problemi durante il tentativo di eliminare i modelli di flussi di lavoro quando 
 
 1. Fai clic su **Sì** per confermare.
 1. Viene visualizzata una finestra di messaggio di errore che mostra quanto segue:\
-   “`ERROR 'Could not delete workflow model!!`”.
+   `ERROR 'Could not delete workflow model!!`.
 
 **Risoluzione**
 

@@ -10,10 +10,10 @@ feature-set: Experience Manager
 feature: Dispatcher
 topic: Administration
 role: Admin
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '78'
-ht-degree: 100%
+source-git-commit: d8e224401e5ab041bb297b99a99c71a69ca6deac
+workflow-type: tm+mt
+source-wordcount: '83'
+ht-degree: 73%
 
 ---
 
@@ -26,13 +26,13 @@ ht-degree: 100%
    + [Elenco di controllo della sicurezza di Dispatcher](security-checklist.md)
    + [Note sulla versione di AEM Dispatcher](release-notes.md)
 + Configurazione {#configuring}
-   + [Configurazione di Dispatcher](dispatcher-configuration.md)
+   + [Configurazione del Dispatcher per l’AEM](dispatcher-configuration.md)
    + [Annullamento della validità delle pagine in cache da AEM](page-invalidate.md)
    + [Ottimizzazione delle prestazioni della cache di un sito web](https://experienceleague.adobe.com/it/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
    + [Caching di contenuto protetto](permissions-cache.md)
-   + [Utilizzo di Dispatcher con più domini](dispatcher-domains.md)
-   + [Utilizzo di SSL con Dispatcher](dispatcher-ssl.md)
-   + [Configurazione di Dispatcher per impedire attacchi CSRF](configuring-dispatcher-to-prevent-csrf.md)
+   + [Utilizzo di AEM Dispatcher con più domini](dispatcher-domains.md)
+   + [Utilizzo di SSL con Dispatcher AEM](dispatcher-ssl.md)
+   + [Configurazione di AEM Dispatcher per impedire attacchi CSRF](configuring-dispatcher-to-prevent-csrf.md)
 + Risoluzione dei problemi {#troubleshooting}
    + [Risoluzione dei problemi di Dispatcher](dispatcher-troubleshooting.md)
    + [Domande frequenti sui principali problemi di Dispatcher](dispatcher-faq.md)
