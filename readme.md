@@ -1,13 +1,13 @@
 ---
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '72'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '70'
+ht-degree: 88%
 
 ---
-# Documentazione di Adobe Experience Manager Dispatcher
+# Rilevamento pattern di Adobe Experience Manager
 
-Questo è l’archivio in cui sono raccolte le informazioni sulla versione di Adobe Experience Manager Dispatcher.
+Questo archivio per il rilevamento pattern di Adobe Experience Manager.
 
 Saremo lieti di accogliere anche il contributo alla documentazione. Consulta le risorse seguenti:
 

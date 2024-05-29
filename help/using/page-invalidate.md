@@ -9,10 +9,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '1411'
-ht-degree: 73%
+source-wordcount: '1407'
+ht-degree: 74%
 
 ---
 
@@ -124,11 +124,11 @@ Dopo la configurazione, quando attivi una pagina da Autore a Publish, questo age
 
 Per annullare la validità (o eseguire lo svuotamento) della cache del Dispatcher senza attivare una pagina, puoi inviare una richiesta HTTP al Dispatcher. Ad esempio, puoi creare un’applicazione AEM che consenta agli amministratori o ad altre applicazioni di eseguire il flushing della cache.
 
-La richiesta HTTP fa in modo che Dispatcher AEM elimini file specifici dalla cache. Facoltativamente, Dispatcher aggiorna la cache con una nuova copia.
+La richiesta HTTP fa in modo che Dispatcher elimini file specifici dalla cache. Facoltativamente, Dispatcher aggiorna la cache con una nuova copia.
 
 ### Elimina i file memorizzati nella cache {#delete-cached-files}
 
-Invia una richiesta HTTP che induca Dispatcher AEM a eliminare i file dalla cache. Dispatcher memorizza nuovamente in cache i file solo quando riceve dal client una richiesta per la pagina. Questa modalità di eliminazione dei file memorizzati in cache è appropriata per i siti web che hanno poche probabilità di ricevere richieste simultanee per la stessa pagina.
+Invia una richiesta HTTP che induca Dispatcher a eliminare i file dalla cache. Dispatcher memorizza nuovamente in cache i file solo quando riceve dal client una richiesta per la pagina. Questa modalità di eliminazione dei file memorizzati in cache è appropriata per i siti web che hanno poche probabilità di ricevere richieste simultanee per la stessa pagina.
 
 La richiesta HTTP ha il seguente formato:
 
@@ -151,7 +151,7 @@ L’annullamento della validità (ovvero toccare i file .stat) può essere imped
 
 ### Eliminazione e rimemorizzazione in cache dei file {#delete-and-recache-files}
 
-Invia una richiesta HTTP che induca Dispatcher AEM a eliminare i file memorizzati in cache e a recuperare e rimemorizzare in cache immediatamente il file. Elimina e rimemorizza in cache immediatamente i file quando è probabile che i siti web ricevano dai client richieste simultanee per la stessa pagina. Il re-caching immediato garantisce che Dispatcher recuperi e memorizzi in cache la pagina una sola volta, invece di una volta per ciascuna delle richieste simultanee inviate dai client.
+Invia una richiesta HTTP che induca Dispatcher a eliminare i file memorizzati in cache e a recuperare e rimemorizzare in cache immediatamente il file. Elimina e rimemorizza in cache immediatamente i file quando è probabile che i siti web ricevano dai client richieste simultanee per la stessa pagina. Il re-caching immediato garantisce che Dispatcher recuperi e memorizzi in cache la pagina una sola volta, invece di una volta per ciascuna delle richieste simultanee inviate dai client.
 
 **Nota:** l’eliminazione e la rimemorizzazione nella cache dei file dovrebbero essere eseguite solo nell’istanza di pubblicazione. Quando viene eseguita dall’istanza Autore, si verificano condizioni di estrema competizione quando i tentativi di recuperare le risorse vengono effettuati prima che le risorse siano pubblicate.
 
@@ -185,7 +185,7 @@ Content-Length: 36
 
 Il codice seguente implementa un servlet che invia una richiesta di annullamento della validità al Dispatcher. Il servlet riceve un messaggio di richiesta contenente i parametri `handle` e `page`. Questi parametri forniscono rispettivamente il valore dell’intestazione `CQ-Handle` e il percorso della pagina da rimemorizzare in cache. Il servlet utilizza i valori per creare la richiesta HTTP per Dispatcher.
 
-Quando il servlet viene distribuito all’istanza Publish, il seguente URL induce Dispatcher dell’AEM a eliminare la pagina /content/geometrixx-outdoors/en.html e quindi a memorizzare in cache una nuova copia.
+Quando il servlet viene distribuito all’istanza Publish, il seguente URL induce Dispatcher a eliminare la pagina /content/geometrixx-outdoors/en.html e quindi a memorizzare in cache una nuova copia.
 
 `10.36.79.223:4503/bin/flushcache/html?page=/content/geometrixx-outdoors/en.html&handle=/content/geometrixx-outdoors/en/men.html`
 

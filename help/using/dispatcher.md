@@ -5,10 +5,10 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '3083'
-ht-degree: 81%
+source-wordcount: '3079'
+ht-degree: 82%
 
 ---
 
@@ -20,7 +20,7 @@ ht-degree: 81%
 
 Dispatcher è uno strumento di caching e/o bilanciamento del carico di Adobe Experience Manager che può essere utilizzato insieme a un server Web di classe Enterprise.
 
-Il processo di distribuzione di AEM Dispatcher è indipendente dal server web e dalla piattaforma del sistema operativo scelti:
+Il processo di distribuzione di Dispatcher è indipendente dal server web e dalla piattaforma del sistema operativo scelti:
 
 1. Scopri di più su Dispatcher (questa pagina). Inoltre, consulta le [domande frequenti sul Dispatcher](/help/using/dispatcher-faq.md).
 1. Installa un [server web supportato](https://experienceleague.adobe.com/it/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements) in base alla documentazione di quel server web.
@@ -30,7 +30,7 @@ Il processo di distribuzione di AEM Dispatcher è indipendente dal server web e 
 
 >[!NOTE]
 >
->Per comprendere meglio come funziona il Dispatcher per l’AEM con l’AEM:
+>Per comprendere meglio il funzionamento del Dispatcher con l’AEM:
 >
 >* Vedi [Chiedi agli esperti della community AEM di luglio 2017](https://communities.adobeconnect.com/pf0gem7igw1f/).
 >* Accedi a [questo archivio](https://github.com/adobe/aem-dispatcher-experiments). Contiene una raccolta di esperimenti in un formato di laboratorio &quot;take-home&quot;.
@@ -41,7 +41,7 @@ Utilizza le seguenti informazioni come richiesto:
 * [Elenco di controllo della sicurezza di Dispatcher](security-checklist.md)
 * [Knowledge Base di Dispatcher](https://helpx.adobe.com/it/experience-manager/kb/index/dispatcher.html)
 * [Ottimizzazione delle prestazioni della cache di un sito web](https://experienceleague.adobe.com/it/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
-* [Utilizzo del Dispatcher AEM con più domini](dispatcher-domains.md)
+* [Utilizzo di Dispatcher con più domini](dispatcher-domains.md)
 * [Utilizzo di SSL con Dispatcher](dispatcher-ssl.md)
 * [Implementazione del caching sensibile alle autorizzazioni](permissions-cache.md)
 * [Risoluzione dei problemi di Dispatcher](dispatcher-troubleshooting.md)
@@ -129,7 +129,7 @@ In un aggiornamento del contenuto uno o più documenti AEM cambiano. AEM invia u
 Tieni presente le seguenti considerazioni:
 
 * Gli aggiornamenti dei contenuti vengono in genere utilizzati con un sistema di authoring che &quot;sa&quot; cosa deve essere sostituito.
-* Gli aggiornamenti di contenuto che interessano i file vengono rimossi, ma non sostituiti immediatamente. Alla successiva richiesta di un file di questo tipo, Dispatcher AEM recupera il nuovo file dall’istanza AEM e lo inserisce nella cache, sovrascrivendo il contenuto precedente.
+* Gli aggiornamenti di contenuto che interessano i file vengono rimossi, ma non sostituiti immediatamente. Alla successiva richiesta di un file di questo tipo, Dispatcher recupera il nuovo file dall’istanza dell’AEM e lo inserisce nella cache, sovrascrivendo il contenuto precedente.
 * In genere, le immagini generate automaticamente che incorporano testo di una pagina vengono archiviate in file di immagine che iniziano con lo stesso handle, in modo da garantire l’associazione per l’eliminazione. Ad esempio, puoi archiviare il testo del titolo della pagina mypage.html come immagine mypage.titlePicture.gif nella stessa cartella. In questo modo l’immagine viene eliminata automaticamente dalla cache ogni volta che la pagina viene aggiornata e potrai essere sicuro che l’immagine rispecchierà sempre la versione corrente della pagina.
 * Possono esistere diversi statfile, ad esempio uno per cartella della lingua. Se una pagina viene aggiornata, AEM cerca la cartella padre successiva contenente uno statfile e *tocca* tale file.
 

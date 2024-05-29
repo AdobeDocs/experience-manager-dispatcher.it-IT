@@ -1,6 +1,6 @@
 ---
 title: Utilizzo di SSL con Dispatcher
-description: Scopri come configurare Dispatcher per comunicare con AEM utilizzando le connessioni SSL.
+description: Scopri come configurare Dispatcher per comunicare con l’AEM utilizzando le connessioni SSL.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
@@ -9,10 +9,10 @@ index: y
 internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '1302'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '1310'
+ht-degree: 89%
 
 ---
 
@@ -121,7 +121,7 @@ Per utilizzare l’autenticazione SSL reciproca, configura le connessioni tra il
 * Dispatcher verifica che la CA del certificato dell’istanza di rendering sia attendibile.
 * (Facoltativo) Dispatcher verifica che il certificato dell’istanza di rendering corrisponda all’indirizzo del server dell’istanza di rendering.
 
-Per configurare SSL reciproco, è necessario disporre di certificati firmati da un’autorità di certificazione (CA) attendibile. I certificati autofirmati non sono sufficienti. Puoi fungere da CA o utilizzare i servizi di una CA di terze parti per firmare i certificati. Per configurare SSL reciproco, sono necessari i seguenti elementi:
+Per configurare SSL reciproco, è necessario disporre di certificati firmati con un&#39;autorità di certificazione (CA) attendibile. I certificati autofirmati non sono sufficienti. Puoi fungere da CA o utilizzare i servizi di una CA di terze parti per firmare i certificati. Per configurare SSL reciproco, sono necessari i seguenti elementi:
 
 * Certificati firmati per l’istanza di rendering e Dispatcher
 * Certificato CA (se sei tu a fungere da CA)
@@ -130,8 +130,8 @@ Per configurare SSL reciproco, è necessario disporre di certificati firmati da 
 Per configurare l’autenticazione SSL reciproca, esegui i seguenti passaggi:
 
 1. [Installa](dispatcher-install.md) la versione più recente di Dispatcher per la piattaforma in uso. Utilizza un file binario di Dispatcher che supporta SSL (SSL compare nel nome file, ad esempio `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
-1. [Crea o ottieni un certificato firmato dalla CA](dispatcher-ssl.md#main-pars-title-3) per Dispatcher e l’istanza di rendering.
-1. [Crea un archivio chiavi contenente il certificato di rendering](dispatcher-ssl.md#main-pars-title-6) e configura il servizio HTTP del rendering.
+1. [Creare o ottenere un certificato firmato da una CA](dispatcher-ssl.md#main-pars-title-3) per Dispatcher e l’istanza di rendering.
+1. [Crea un keystore contenente il certificato di rendering](dispatcher-ssl.md#main-pars-title-6) e configura il servizio HTTP del rendering.
 1. [Configura il modulo server Web di Dispatcher](dispatcher-ssl.md#main-pars-title-4) per SSL reciproco.
 
 ### Creazione o conseguimento di certificati firmati da una CA {#creating-or-obtaining-ca-signed-certificates}
@@ -157,7 +157,7 @@ Se fungi da CA, utilizza [OpenSSL](https://www.openssl.org/) per creare l’Auto
 
 Utilizza OpenSSL per creare le richieste di certificato da inviare alla CA di terze parti o per firmare con la tua CA.
 
-Quando crei un certificato, OpenSSL utilizza la proprietà Common Name per identificare il titolare del certificato. Per il certificato dell’istanza di rendering, utilizza il nome host del computer dell’istanza come nome comune se configuri Dispatcher per accettare il certificato. Esegui questa operazione solo se corrisponde al nome host dell’istanza di pubblicazione. Consulta la proprietà [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11).
+Quando crei un certificato, OpenSSL utilizza la proprietà Common Name per identificare il titolare del certificato. Per il certificato dell’istanza di rendering, utilizza il nome host del computer dell’istanza come nome comune se configuri Dispatcher per accettare il certificato. Eseguire questa procedura solo se corrisponde al nome host dell&#39;istanza Publishing. Consulta la proprietà [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11).
 
 1. Apri un terminale e cambia la directory corrente con la directory che contiene il file CH.sh delle librerie OpenSSL.
 1. Immetti il seguente comando e fornisci i valori quando richiesto. Se necessario, utilizza il nome host dell’istanza di pubblicazione come nome comune. Il nome host è un nome risolvibile DNS per l&#39;indirizzo IP del rendering:
@@ -285,8 +285,8 @@ Combina il certificato di Dispatcher e la chiave privata non crittografata in un
 
 Aggiungi le seguenti proprietà alla [configurazione del modulo Dispatcher](dispatcher-install.md#main-pars-55-35-1022) (nel file `httpd.conf`):
 
-* `DispatcherCertificateFile`: percorso del file del certificato unificato di Dispatcher contenente il certificato pubblico e la chiave privata non crittografata. Questo file viene utilizzato quando il server SSL richiede il certificato del client di Dispatcher.
-* `DispatcherCACertificateFile`: percorso del file del certificato CA utilizzato se il server SSL presenta una CA non attendibile da un&#39;autorità radice.
+* `DispatcherCertificateFile`: percorso del file del certificato unificato di Dispatcher contenente il certificato pubblico e la chiave privata non crittografata. Questo file viene utilizzato quando il server SSL richiede il certificato client di Dispatcher.
+* `DispatcherCACertificateFile`: percorso del file del certificato CA. Utilizzato se il server SSL presenta una CA non considerata attendibile da un&#39;autorità radice.
 * `DispatcherCheckPeerCN`: determina se abilitare (`On`) o disabilitare (`Off`) la verifica del nome host per i certificati del server remoto.
 
 Il codice che segue è un esempio di configurazione:
