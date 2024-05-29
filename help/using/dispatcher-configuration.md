@@ -2,9 +2,9 @@
 title: Configurazione di AEM Dispatcher
 description: Scopri come configurare il Dispatcher per l’AEM. Scopri il supporto per IPv4 e IPv6, i file di configurazione, le variabili di ambiente e la denominazione dell’istanza. Scopri come definire le farm, identificare gli host virtuali e altro ancora.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: 0189feaf345495ba2f992d91eccf5690ec7581ce
 workflow-type: tm+mt
-source-wordcount: '8897'
+source-wordcount: '8898'
 ht-degree: 82%
 
 ---
@@ -1229,7 +1229,7 @@ Lo script viene richiamato con i seguenti argomenti:
 
 Questo metodo può essere utilizzato per coprire diversi casi d’uso. Ad esempio, l’annullamento della validità di altre cache specifiche per l’applicazione o la gestione di casi in cui l’URL esternalizzato di una pagina e la sua posizione nella docroot non corrispondono al percorso del contenuto.
 
-Di seguito è riportato un esempio di script che registra in un file ogni richiesta di annullamento della validità.
+Lo script di esempio seguente registra in un file ogni richiesta invalidata.
 
 ```xml
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
