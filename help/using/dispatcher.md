@@ -1,6 +1,6 @@
 ---
 title: Panoramica di Dispatcher
-description: Scopri come utilizzare Adobe Experience Manager Dispatcher per migliorare la sicurezza, la memorizzazione in cache e altro ancora sui Cloud Service AEM.
+description: Scopri come utilizzare Adobe Experience Manager Dispatcher per migliorare la sicurezza, la memorizzazione in cache e altro ancora in AEM Cloud Services.
 pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
@@ -8,7 +8,7 @@ exl-id: c9266683-6890-4359-96db-054b7e856dd0
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
 source-wordcount: '3079'
-ht-degree: 82%
+ht-degree: 97%
 
 ---
 
@@ -16,9 +16,9 @@ ht-degree: 82%
 
 >[!NOTE]
 >
->Le versioni di Dispatcher sono indipendenti dall’AEM (Adobe Experience Manager). Potresti essere stato reindirizzato a questa pagina se hai seguito un collegamento alla documentazione di Dispatcher. Tale collegamento è stato inserito nella documentazione di una versione precedente dell’AEM.
+>Le versioni di Dispatcher sono indipendenti da AEM (Adobe Experience Manager). Se hai seguito un collegamento alla documentazione di Dispatcher, potresti essere stato reindirizzato a questa pagina. Tale collegamento è stato incorporato nella documentazione di una versione precedente di AEM.
 
-Dispatcher è uno strumento di caching e/o bilanciamento del carico di Adobe Experience Manager che può essere utilizzato insieme a un server Web di classe Enterprise.
+Dispatcher è uno strumento di memorizzazione in cache e/o bilanciamento del carico di Adobe Experience Manager che può essere utilizzato insieme a un server Web di classe Enterprise.
 
 Il processo di distribuzione di Dispatcher è indipendente dal server web e dalla piattaforma del sistema operativo scelti:
 
@@ -51,7 +51,7 @@ Utilizza le seguenti informazioni come richiesto:
 >
 >**Dispatcher viene utilizzato in genere** per memorizzare in cache le risposte di un’**istanza AEM Publish**, per aumentare la capacità di risposta e la sicurezza del sito web pubblicato che interfaccia con l’esterno. La maggior parte della discussione è incentrata su questo caso specifico.
 >
->Tuttavia, Dispatcher può anche essere utilizzato per aumentare la reattività del **istanza autore**. Questo fatto è vero, in particolare se il sito web viene modificato e aggiornato da un numero elevato di utenti. Per i dettagli specifici di questo caso, vedi [Utilizzo di Dispatcher con Author Server](#using-a-dispatcher-with-an-author-server) più avanti.
+>Ma Dispatcher può essere utilizzato anche per aumentare la reattività dell’**istanza di authoring**. Questo vale in particolare se hai un gran numero di utenti che modificano e aggiornano il sito web. Per i dettagli specifici di questo caso, vedi [Utilizzo di Dispatcher con Author Server](#using-a-dispatcher-with-an-author-server) più avanti.
 
 ## Perché usare Dispatcher per implementare il caching? {#why-use-dispatcher-to-implement-caching}
 
@@ -81,7 +81,7 @@ Questa sezione illustra i principi alla base di tale funzionamento.
 
 Un server web statico, come Apache o IIS, viene utilizzato per distribuire file HTML statici ai visitatori del sito web. Le pagine statiche vengono create una sola volta, quindi a ogni richiesta verrà distribuito lo stesso contenuto.
 
-Questo processo è semplice ed efficiente. Se un visitatore richiede un file, ad esempio una pagina HTML, in genere il file viene prelevato direttamente dalla memoria o nel peggiore dei casi viene letto dall’unità locale. I server web statici sono disponibili da molto tempo. Esistono quindi numerosi strumenti per l&#39;amministrazione e la gestione della sicurezza. Questi strumenti sono ben integrati con l&#39;infrastruttura di rete.
+Questo processo è semplice ed efficiente. Se un visitatore richiede un file, ad esempio una pagina HTML, in genere il file viene prelevato direttamente dalla memoria o nel peggiore dei casi viene letto dall’unità locale. I server web statici sono disponibili da tempo. Perciò, è disponibile una vasta gamma di strumenti per l’amministrazione e la gestione della sicurezza. Questi strumenti sono ben integrati con le infrastrutture di rete.
 
 ### Server di gestione dei contenuti {#content-management-servers}
 
@@ -95,11 +95,11 @@ Questo flusso di lavoro ti permette di creare contenuti più ricchi e dinamici, 
 
 ![](assets/chlimage_1-5.png)
 
-**Directory della cache** Per il caching il modulo Dispatcher utilizza la funzionalità del server web che consente di distribuire contenuto statico. Dispatcher inserisce i documenti memorizzati in cache nella directory principale del server web.
+**Directory della cache** Per il caching il modulo Dispatcher utilizza la funzionalità del server web che consente di distribuire contenuto statico. Dispatcher inserisce i documenti memorizzati nella cache nella radice del server web.
 
 >[!NOTE]
 >
->Se manca la configurazione per il caching delle intestazioni HTTP, Dispatcher archivia solo il codice HTML della pagina e non le intestazioni HTTP. Questo comportamento può costituire un problema, se utilizzi codifiche diverse all’interno del sito web, in quanto queste codifiche potrebbero andare perse. Per abilitare il caching delle intestazioni HTTP, consulta [Configurazione della cache di Dispatcher.](https://experienceleague.adobe.com/it/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration)
+>Se manca la configurazione per la memorizzazione in cache delle intestazioni HTTP, Dispatcher archivia solo il codice HTML della pagina e non le intestazioni HTTP. Questo comportamento può costituire un problema, se utilizzi codifiche diverse all’interno del sito web, in quanto queste codifiche potrebbero andare perse. Per abilitare il caching delle intestazioni HTTP, consulta [Configurazione della cache di Dispatcher.](https://experienceleague.adobe.com/it/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration)
 
 >[!NOTE]
 >
@@ -109,7 +109,7 @@ Questo flusso di lavoro ti permette di creare contenuti più ricchi e dinamici, 
 >
 >Dispatcher archivia il documento memorizzato in cache in una struttura uguale all’URL richiesto.
 >
->La lunghezza del nome del file può essere limitata a livello di sistema operativo. Cioè, se hai un URL con numerosi selettori.
+>Possono esserci limitazioni a livello di sistema operativo per la lunghezza del nome dei file. Cioè, se hai un URL con numerosi selettori.
 
 ### Metodi di caching
 
@@ -123,13 +123,13 @@ In Dispatcher sono disponibili due metodi principali per aggiornare il contenuto
 In un aggiornamento del contenuto uno o più documenti AEM cambiano. AEM invia una richiesta di distribuzione del contenuto (syndication) a Dispatcher, che aggiorna la cache di conseguenza:
 
 1. Elimina i file modificati dalla cache.
-1. Elimina dalla cache tutti i file che iniziano con lo stesso handle. Ad esempio, se il file `/en/index.html` viene aggiornato, tutti i file che iniziano con `/en/index.` vengono eliminati. Questo meccanismo consente di progettare siti efficienti dal punto di vista della cache, in particolare per la navigazione nelle immagini.
+1. Elimina dalla cache tutti i file che iniziano con la stessa gestione. Ad esempio, se viene aggiornato il file `/en/index.html`, tutti i file che iniziano con `/en/index.` sono cancellati. Questo meccanismo consente di progettare siti efficienti in termini di cache, soprattutto per la navigazione tra le immagini.
 1. Il cosiddetto **statfile** viene *toccato* e la sua marca temporale viene aggiornata per indicare la data dell’ultima modifica.
 
 Tieni presente le seguenti considerazioni:
 
-* Gli aggiornamenti dei contenuti vengono in genere utilizzati con un sistema di authoring che &quot;sa&quot; cosa deve essere sostituito.
-* Gli aggiornamenti di contenuto che interessano i file vengono rimossi, ma non sostituiti immediatamente. Alla successiva richiesta di un file di questo tipo, Dispatcher recupera il nuovo file dall’istanza dell’AEM e lo inserisce nella cache, sovrascrivendo il contenuto precedente.
+* Gli aggiornamenti di contenuto vengono in genere utilizzati insieme a un sistema di authoring che “sa” cosa deve essere sostituito.
+* Gli aggiornamenti del contenuto che interessano i file vengono rimossi, ma non sostituiti immediatamente. Alla successiva richiesta di un file di questo tipo, Dispatcher recupera il nuovo file dall’istanza dell’AEM e lo inserisce nella cache, sovrascrivendo il contenuto precedente.
 * In genere, le immagini generate automaticamente che incorporano testo di una pagina vengono archiviate in file di immagine che iniziano con lo stesso handle, in modo da garantire l’associazione per l’eliminazione. Ad esempio, puoi archiviare il testo del titolo della pagina mypage.html come immagine mypage.titlePicture.gif nella stessa cartella. In questo modo l’immagine viene eliminata automaticamente dalla cache ogni volta che la pagina viene aggiornata e potrai essere sicuro che l’immagine rispecchierà sempre la versione corrente della pagina.
 * Possono esistere diversi statfile, ad esempio uno per cartella della lingua. Se una pagina viene aggiornata, AEM cerca la cartella padre successiva contenente uno statfile e *tocca* tale file.
 
@@ -205,7 +205,7 @@ Se non riceve risposte da un’istanza, il Dispatcher inoltrerà automaticamente
 
 >[!CAUTION]
 >
->Anche se un’unica istanza di Dispatcher è in grado di assorbire la capacità delle istanze Publish disponibili, per alcune rare applicazioni può anche essere utile bilanciare il carico tra due istanze di Dispatcher. Devono essere considerate con attenzione le configurazioni con più istanze di Dispatcher. Il motivo è che un’ulteriore istanza di Dispatcher può aumentare il carico sulle istanze Publish disponibili e può facilmente diminuire le prestazioni nella maggior parte delle applicazioni.
+>Anche se un singolo Dispatcher è in grado di assorbire da solo la capacità delle istanze di pubblicazione disponibili, per alcune rare applicazioni può anche essere utile bilanciare il carico tra due istanze di Dispatcher. Le configurazioni con più istanze di Dispatcher devono essere considerate con attenzione. Infatti, un’ulteriore istanza di Dispatcher può far aumentare il carico sulle istanze di pubblicazione disponibili e può facilmente causare un calo delle prestazioni nella maggior parte delle applicazioni.
 
 ## Bilanciamento del carico in Dispatcher {#how-the-dispatcher-performs-load-balancing}
 
@@ -221,7 +221,7 @@ Se utilizzi una funzione di ricerca complessa, puoi creare una categoria per le 
 
 Con le connessioni permanenti è possibile garantire che i documenti di un utente siano tutti composti nella stessa istanza di AEM. Questa funzione è importante, se utilizzi pagine e dati di sessione personalizzati. I dati vengono archiviati nell’istanza, per cui le richieste successive dello stesso utente devono tornare a quell’istanza, altrimenti i dati andranno persi.
 
-Poiché con le connessioni permanenti la capacità di Dispatcher di ottimizzare le richieste risulta limitata, è consigliabile utilizzarle solo quando necessario. È possibile specificare la cartella che contiene i documenti &quot;permanenti&quot;, in modo da garantire che tutti i documenti in tale cartella siano composti nella stessa istanza per ogni utente.
+Poiché con le connessioni permanenti la capacità di Dispatcher di ottimizzare le richieste risulta limitata, è consigliabile utilizzarle solo quando necessario. Puoi specificare la cartella che contiene i documenti “permanenti”, in modo da garantire che tutti i documenti in tale cartella vengano composti nella stessa istanza per ogni utente.
 
 >[!NOTE]
 >
@@ -245,12 +245,12 @@ Una rete CDN (Content Delivery Network), come Akamai Edge Delivery o Amazon Clou
 * Velocizzare i tempi di risposta per gli utenti finali.
 * Alleggerisce il carico dei server.
 
-In quanto componente dell’infrastruttura HTTP, una rete CDN funziona in modo analogo a un Dispatcher. Quando un nodo CDN riceve una richiesta, la distribuisce dalla cache, se possibile (la risorsa è disponibile nella cache ed è valida). In caso contrario, si rivolge al server successivo più vicino per recuperare la risorsa e memorizzarla in cache per eventuali ulteriori richieste.
+In quanto componente di un’infrastruttura HTTP, una rete CDN funziona in modo analogo a un Dispatcher. Quando un nodo della rete CDN riceve una richiesta, la distribuisce dalla propria cache, se possibile (se la risorsa è disponibile nella cache ed è valida). In caso contrario, si rivolge al server successivo più vicino per recuperare la risorsa e memorizzarla in cache per eventuali ulteriori richieste.
 
 Il “server successivo più vicino” dipende dalla configurazione specifica. Ad esempio, in una configurazione di Akamai il percorso della richiesta può essere il seguente:
 
 * Nodo Akamai Edge
-* Livello intermedio Akamai
+* Lvello Akamai Midgress
 * Firewall dell’utente
 * Load balancer dell’utente
 * Dispatcher
@@ -273,9 +273,9 @@ Esistono diversi modi per controllare per quanto tempo una rete CDN memorizza in
 1. Annullamento basato su API\
    La maggior parte delle reti CDN offre anche un’API REST e/o SOAP che consente di rimuovere le risorse dalla cache.
 
-In una tipica configurazione dell’AEM, la configurazione per estensione, per percorso o per entrambi, ottenibile tramite i punti 1 e 2 di cui sopra, offre la possibilità di impostare periodi di caching ragionevoli. Questi periodi di caching sono per le risorse utilizzate spesso che non vengono modificate spesso, come le immagini di progettazione e le librerie client. Quando vengono distribuite nuove versioni, in genere è necessario un annullamento manuale della validità.
+In una configurazione tipica di AEM, la configurazione per estensione, per percorso o per entrambi, che può essere realizzata tramite i punti 1 e 2 già menzionati, permette di impostare periodi di memorizzazione in cache ragionevoli. Questi periodi di memorizzazione in cache sono utili per quelle risorse che vengono utilizzate spesso e che non sono soggette a frequenti modifiche, come immagini usate nei design e le librerie client. Quando vengono distribuite nuove versioni, in genere è necessario annullare manualmente la validità.
 
-Se si utilizza questo approccio per memorizzare in cache il contenuto gestito, le modifiche apportate al contenuto sono visibili solo agli utenti finali dopo la scadenza del periodo di caching configurato. E, quando il documento viene recuperato da Dispatcher.
+Se si utilizza questo approccio per memorizzare in cache il contenuto gestito, le modifiche apportate al contenuto diventano visibili agli utenti finali solo dopo la scadenza del periodo di caching configurato, e quando il documento viene di nuovo recuperato da Dispatcher.
 
 Per un controllo più granulare, l’annullamento della validità basato su API consente di annullare la validità della cache di una rete CDN appena viene annullata la validità della cache di Dispatcher. In base all’API della rete CDN, puoi implementare versioni personalizzate di [ContentBuilder](https://developer.adobe.com/experience-manager/reference-materials/6-5/javadoc/com/day/cq/replication/ContentBuilder.html?lang=it) e [TransportHandler](https://developer.adobe.com/experience-manager/reference-materials/6-5/javadoc/com/day/cq/replication/TransportHandler.html) (se l’API non è basata su REST) e impostare un’agente di replica che le userà per annullare la validità della cache della rete CDN.
 
@@ -301,7 +301,7 @@ Puoi utilizzare un’istanza di Dispatcher prima di un’istanza Autore per migl
 
 1. Installa il Dispatcher in un server web (può essere un server web Apache o IIS; consulta [Installazione Dispatcher](dispatcher-install.md)).
 1. Testa il Dispatcher appena installato rispetto a un’istanza di pubblicazione AEM funzionante. In questo modo si garantisce che sia stata effettuata un’installazione corretta della linea di base.
-1. Assicurati che Dispatcher sia in grado di connettersi all’istanza Autore tramite TCP/IP.
+1. Assicurati che Dispatcher sia in grado di connettersi all’istanza di authoring tramite TCP/IP.
 1. Sostituisci il file `dispatcher.any` di esempio con il file `author_dispatcher.any` fornito con il [download del Dispatcher](release-notes.md#downloads).
 1. Apri il file `author_dispatcher.any` in un editor di testo e apporta le seguenti modifiche:
 
@@ -309,12 +309,12 @@ Puoi utilizzare un’istanza di Dispatcher prima di un’istanza Autore per migl
    1. Modifica `/docroot` della sezione `/cache` in modo che punti a una directory della cache. Se utilizzi [AEM con l’interfaccia utente touch](https://experienceleague.adobe.com/it/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts), vedi l’avviso riportato sopra.
    1. Salva le modifiche.
 
-1. Elimina tutti i file esistenti nel `/cache` > `/docroot` che hai configurato in precedenza.
+1. Elimina tutti i file esistenti nella directory `/cache` > `/docroot` configurata in precedenza.
 1. Riavvia il server web.
 
 >[!NOTE]
 >
->Con il fornito `author_dispatcher.any` configurazione, quando installi un pacchetto di funzioni, un aggiornamento rapido o un pacchetto di codice dell’applicazione CQ5 che interessa qualsiasi contenuto in `/libs` o `/apps`, è necessario eliminare i file memorizzati in cache. I file si trovano in tali directory nella cache di Dispatcher. In questo modo, si assicura che alla successiva richiesta vengano recuperati i nuovi file aggiornati e non quelli vecchi memorizzati nella cache.
+>Con la configurazione `author_dispatcher.any` fornita, quando installi un pacchetto di funzioni, hotfix o un pacchetto di codice dell’applicazione CQ5 che interessa un qualsiasi contenuto in `/libs` o `/apps`, devi eliminare i file memorizzati nella cache. I file si trovano in tali directory nella cache di Dispatcher. In questo modo, si assicura che alla successiva richiesta vengano recuperati i nuovi file aggiornati e non quelli vecchi memorizzati nella cache.
 
 >[!CAUTION]
 >

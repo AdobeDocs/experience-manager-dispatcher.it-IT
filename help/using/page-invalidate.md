@@ -12,7 +12,7 @@ exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
 source-wordcount: '1407'
-ht-degree: 74%
+ht-degree: 94%
 
 ---
 
@@ -24,13 +24,13 @@ Quando utilizzi Dispatcher con AEM, l’interazione deve essere configurata per 
 
 L’account utente predefinito `admin` viene utilizzato per autenticare gli agenti di replica installati per impostazione predefinita. Crea un account utente dedicato da utilizzare con gli agenti di replica.
 
-Per ulteriori informazioni, vedere [Configurare gli utenti replica e trasporto](https://experienceleague.adobe.com/it/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) sezione dell’elenco di controllo della sicurezza dell’AEM.
+Per ulteriori informazioni, vedi la sezione [Configurare gli utenti di replica e trasporto](https://experienceleague.adobe.com/it/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) dell’elenco di controllo della sicurezza di AEM.
 
 <!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
 ## Annullamento della validità della cache di Dispatcher dall’ambiente di authoring {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
-Un agente di replica sull’istanza Autore AEM invia una richiesta di annullamento della validità della cache a Dispatcher quando viene pubblicata una pagina. Dispatcher aggiorna il file eventualmente nella cache quando viene pubblicato nuovo contenuto.
+Un agente di replica sull’istanza Autore AEM invia una richiesta di annullamento della validità della cache a Dispatcher quando viene pubblicata una pagina. Dispatcher aggiorna il file alla fine nella cache quando viene pubblicato un nuovo contenuto.
 
 <!-- 
 
@@ -50,7 +50,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
  -->
 
-Per configurare un agente di replica nell’istanza di authoring AEM, utilizza la procedura descritta di seguito. La configurazione invalida la cache di Dispatcher all’attivazione della pagina:
+Per configurare un agente di replica nell’istanza di authoring di AEM, utilizza la procedura descritta di seguito. La configurazione invalida la cache di Dispatcher all’attivazione della pagina:
 
 1. Apri la console Strumenti AEM. (`https://localhost:4502/miscadmin#/etc`)
 1. Apri l’agente di replica richiesto sotto Strumenti/replica/Agenti sull’autore. Puoi utilizzare l’agente di Dispatcher Flush installato per impostazione predefinita.
@@ -72,15 +72,15 @@ Per ulteriori dettagli su come abilitare l’accesso agli URL personalizzati, co
 
 >[!NOTE]
 >
->L’agente per lo svuotamento della cache di Dispatcher non richiede un nome utente e una password, ma se configurato, viene inviato con l’autenticazione di base.
+>L’agente di svuotamento della cache di Dispatcher non deve necessariamente avere un nome utente e una password, ma se configurato, viene inviato con l’autenticazione di base.
 
 Questo approccio presenta due potenziali problemi:
 
-* Dispatcher deve essere raggiungibile dall’istanza di authoring. Se la rete (ad esempio, il firewall) è configurata in modo tale da limitare l’accesso tra i due elementi, questo problema potrebbe non verificarsi.
+* Dispatcher deve essere raggiungibile dall’istanza di authoring. Se la rete (ad esempio, il firewall) è configurata in modo tale da limitare l’accesso tra le due istanze, ciò potrebbe non verificarsi.
 
-* La pubblicazione e l’annullamento della validità della cache avvengono contemporaneamente. A seconda della tempistica, un utente potrebbe richiedere una pagina subito dopo che è stata rimossa dalla cache e appena prima della pubblicazione della nuova pagina. AEM ora restituisce la pagina obsoleta e Dispatcher la memorizza nuovamente in cache. Questa situazione è più problematica per i siti di grandi dimensioni.
+* La pubblicazione e l’annullamento della validità della cache avvengono contemporaneamente. A seconda della tempistica, un utente potrebbe richiedere una pagina subito dopo che è stata rimossa dalla cache e appena prima della pubblicazione della nuova pagina. AEM ora restituisce la pagina obsoleta e Dispatcher la memorizza nuovamente in cache. Questo è un problema piuttosto serio per i siti di grandi dimensioni.
 
-## Annullamento della validità della cache del Dispatcher da un’istanza Publish {#invalidating-dispatcher-cache-from-a-publishing-instance}
+## Annullamento della validità della cache di Dispatcher da un’istanza di pubblicazione {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
 In determinate circostanze è possibile ottenere vantaggi in termini di prestazioni trasferendo la gestione della cache dall’ambiente di authoring a un’istanza di pubblicazione. Sarà quindi l’ambiente di pubblicazione (non l’ambiente di authoring AEM) a inviare una richiesta di annullamento della validità della cache a Dispatcher quando viene ricevuta una pagina pubblicata.
 
@@ -94,21 +94,21 @@ Comment Type: draft
 
  -->
 
-* Prevenire possibili conflitti di tempistica tra Dispatcher AEM e l’istanza Publish (vedi [Invalidazione della cache di Dispatcher dall’ambiente di authoring](#invalidating-dispatcher-cache-from-the-authoring-environment)).
-* Il sistema include diverse istanze Publish che risiedono su server ad alte prestazioni e una sola istanza di authoring.
+* Prevenire possibili conflitti di tempistica tra Dispatcher di AEM e l’istanza di pubblicazione (vedi [Annullamento della validità della cache di Dispatcher dall’ambiente di authoring](#invalidating-dispatcher-cache-from-the-authoring-environment)).
+* Il sistema include diverse istanze di pubblicazione che risiedono su server ad alte prestazioni e una sola istanza di authoring.
 
 >[!NOTE]
 >
->Un amministratore AEM esperto deve decidere se utilizzare questo metodo.
+>Sarà quindi un amministratore AEM esperto a decidere se utilizzare questo metodo.
 
-Un agente di replica che opera sull’istanza Publish controlla lo svuotamento del Dispatcher. Tuttavia, la configurazione viene effettuata nell’ambiente di authoring e quindi trasferita attivando l’agente:
+Un agente di replica che opera sull’istanza di pubblicazione controlla lo svuotamento del Dispatcher. Tuttavia, la configurazione viene effettuata nell’ambiente di authoring e poi trasferita attivando l’agente:
 
 1. Apri la console Strumenti AEM.
 1. Apri l’agente di replica richiesto sotto Strumenti/replica/Agenti in pubblicazione. Puoi utilizzare l’agente di Dispatcher Flush installato per impostazione predefinita.
 1. Fai clic su Modifica e, nella scheda Impostazioni, assicurati che sia selezionato **Abilitato**.
 1. (facoltativo) Per abilitare le richieste di annullamento della validità di un alias o di un percorso personalizzato, seleziona l’opzione **Aggiornamento alias**.
 1. Nella scheda Trasporto, accedi a Dispatcher immettendo l’URI necessario.\
-   Se utilizzi l’agente di Dispatcher Flush standard, aggiorna il nome host e la porta; ad esempio, `http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache`
+   Se utilizzi l’agente di eliminazione di Dispatcher standard, dovrai aggiornare il nome host e la porta; ad esempio, `http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache`
 
    **Nota:** per gli agenti di svuotamento del Dispatcher, la proprietà URI viene utilizzata solo se usi voci di host virtuali basate sul percorso per differenziare le farm. Utilizza questo campo per individuare la farm da invalidare. Ad esempio, la farm n. 1 ha l’host virtuale `www.mysite.com/path1/*` e la farm n. 2 ha l’host virtuale `www.mysite.com/path2/*`. Puoi utilizzare l’URL `/path1/invalidate.cache` per individuare la prima farm e `/path2/invalidate.cache` per individuare la seconda farm. Per ulteriori informazioni, vedi [Utilizzo di Dispatcher con più domini](dispatcher-domains.md).
 
@@ -122,7 +122,7 @@ Dopo la configurazione, quando attivi una pagina da Autore a Publish, questo age
 
 ## Annullamento manuale della validità della cache di Dispatcher {#manually-invalidating-the-dispatcher-cache}
 
-Per annullare la validità (o eseguire lo svuotamento) della cache del Dispatcher senza attivare una pagina, puoi inviare una richiesta HTTP al Dispatcher. Ad esempio, puoi creare un’applicazione AEM che consenta agli amministratori o ad altre applicazioni di eseguire il flushing della cache.
+Per annullare la validità (o eseguire lo svuotamento) della cache del Dispatcher senza attivare una pagina, puoi inviare una richiesta HTTP al Dispatcher. Ad esempio, puoi creare un’applicazione AEM che consente agli amministratori o ad altre applicazioni di eseguire lo svuotamento della cache.
 
 La richiesta HTTP fa in modo che Dispatcher elimini file specifici dalla cache. Facoltativamente, Dispatcher aggiorna la cache con una nuova copia.
 
@@ -143,11 +143,11 @@ Dispatcher elimina (esegue il flushing) i file e le cartelle memorizzati in cach
 
 * Tutti i file (con qualsiasi estensione) denominati `en` nella directory `geometrixx-outdoors`
 
-* Qualsiasi directory denominata `_jcr_content` sotto `en` directory (che, se esiste, contiene i rendering memorizzati nella cache dei sottonodi della pagina)
+* Ogni directory denominata `_jcr_content` sotto la directory `en` (che, se esiste, contiene i rendering memorizzati nella cache dei sottonodi della pagina)
 
 Tutti gli altri file nella cache del Dispatcher (o fino a un determinato livello, a seconda dell’impostazione `/statfileslevel`) vengono invalidati toccando il file `.stat`. L’ultima data di modifica di questo file viene confrontata con l’ultima data di modifica di un documento memorizzato in cache e il documento viene recuperato, se il file `.stat` è più recente. Per ulteriori informazioni, vedi [Annullamento della validità dei file per livello di cartella](dispatcher-configuration.md#main-pars_title_26).
 
-L’annullamento della validità (ovvero toccare i file .stat) può essere impedito inviando un’intestazione `CQ-Action-Scope: ResourceOnly` aggiuntiva. Questa funzionalità può essere utilizzata per eseguire il flushing di determinate risorse. Il tutto senza invalidare altre parti della cache, come i dati JSON. Tali dati vengono creati in modo dinamico e richiedono uno scaricamento regolare indipendente dalla cache. Ad esempio, rappresenta dati ottenuti da un sistema di terze parti per visualizzare notizie, ticker di borsa e così via.
+L’annullamento della validità (ovvero toccare i file .stat) può essere impedito inviando un’intestazione `CQ-Action-Scope: ResourceOnly` aggiuntiva. Questa funzionalità può essere utilizzata per svuotare determinate risorse. Tutto senza invalidare altre parti della cache, come i dati JSON. Tali dati vengono creati in modo dinamico e richiedono uno svuotamento regolare e indipendente della cache. Ad esempio, si possono rappresentare i dati ottenuti da un sistema di terze parti per la visualizzazione di notizie, quotazioni di borsa e così via.
 
 ### Eliminazione e rimemorizzazione in cache dei file {#delete-and-recache-files}
 
@@ -169,7 +169,7 @@ page_path1
 page_pathn
 ```
 
-I percorsi delle pagine da rimemorizzare immediatamente in cache sono elencati su righe separate nel corpo del messaggio. Il valore di `CQ-Handle` è il percorso di una pagina che invalida le pagine da rimemorizzare in cache. (Vedi il parametro `/statfileslevel` dell’elemento di configurazione [Cache](dispatcher-configuration.md#main-pars_146_44_0010)). Il seguente messaggio di richiesta HTTP elimina e quindi rimemorizza in cache la `/content/geometrixx-outdoors/en.html page`:
+I percorsi delle pagine per la rimemorizzazione nella cache immediata sono elencati su righe separate nel corpo del messaggio. Il valore di `CQ-Handle` è il percorso di una pagina che invalida le pagine da rimemorizzare in cache. (Vedi il parametro `/statfileslevel` dell’elemento di configurazione [Cache](dispatcher-configuration.md#main-pars_146_44_0010)). Il seguente messaggio di richiesta HTTP elimina e quindi rimemorizza in cache la `/content/geometrixx-outdoors/en.html page`:
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  
