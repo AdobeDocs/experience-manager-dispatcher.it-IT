@@ -1,8 +1,8 @@
 ---
 source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '435'
-ht-degree: 69%
+ht-degree: 100%
 
 ---
 # Codice di condotta Adobe
@@ -15,7 +15,7 @@ Per promuovere un ambiente aperto e accogliente, sia i collaboratori che i respo
 
 Di seguito sono elencati alcuni esempi di comportamento che contribuiscono alla creazione di un ambiente positivo:
 
-* Utilizzare un linguaggio accogliente e inclusivo
+* Utilizzo di un linguaggio accogliente e inclusivo
 * Rispetto di esperienze e punti di vista diversi dai propri
 * Capacità di accettare con gratitudine critiche costruttive
 * Attenzione alle esigenze della comunità
@@ -27,7 +27,7 @@ Di seguito sono elencati esempi di comportamenti inaccettabili da parte dei part
 * Trolling, commenti offensivi/sprezzanti e attacchi personali o politici
 * Molestie pubbliche o private
 * Pubblicazione di informazioni private altrui, ad esempio un indirizzo fisico o elettronico, senza autorizzazione esplicita
-* Altri comportamenti che potrebbero essere ragionevolmente considerati inopportuni in un contesto professionale
+* Altri comportamenti che possono essere ragionevolmente considerati inopportuni in un contesto professionale
 
 ## Responsabilità di Adobe
 
@@ -37,7 +37,7 @@ I responsabili del progetto hanno il diritto e la responsabilità di rimuovere, 
 
 ## Ambito
 
-Il presente Codice di Condotta ha validità sia negli spazi in cui si svolge il progetto sia negli spazi pubblici in cui un individuo rappresenta il progetto o la relativa comunità. Esempi di rappresentazione di un progetto o di una community includono l’utilizzo di un indirizzo e-mail ufficiale del progetto. Può anche includere la pubblicazione tramite un account ufficiale di social media. Oppure, può includere la funzione di rappresentante designato a un evento online o offline. I responsabili del progetto possono definire e chiarire ulteriormente la rappresentazione di un progetto.
+Il presente Codice di Condotta ha validità sia negli spazi in cui si svolge il progetto sia negli spazi pubblici in cui un individuo rappresenta il progetto o la relativa comunità. Esempi di rappresentazione di un progetto o di una community includono l’utilizzo di un indirizzo e-mail ufficiale del progetto. Può anche includere la pubblicazione tramite un account ufficiale di social media. Oppure può includere la funzione di rappresentante designato a un evento online oppure offline. I responsabili del progetto possono definire e chiarire ulteriormente la rappresentazione di un progetto.
 
 ## Applicazione
 
