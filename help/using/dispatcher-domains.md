@@ -8,9 +8,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '2929'
-ht-degree: 87%
+ht-degree: 100%
 
 ---
 
@@ -38,7 +38,7 @@ Ad esempio, un’azienda pubblica siti web per due dei propri brand: Brand A e B
 
 Le pagine di `BrandA.com` sono memorizzate sotto `/content/sitea`. Le richieste dei client per l’URL `https://BrandA.com/en.html` vengono restituite alla pagina di cui è stato effettuato il rendering per il nodo `/content/sitea/en`. Analogamente, le pagine di `BrandB.com` sono memorizzate sotto `/content/siteb`.
 
-Quando utilizzi Dispatcher per memorizzare in cache il contenuto, crea associazioni tra l’URL della pagina nella richiesta HTTP del client, il percorso del file memorizzato in cache corrispondente e il percorso del file corrispondente nell’archivio.
+Quando si utilizza Dispatcher per memorizzare in cache il contenuto, è necessario creare associazioni tra l’URL della pagina indicato nella richiesta HTTP del client, il percorso del file corrispondente memorizzato nella cache e il percorso del file corrispondente nell’archivio.
 
 ## Richieste dei client
 
@@ -48,7 +48,7 @@ Quando i client inviano richieste HTTP al server web, l’URL della pagina richi
 
 1. Il sistema dei nomi di dominio rileva l’indirizzo IP del server web registrato per il nome di dominio nella richiesta HTTP.
 1. La richiesta HTTP viene inviata al server web.
-1. La richiesta HTTP viene passata a Dispatcher.
+1. La richiesta HTTP viene trasmessa a Dispatcher.
 1. Dispatcher determina se i file memorizzati in cache sono validi. In caso affermativo, i file memorizzati in cache vengono trasmessi al client.
 1. Se i file memorizzati in cache non sono validi, Dispatcher richiede all’istanza di pubblicazione di AEM le pagine appena sottoposte a rendering.
 
@@ -64,12 +64,12 @@ Quando gli agenti di replica Dispatcher Flush richiedono che Dispatcher invalidi
 
 Per utilizzare Dispatcher con più domini, devi configurare AEM, Dispatcher e il server Web. Le soluzioni descritte in questa pagina sono generali e si applicano alla maggior parte degli ambienti. A causa della complessità di alcune topologie AEM, la soluzione può richiedere ulteriori configurazioni personalizzate per risolvere problemi particolari. È probabile che sarà necessario adattare gli esempi per soddisfare i criteri di gestione e dell’infrastruttura IT esistenti.
 
-## Mapping degli URL {#url-mapping}
+## Mappatura degli URL {#url-mapping}
 
-Per consentire agli URL del dominio e ai percorsi del contenuto di risolvere i file memorizzati in cache, è necessario convertire un percorso di file o un URL di pagina durante il processo. Vengono fornite descrizioni delle seguenti strategie comuni, in cui le conversioni di percorsi o URL avvengono in punti diversi del processo:
+Per consentire agli URL del dominio e ai percorsi del contenuto di risolvere i file memorizzati in cache, è necessario convertire un percorso di file o un URL di pagina. Vengono fornite descrizioni delle seguenti strategie comuni, in cui le conversioni di percorsi o URL avvengono in punti diversi del processo:
 
 * (Consigliata) L’istanza AEM Publish utilizza il mapping Sling per la risoluzione delle risorse per implementare le regole interne di riscrittura degli URL. Gli URL di dominio vengono convertiti in percorsi dell’archivio dei contenuti. Vedi [AEM riscrive gli URL in ingresso](#aem-rewrites-incoming-urls).
-* Il server web utilizza regole interne di riscrittura degli URL che convertono gli URL del dominio in percorsi di cache. Vedi [Il server web riscrive gli URL in ingresso](#the-web-server-rewrites-incoming-urls).
+* Il server web utilizza le regole interne di riscrittura degli URL che convertono gli URL del dominio in percorsi di cache. Vedi [Il server web riscrive gli URL in ingresso](#the-web-server-rewrites-incoming-urls).
 
 È consigliabile utilizzare URL brevi per le pagine web. Di solito, gli URL delle pagine rispecchiano la struttura delle cartelle dell’archivio, nelle quali è memorizzato il contenuto web. Tuttavia, gli URL non rivelano i nodi principali dell’archivio, come ad esempio `/content`. Il client non è necessariamente a conoscenza della struttura dell’archivio AEM.
 
@@ -138,7 +138,7 @@ Definisci gli host virtuali sul server web in modo che a ciascun dominio web pos
 Il seguente file di esempio `httpd.conf` configura due domini virtuali per un server web Apache:
 
 * I nomi dei server (che coincidono con i nomi dei domini) sono branda.com (riga 16) e brandb.com (riga 30).
-* La directory principale dei documenti di ciascun dominio virtuale è la directory nella cache di Dispatcher che contiene le pagine del sito (righe 17 e 31).
+* La directory principale dei documenti di ciascun dominio virtuale è la directory nella cache di Dispatcher che contiene le pagine del sito. (righe 17 e 31).
 
 Con questa configurazione, il server Web esegue le azioni seguenti quando riceve una richiesta per `https://branda.com/en/products.html`:
 
@@ -201,7 +201,7 @@ Gli host virtuali ereditano il valore della proprietà [DispatcherConfig](dispat
 Per supportare gli URL che includono i nomi di dominio e i corrispondenti host virtuali, definisci le seguenti farm di Dispatcher:
 
 * Configura una farm di Dispatcher per ciascun host virtuale. Queste farm elaborano le richieste provenienti dal server web per ciascun dominio, verificano i file memorizzati in cache e richiedono le pagine dai rendering.
-* Configura una farm di Dispatcher utilizzata per invalidare il contenuto nella cache, indipendentemente dal dominio a cui appartiene il contenuto. Questa farm gestisce le richieste di annullamento della validità dei file da parte degli agenti di replica di Dispatcher Flush.
+* Configura una farm di Dispatcher da utilizzare per invalidare il contenuto della cache, indipendentemente dal dominio a cui appartiene il contenuto. Questa farm gestisce le richieste di annullamento della validità dei file da parte degli agenti di replica di Dispatcher Flush.
 
 ### Creazione delle farm di Dispatcher per gli host virtuali
 
@@ -210,7 +210,7 @@ Le farm per gli host virtuali devono avere le seguenti configurazioni in modo ch
 * La proprietà `/virtualhosts` viene impostata sul nome di dominio. Questa proprietà consente a Dispatcher di associare la farm al dominio.
 * La proprietà `/filter` consente di accedere al percorso dell’URL della richiesta troncato dopo la parte del nome di dominio. Ad esempio, nell’URL `https://branda.com/en.html`, il percorso viene interpretato come `/en.html`, pertanto il filtro deve consentire l’accesso a questo percorso.
 
-* Il `/docroot` viene impostata sul percorso della directory principale. ovvero la directory principale del contenuto del sito del dominio nella cache di Dispatcher. Questo percorso viene utilizzato come prefisso per l’URL concatenato della richiesta originale. Ad esempio, la directory principale dei documenti `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` causa la risoluzione della richiesta di `https://branda.com/en.html` nel file `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html`.
+* La proprietà `/docroot` viene impostata sul percorso della directory principale, overo la directory principale del contenuto del sito del dominio nella cache di Dispatcher. Questo percorso viene utilizzato come prefisso per l’URL concatenato della richiesta originale. Ad esempio, la directory principale dei documenti `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` causa la risoluzione della richiesta di `https://branda.com/en.html` nel file `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html`.
 
 Inoltre, l’istanza di pubblicazione di AEM deve essere designata come rendering per l’host virtuale. Configura altre proprietà della farm come richiesto. Il codice che segue è una configurazione abbreviata della farm per il dominio branda.com:
 
@@ -236,11 +236,11 @@ Inoltre, l’istanza di pubblicazione di AEM deve essere designata come renderin
 
 ### Creazione di una farm di Dispatcher per l’annullamento della validità della cache
 
-È necessaria una farm di Dispatcher per gestire le richieste di annullamento della validità dei file memorizzati in cache. Questa farm deve essere in grado di accedere ai file .stat nel `docroot` directory di ciascun host virtuale.
+È necessaria una farm di Dispatcher per gestire le richieste di annullamento della validità dei file memorizzati in cache. Questa farm deve essere in grado di accedere ai file .stat nelle directory `docroot` di ciascun host virtuale.
 
-Le seguenti configurazioni di proprietà consentono a Dispatcher di risolvere i file nell’archivio dei contenuti AEM dai file nella cache:
+Le seguenti configurazioni di proprietà consentono a Dispatcher di risolvere i file nell’archivio dei contenuti di AEM dai file memorizzati in cache:
 
-* Il `/docroot` è impostata sul valore predefinito `docroot` del server web. In genere, il /`docroot` è la directory in cui `/content` viene creata. Un esempio di valore per Apache su Linux® è `/usr/lib/apache/httpd-2.4.3/htdocs`.
+* La proprietà `/docroot` viene impostata sulla directory `docroot` predefinita del server web. In genere, `docroot` è la directory in cui viene creata la cartella `/content`. Un esempio di valore per Apache su Linux® è `/usr/lib/apache/httpd-2.4.3/htdocs`.
 * La proprietà `/filter` consente l’accesso ai file sotto la directory `/content`.
 
 La proprietà `/statfileslevel`deve essere sufficientemente alta in modo che i file .stat vengano creati nella directory principale di ciascun host virtuale. Questa proprietà consente di invalidare separatamente la cache di ciascun dominio. Nell’esempio di configurazione, con un valore di `/statfileslevel` impostato su `2`, vengono creati file .stat nella directory `*docroot*/content/sitea` e nella directory `*docroot*/content/siteb`.
@@ -302,7 +302,7 @@ Dopo aver creato la mappatura per la pagina del contenuto, utilizza un browser w
 
 ### Esempio di nodi di mappatura delle risorse
 
-Nella tabella che segue sono elencati i nodi che implementano il mapping delle risorse per il dominio branda.com. Nodi simili vengono creati per il dominio `brandb.com`, ad esempio `/etc/map/http/brandb.com`. In tutti i casi, le mappature sono necessarie quando i riferimenti nella pagina HTML non vengono risolti correttamente nel contesto di Sling.
+Nella tabella che segue sono elencati i nodi che implementano il mapping delle risorse per il dominio branda.com. Nodi simili vengono creati per il dominio `brandb.com`, ad esempio `/etc/map/http/brandb.com`. In tutti i casi, le mappature sono necessarie quando i riferimenti contenuti nella pagina HTML non vengono risolti correttamente nel contesto di Sling.
 
 | Percorso del nodo | Tipo | Proprietà |
 |--- |--- |--- |
@@ -346,9 +346,9 @@ Il seguente esempio di file httpd.conf configura due host virtuali per un server
 
 * I nomi dei server (che coincidono con i nomi di dominio) sono `brandA.com` (riga 16) e `brandB.com` (riga 32).
 
-* La directory principale dei documenti di ciascun dominio virtuale è la directory nella cache di Dispatcher che contiene le pagine del sito (righe 20 e 33).
-* La regola di riscrittura URL per ciascun dominio virtuale è un&#39;espressione regolare. L’espressione regolare fa precedere il percorso della pagina richiesta. Ha il prefisso &quot;path to the pages&quot; nella cache. (righe 19 e 35).
-* La proprietà `DispatherUseProcessedURL` è impostata su `1`. (Riga 10).
+* La directory principale dei documenti di ciascun dominio virtuale è la directory nella cache di Dispatcher che contiene le pagine del sito. (righe 20 e 33).
+* La regola di riscrittura URL per ciascun dominio virtuale è un’espressione regolare. L’espressione regolare precede il percorso della pagina richiesta. È preceduto dal percorso alle pagine nella cache. (righe 19 e 35).
+* La proprietà `DispatherUseProcessedURL` è impostata su `1`. (riga 10)
 
 Ad esempio, il server web esegue le seguenti azioni sotto indicate quando riceve una richiesta con l’URL `https://brandA.com/en/products.html`:
 
@@ -417,7 +417,7 @@ Quando il server web riscrive gli URL, Dispatcher richiede una singola farm defi
 
 Il seguente file di configurazione di esempio si basa sul file di esempio `dispatcher.any` che viene installato con Dispatcher. Per supportare le configurazioni del server web del file `httpd.conf` precedente sono necessarie le seguenti modifiche:
 
-* La proprietà `/virtualhosts` consente a Dispatcher di gestire le richieste per i domini `brandA.com` e `brandB.com`. (Riga 12).
+* La proprietà `/virtualhosts` consente a Dispatcher di gestire le richieste per i domini `brandA.com` e `brandB.com`. (Riga 12)
 * La proprietà `/statfileslevel` è impostata su 2, in modo che i file .stat vengano creati in ciascuna directory che contiene il contenuto web del dominio (riga 41): `/statfileslevel "2"`
 
 Come sempre, la directory principale dei documenti nella cache è la stessa della directory principale dei documenti sul server web (riga 40): `/usr/lib/apache/httpd-2.4.3/htdocs`
@@ -512,7 +512,7 @@ Il [rewriter di Sling](https://sling.apache.org/documentation/bundles/output-rew
 
 ### Pipeline predefinita del rewriter di AEM {#the-aem-default-rewriter-pipeline}
 
-AEM utilizza un rewriter di pipeline predefinito che elabora documenti di tipo testo/html:
+AEM utilizza una pipeline predefinita del rewriter che elabora documenti di tipo testo/html:
 
 * Il generatore analizza i documenti HTML e genera eventi SAX quando incontra elementi di tipo img, area, form, base, link, script e body. L’alias del generatore è `htmlparser`.
 * La pipeline include i seguenti trasformatori: `linkchecker`, `mobile`, `mobiledebug`, `contentsync`. Il trasformatore `linkchecker` esternalizza i percorsi ai file HTML o HTM di riferimento per evitare collegamenti interrotti.
@@ -530,7 +530,7 @@ Per creare un componente di trasformazione e utilizzarlo in una pipeline, esegui
 1. Per aggiungere il trasformatore alla pipeline, aggiungi un nodo di configurazione all’applicazione AEM.
 
 >[!TIP]
->È invece possibile configurare TransformerFactory in modo che il trasformatore venga inserito in ogni rewriter definito. Quindi non è necessario configurare una pipeline:
+>In alternativa, puoi anche configurare TransformerFactory in modo che il trasformatore sia inserito in ogni rewriter definito. Quindi non è necessario configurare una pipeline:
 >
 >* Imposta la proprietà `pipeline.mode` su `global`.
 >* Imposta la proprietà `service.ranking` su un numero intero positivo.

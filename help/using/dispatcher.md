@@ -6,9 +6,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3079'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
@@ -20,7 +20,7 @@ ht-degree: 97%
 
 Dispatcher è uno strumento di memorizzazione in cache e/o bilanciamento del carico di Adobe Experience Manager che può essere utilizzato insieme a un server Web di classe Enterprise.
 
-Il processo di distribuzione di Dispatcher è indipendente dal server web e dalla piattaforma del sistema operativo scelti:
+iIl processo di distribuzione del Dispatcher è indipendente dal server web e dalla piattaforma del sistema operativo scelti:
 
 1. Scopri di più su Dispatcher (questa pagina). Inoltre, consulta le [domande frequenti sul Dispatcher](/help/using/dispatcher-faq.md).
 1. Installa un [server web supportato](https://experienceleague.adobe.com/it/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements) in base alla documentazione di quel server web.
@@ -30,7 +30,7 @@ Il processo di distribuzione di Dispatcher è indipendente dal server web e dall
 
 >[!NOTE]
 >
->Per comprendere meglio il funzionamento del Dispatcher con l’AEM:
+>Per capire meglio come funziona Dispatcher con AEM:
 >
 >* Vedi [Chiedi agli esperti della community AEM di luglio 2017](https://communities.adobeconnect.com/pf0gem7igw1f/).
 >* Accedi a [questo archivio](https://github.com/adobe/aem-dispatcher-experiments). Contiene una raccolta di esperimenti in un formato di laboratorio &quot;take-home&quot;.
@@ -129,7 +129,7 @@ In un aggiornamento del contenuto uno o più documenti AEM cambiano. AEM invia u
 Tieni presente le seguenti considerazioni:
 
 * Gli aggiornamenti di contenuto vengono in genere utilizzati insieme a un sistema di authoring che “sa” cosa deve essere sostituito.
-* Gli aggiornamenti del contenuto che interessano i file vengono rimossi, ma non sostituiti immediatamente. Alla successiva richiesta di un file di questo tipo, Dispatcher recupera il nuovo file dall’istanza dell’AEM e lo inserisce nella cache, sovrascrivendo il contenuto precedente.
+* Gli aggiornamenti del contenuto che interessano i file vengono rimossi, ma non sostituiti immediatamente. La volta successiva in cui un tale file viene richiesto, Dispatcher lo recupera dall’istanza AEM e lo inserisce nella cache, sovrascrivendo il vecchio contenuto.
 * In genere, le immagini generate automaticamente che incorporano testo di una pagina vengono archiviate in file di immagine che iniziano con lo stesso handle, in modo da garantire l’associazione per l’eliminazione. Ad esempio, puoi archiviare il testo del titolo della pagina mypage.html come immagine mypage.titlePicture.gif nella stessa cartella. In questo modo l’immagine viene eliminata automaticamente dalla cache ogni volta che la pagina viene aggiornata e potrai essere sicuro che l’immagine rispecchierà sempre la versione corrente della pagina.
 * Possono esistere diversi statfile, ad esempio uno per cartella della lingua. Se una pagina viene aggiornata, AEM cerca la cartella padre successiva contenente uno statfile e *tocca* tale file.
 

@@ -10,9 +10,9 @@ index: y
 internal: n
 snippet: y
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1128'
-ht-degree: 81%
+ht-degree: 100%
 
 ---
 
@@ -31,7 +31,7 @@ Last Modified Date: 2017-10-25T04:13:34.919-0400
 
 >[!NOTE]
 >
->Le versioni di Dispatcher sono indipendenti da AEM. Potresti essere stato reindirizzato a questa pagina se hai seguito un collegamento alla documentazione di Dispatcher. Tale collegamento è stato inserito nella documentazione di una versione precedente dell’AEM.
+>Le versioni di Dispatcher sono indipendenti da AEM. Se hai seguito un collegamento alla documentazione di Dispatcher, potresti essere stato reindirizzato a questa pagina. Tale collegamento è stato incorporato nella documentazione di una versione precedente di AEM.
 
 Dispatcher offre una serie di meccanismi incorporati che si possono utilizzare per ottimizzare le prestazioni. Questa sezione spiega come progettare il sito web per massimizzare i vantaggi del caching.
 
@@ -46,7 +46,7 @@ Dispatcher offre una serie di meccanismi incorporati che si possono utilizzare p
 
 ## Utilizzo di una codifica coerente delle pagine {#using-consistent-page-encoding}
 
-Le intestazioni delle richieste HTTP non vengono memorizzate in cache, pertanto possono verificarsi dei problemi se si memorizzano le informazioni di codifica della pagina nell’intestazione. In questa situazione, quando Dispatcher distribuisce una pagina dalla cache, per la pagina viene utilizzata la codifica predefinita del server web. Esistono due modi per evitare questo problema:
+Le intestazioni delle richieste HTTP non vengono memorizzate in cache, pertanto possono verificarsi dei problemi se si memorizzano le informazioni di codifica della pagina nell’intestazione. In questa situazione, quando distribuisce una pagina dalla cache, Dispatcher utilizza la codifica predefinita del server web. Esistono due modi per evitare questo problema:
 
 * Se utilizzi una sola codifica, accertati che la codifica utilizzata sul server web sia la stessa della codifica predefinita del sito web AEM.
 * Utilizza un tag `<META>` nella sezione `head` HTML per impostare la codifica, come nell’esempio seguente:
@@ -57,7 +57,7 @@ Le intestazioni delle richieste HTTP non vengono memorizzate in cache, pertanto 
 
 ## Evita i parametri URL {#avoid-url-parameters}
 
-Se possibile, evita i parametri URL per le pagine che vuoi memorizzare in cache. Ad esempio, se hai una galleria di immagini, il seguente URL non viene mai memorizzato in cache (a meno che Dispatcher non sia [configurato di conseguenza](dispatcher-configuration.md#main-pars_title_24)):
+Se possibile, evita i parametri URL per le pagine che vuoi memorizzare in cache. Ad esempio, se hai una galleria di immagini, il seguente URL non viene mai memorizzato in cache (a meno che Dispatcher non sia [configurato per farlo](dispatcher-configuration.md#main-pars_title_24)):
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1
@@ -87,9 +87,9 @@ www.myCompany.com/news/main.large.html
 
 >[!NOTE]
 >
->Per la maggior parte degli aspetti del layout, è inoltre possibile utilizzare fogli di stile, script lato client o entrambi. Il caching funziona correttamente per una o per entrambe.
+>Per la maggior parte degli aspetti del layout, è inoltre possibile utilizzare fogli di stile, script lato client o entrambi. Con la memorizzazione in cache funzionano bene sia singolarmente che insieme.
 >
->Questo metodo è utile anche per una versione stampata, in cui è possibile utilizzare un URL come:
+>Questo metodo è utile anche per la versione di stampa, in cui è possibile utilizzare un URL come:
 >
 >`www.myCompany.com/news/main.print.html`
 >
@@ -115,8 +115,8 @@ Ad esempio, puoi memorizzare il titolo della pagina myPage.html nel file myPage.
 Se utilizzi le immagini per le voci di navigazione, il metodo è sostanzialmente lo stesso utilizzato per i titoli, anche se leggermente più complesso. Memorizza tutte le immagini di navigazione con le pagine di destinazione. Se utilizzi due immagini per la modalità normale e attiva, puoi utilizzare i seguenti script:
 
 * Uno script che visualizza la pagina, come normale.
-* Uno script che elabora `.normal` richiede e restituisce l’immagine normale.
-* Uno script che elabora `.active` richiede e restituisce l’immagine attivata.
+* Uno script che elabora le richieste `.normal` e restituisce l’immagine normale.
+* Uno script che elabora le richieste `.active` e restituisce l’immagine attivata.
 
 È importante creare queste immagini con lo stesso handle di denominazione della pagina, per avere la certezza che un aggiornamento del contenuto elimini queste immagini insieme alla pagina.
 
@@ -133,7 +133,7 @@ Dispatcher non può memorizzare in cache dati personalizzati, pertanto si consig
 >
 >Se personalizzi ogni pagina (ad esempio, inserendo il nome dell’utente nella barra del titolo), non puoi più memorizzarla in cache e ciò può determinare un notevole impatto sulle prestazioni.
 >
->Tuttavia, se è necessario, è possibile effettuare le seguenti operazioni:
+>Tuttavia, se è necessario, puoi effettuare le seguenti operazioni:
 >
 >* Utilizzare iFrames per dividere la pagina in modo che una parte sia identica per tutti gli utenti e l’altra parte sia identica per tutte le pagine dell’utente. A questo punto, puoi memorizzare in cache entrambe le parti.
 >* Utilizzare JavaScript lato client per visualizzare le informazioni personalizzate. Tuttavia, devi accertarti che la pagina venga comunque visualizzata correttamente anche se un utente disattiva JavaScript.
@@ -141,7 +141,7 @@ Dispatcher non può memorizzare in cache dati personalizzati, pertanto si consig
 
 ## Connessioni permanenti {#sticky-connections}
 
-[Le connessioni permanenti](dispatcher.md#TheBenefitsofLoadBalancing) garantiscono che di un utente siano composti tutti sullo stesso server. Se un utente esce da questa cartella e successivamente vi rientra, la connessione è ancora attiva. Definisci una cartella in modo che contenga tutti i documenti che richiedono connessioni permanenti per il sito web. Cerca di non avere altri documenti in quella cartella. Questa operazione influisce sul bilanciamento del carico se utilizzi pagine e dati di sessione personalizzati.
+[Le connessioni permanenti](dispatcher.md#TheBenefitsofLoadBalancing) garantiscono che di un utente siano composti tutti sullo stesso server. Se un utente esce da questa cartella e successivamente vi rientra, la connessione è ancora attiva. Definisci una cartella in modo che contenga tutti i documenti che richiedono connessioni permanenti per il sito web. Cerca di non avere altri documenti in quella cartella. Questo impatta sul bilancimento del carico, se utilizzi pagine e dati di sessione personalizzati.
 
 ## Tipi MIME {#mime-types}
 
@@ -157,10 +157,10 @@ Per la maggior parte dei file, il tipo MIME è implicito nell’estensione del f
 
 Se il nome del file non ha estensione, viene visualizzato come testo normale.
 
-Il tipo MIME fa parte dell’intestazione HTTP e, come tale, Dispatcher non la memorizza in cache. L&#39;applicazione AEM può restituire file che non hanno un&#39;estensione riconosciuta. Se invece i file si basano sul tipo MIME, questi file potrebbero non essere visualizzati correttamente.
+Il tipo MIME fa parte dell’intestazione HTTP e, come tale, Dispatcher non la memorizza in cache. L’applicazione AEM può restituire file che non hanno un’estensione riconosciuta. Se invece i file si basano sul tipo MIME, potrebbero non essere visualizzati correttamente.
 
 Per avere la certezza i file siano memorizzati in cache correttamente, attieniti alle seguenti linee guida:
 
 * Verifica che i file abbiano sempre l’estensione corretta.
-* Evita gli script di server di file generici che hanno URL del tipo download.jsp?file=2214. Riscrivi lo script in modo che utilizzi URL contenenti la specifica del file. Nell’esempio precedente, sarebbe `download.2214.pdf`.
+* Evita gli script di server di file generici che hanno URL del tipo download.jsp?file=2214. Riscrivi lo script in modo che utilizzi URL contenenti la specifica del file. Nell’esempio precedente, questo sarebbe `download.2214.pdf`.
 

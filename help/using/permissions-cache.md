@@ -7,15 +7,15 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '924'
-ht-degree: 86%
+ht-degree: 100%
 
 ---
 
 # Caching di contenuto protetto {#caching-secured-content}
 
-Il caching sensibile alle autorizzazioni consente di memorizzare in cache le pagine protette. Dispatcher controlla le autorizzazioni di accesso dell’utente per una pagina prima di distribuirla nella cache.
+Il caching sensibile alle autorizzazioni consente di memorizzare in cache le pagine protette. Dispatcher controlla che l’utente sia autorizzato ad accedere a una pagina memorizzata in cache prima di distribuirla.
 
 Dispatcher include il modulo AuthChecker che implementa il caching sensibile alle autorizzazioni. Quando il modulo viene attivato, Dispatcher richiama un servlet AEM per eseguire l’autenticazione e l’autorizzazione dell’utente per il contenuto richiesto. La risposta del servlet determina se il contenuto viene consegnato o meno dalla cache al browser web.
 
@@ -41,8 +41,8 @@ I diagrammi seguenti illustrano l’ordine degli eventi che si verificano quando
 ![](assets/chlimage_1-1.png)
 
 1. Dispatcher stabilisce che il contenuto non viene memorizzato in cache o che richiede un aggiornamento.
-1. Dispatcher inoltra la richiesta originale al rendering.
-1. Il rendering richiama il servlet di autorizzazione dell’AEM (questo servlet non è il servlet AuthChcker di Dispatcher) per eseguire un controllo di sicurezza. Quando l’utente viene autorizzato, il rendering include la pagina sottoposta a rendering nel corpo del messaggio di risposta.
+1. Dispatcher inoltra la richiesta originale al motore di rendering.
+1. Il motore di rendering chiama il servlet di autorizzazione di AEM (diverso dal servlet AuthChcker di Dispatcher) per eseguire un controllo di sicurezza. Quando l’utente viene autorizzato, il rendering include la pagina sottoposta a rendering nel corpo del messaggio di risposta.
 1. Dispatcher inoltra la risposta al browser. Dispatcher memorizza in cache il corpo del messaggio di risposta del rendering.
 
 ## L’utente non viene autorizzato {#user-is-not-authorized}
@@ -51,9 +51,9 @@ I diagrammi seguenti illustrano l’ordine degli eventi che si verificano quando
 
 1. Dispatcher controlla la cache.
 1. Dispatcher invia al rendering un messaggio di richiesta che include tutte le righe di intestazione della richiesta del browser.
-1. Il rendering richiama il servlet Auth Checker per eseguire un controllo di sicurezza, che ha esito negativo, e inoltra la richiesta originale a Dispatcher.
-1. Dispatcher inoltra la richiesta originale al rendering.
-1. Il rendering richiama il servlet di autorizzazione dell’AEM (questo servlet non è il servlet AuthChcker di Dispatcher) per eseguire un controllo di sicurezza. Quando l’utente viene autorizzato, il rendering include la pagina sottoposta a rendering nel corpo del messaggio di risposta.
+1. Il motore di rendering chiama il servlet Auth Checker per eseguire un controllo di sicurezza che ha esito negativo e inoltra la richiesta originale a Dispatcher.
+1. Dispatcher inoltra la richiesta originale al motore di rendering.
+1. Il motore di rendering chiama il servlet di autorizzazione di AEM (diverso dal servlet AuthChcker di Dispatcher) per eseguire un controllo di sicurezza. Quando l’utente viene autorizzato, il rendering include la pagina sottoposta a rendering nel corpo del messaggio di risposta.
 1. Dispatcher inoltra la risposta al browser. Dispatcher memorizza in cache il corpo del messaggio di risposta del rendering.
 
 ## Implementazione del caching sensibile alle autorizzazioni {#implementing-permission-sensitive-caching}
@@ -161,7 +161,7 @@ Quando Dispatcher viene avviato, il file di registro di Dispatcher include il se
 
 `AuthChecker: initialized with URL 'configured_url'.`
 
-L’esempio di sezione auth_checker che segue configura Dispatcher per l’utilizzo del servlet trattato nell’argomento precedente. La sezione dei filtri stabilisce che i controlli delle autorizzazioni vengano eseguiti solo sulle risorse HTML protette.
+Nell’esempio che segue, la sezione auth_checker configura Dispatcher per l’utilizzo del servlet trattato nell’argomento precedente. La sezione dei filtri stabilisce che i controlli delle autorizzazioni vengano eseguiti solo sulle risorse HTML protette.
 
 ### Esempio di configurazione {#example-configuration}
 

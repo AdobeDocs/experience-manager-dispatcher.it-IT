@@ -3,9 +3,9 @@ title: Problemi principali di Dispatcher
 description: Problemi principali di Adobe Experience Manager Dispatcher
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1547'
-ht-degree: 89%
+ht-degree: 100%
 
 ---
 
@@ -17,13 +17,13 @@ ht-degree: 89%
 
 ### Cos’è Dispatcher?
 
-Dispatcher è anche uno strumento di caching o di bilanciamento del carico di Adobe Experience Manager, o entrambi, che consente di realizzare un ambiente di authoring web veloce e dinamico. Per il caching, il Dispatcher funziona come parte di un server HTTP, come Apache. Ha lo scopo di archiviare (o &quot;memorizzare in cache&quot;) la maggior parte del contenuto statico del sito web. Inoltre, accedere al layout del motore del sito web il più raramente possibile. In un ruolo di bilanciamento del carico, il Dispatcher distribuisce le richieste degli utenti (carico) tra le diverse istanze AEM (rendering).
+Dispatcher è anche lo strumento di memorizzazione in cache o bilanciamento del carico di Adobe Experience Manager che consente di realizzare un ambiente di authoring web veloce e dinamico. Per la memorizzazione nella cache, il Dispatcher funziona come parte di un server HTTP, come Apache. Ha lo scopo di archiviare (o “memorizzare in cache”) la maggior parte del contenuto statico del sito web. Inoltre, accede al layout del motore del sito web il più raramente possibile. In un ruolo di bilanciamento del carico, il Dispatcher distribuisce le richieste degli utenti (carico) tra le diverse istanze AEM (rendering).
 
-Per il caching, il modulo Dispatcher utilizza la funzionalità del server web che consente di gestire il contenuto statico. Dispatcher inserisce i documenti memorizzati in cache nella directory principale dei documenti sul server web.
+Per la memorizzazione nella cache, il modulo Dispatcher utilizza la funzionalità del server web che consente di gestire il contenuto statico. Dispatcher inserisce i documenti memorizzati in cache nella directory principale dei documenti del server web.
 
 ### Come viene eseguito il caching in Dispatcher?
 
-Dispatcher utilizza la funzionalità del server web che consente di gestire il contenuto statico. Dispatcher archivia i documenti memorizzati in cache nella directory principale dei documenti sul server web. In Dispatcher sono disponibili due metodi principali per aggiornare il contenuto della cache quando vengono apportate modifiche al sito web.
+Dispatcher utilizza la funzionalità del server web che consente di gestire il contenuto statico. Dispatcher conserva i documenti memorizzati in cache nella directory principale dei documenti del server web. In Dispatcher sono disponibili due metodi principali per aggiornare il contenuto della cache quando vengono apportate modifiche al sito web.
 
 * **Aggiornamenti del contenuto**: le pagine modificate e i file che sono direttamente associati ad esse vengono rimossi.
 * **Annullamento automatico della validità**: le parti della cache che potrebbero risultare obsolete dopo un aggiornamento vengono invalidate automaticamente. Ad esempio, le pagine ritenute obsolete vengono chiaramente contrassegnate, ma non eliminate.
@@ -70,7 +70,7 @@ Per ulteriori informazioni, leggi [Utilizzo di Dispatcher con più domini](dispa
 
 Puoi utilizzare la funzione [connessioni permanenti](dispatcher-configuration.md#identifying-a-sticky-connection-folder-stickyconnectionsfor), che garantisce che tutti i documenti di un utente vengano elaborati sulla stessa istanza di AEM. Questa funzione è importante, se utilizzi pagine e dati di sessione personalizzati. I dati vengono memorizzati nell’istanza. Pertanto, le successive richieste dello stesso utente devono ritornare a quell’istanza oppure i dati andranno persi.
 
-Poiché le connessioni permanenti limitano la capacità di Dispatcher di ottimizzare le richieste, è opportuno utilizzare questo approccio solo se necessario. È possibile specificare la cartella che contiene i documenti &quot;permanenti&quot;, in modo da garantire che tutti i documenti in tale cartella vengano elaborati nella stessa istanza per un utente.
+Poiché le connessioni permanenti limitano la capacità di Dispatcher di ottimizzare le richieste, è opportuno utilizzare questo approccio solo se necessario. È possibile specificare la cartella che contiene i documenti “permanenti”, in modo da garantire che tutti i documenti di quella cartella vengano elaborati nella stessa istanza per utente.
 
 ### Posso utilizzare connessioni permanenti e caching insieme?
 
@@ -119,7 +119,7 @@ Visita le pagine [Elenco di controllo di protezione di Dispatcher](security-chec
 
 ### Problema di Dispatcher `jcr:content` modificato in `jcr%3acontent`
 
-**Domanda**: l’azienda ha recentemente affrontato un problema a livello di Dispatcher. Una delle chiamate AJAX che stava ricevendo alcuni dati dall’archivio CQ aveva `jcr:content` in esso. È stato codificato in `jcr%3acontent` risultando in un set di risultati errato.
+**Domanda**: l’azienda ha recentemente affrontato un problema a livello di Dispatcher. Una delle chiamate AJAX che otteneva alcuni dati dall’archivio CQ aveva all’interno `jcr:content`. È stato codificato in `jcr%3acontent` risultando in un set di risultati errato.
 
 **Risposta**: utilizza il metodo `ResourceResolver.map()` per ottenere un URL “Amichevole” da usare/inviare richieste GET e anche risolvere il problema di caching con Dispatcher. Il metodo map() codifica i due punti `:` in sottolineato e il metodo resolve() li ridecodifica nel formato leggibile SLING JCR. Utilizza il metodo map() per generare l’URL utilizzato nella chiamata Ajax.
 
@@ -139,13 +139,13 @@ Se le operazioni di eliminazione provocano il flush di Dispatcher, [utilizza la 
 
 ### Come si eliminano le risorse DAM dalla cache di Dispatcher?
 
-È possibile utilizzare la funzione “replica a catena”. Quando questa funzione è abilitata, l’agente di Dispatcher per lo scaricamento invia una richiesta di scaricamento quando viene ricevuta una replica dall’istanza di authoring.
+È possibile utilizzare la funzione “replica a catena”. Quando questa funzione è abilitata, l’agente di svuotamento di Dispatcher invia una richiesta di svuotamento quando riceve una replica dall’istanza di authoring.
 
 Per abilitare questa funzione:
 
 1. [Segui questi passaggi](page-invalidate.md#invalidating-dispatcher-cache-from-a-publishing-instance) per creare agenti Flush su Publish.
 1. Vai alla configurazione di ogni agente.
-1. Il giorno **Triggers** , selezionare la scheda **Alla ricezione** casella.
+1. Nella scheda **Triggers**, seleziona la casella **Alla ricezione**.
 
 ## Varie
 
