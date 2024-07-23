@@ -9,10 +9,10 @@ index: y
 internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: 971cffd4f7ba8b1fa88a8af620a723ce59957007
 workflow-type: tm+mt
-source-wordcount: '1310'
-ht-degree: 100%
+source-wordcount: '1305'
+ht-degree: 98%
 
 ---
 
@@ -31,11 +31,10 @@ Utilizza connessioni SSL tra Dispatcher e il computer di rendering:
 
 Configura Dispatcher per comunicare con l’istanza di rendering AEM o CQ utilizzando connessioni SSL.
 
-Prima di configurare Dispatcher, configura AEM o CQ per l’utilizzo di SSL:
+Prima di configurare Dispatcher, configura AEM o CQ per l’utilizzo di SSL. Per ulteriori informazioni, consulta:
 
-* AEM 6.2: [abilitazione di HTTP su SSL](https://experienceleague.adobe.com/it/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* AEM 6.1: [abilitazione di HTTP su SSL](https://experienceleague.adobe.com/it/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* Versioni precedenti di AEM: visita [questa pagina](https://experienceleague.adobe.com/it/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions).
+* [SSL/TLS per impostazione predefinita](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/ssl-by-default)
+* [Utilizzare la procedura guidata SSL in AEM](https://experienceleague.adobe.com/en/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
 
 ### Intestazioni di richiesta correlate a SSL {#ssl-related-request-headers}
 
