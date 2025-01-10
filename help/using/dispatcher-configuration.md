@@ -2,10 +2,10 @@
 title: Configurazione di AEM Dispatcher
 description: Scopri come configurare Dispatcher. Scopri il supporto per IPv4 e IPv6, i file di configurazione, le variabili di ambiente e la denominazione dell’istanza. Consulta come definire le farm, identificare gli host virtuali e altro ancora.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: 23dde3b2ebc6a63d5e1c50e5877338c3bd09d5d2
 workflow-type: tm+mt
-source-wordcount: '8876'
-ht-degree: 100%
+source-wordcount: '8938'
+ht-degree: 99%
 
 ---
 
@@ -945,6 +945,21 @@ Utilizza la procedura seguente per abilitare l’accesso agli URL personalizzati
 1. Per ogni URL personalizzato configurato per una pagina AEM o CQ, accertati che la configurazione [`/filter`](#configuring-access-to-content-filter) neghi l’URL. Se necessario, aggiungi un filtro che nega l’URL.
 1. Aggiungi la sezione `/vanity_urls` sotto `/farms`.
 1. Riavvia il server web Apache.
+
+Con Dispatcher **versione 4.3.6** è stato aggiunto un nuovo parametro `/loadOnStartup`. Utilizzando questo parametro, puoi configurare il caricamento degli URL personalizzati all’avvio come segue:
+
+Aggiungendo `/loadOnStartup 0` (vedi l&#39;esempio seguente) puoi disabilitare il caricamento degli URL personalizzati all&#39;avvio.
+
+```
+/vanity_urls {
+        /url "/libs/granite/dispatcher/content/vanityUrls.html"
+        /file "/tmp/vanity_urls"
+        /loadOnStartup 0
+        /delay 60
+      } 
+```
+
+Mentre `/loadOnStartup 1` carica gli URL personalizzati all&#39;avvio. Tenere presente che `/loadOnStartup 1` è il valore predefinito corrente per questo parametro.
 
 ## Inoltro delle richieste di distribuzione del contenuto: `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
