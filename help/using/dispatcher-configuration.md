@@ -3,9 +3,9 @@ title: Configurazione di AEM Dispatcher
 description: Scopri come configurare Dispatcher. Scopri il supporto per IPv4 e IPv6, i file di configurazione, le variabili di ambiente e la denominazione dell’istanza. Consulta come definire le farm, identificare gli host virtuali e altro ancora.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 23dde3b2ebc6a63d5e1c50e5877338c3bd09d5d2
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8938'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -946,9 +946,9 @@ Utilizza la procedura seguente per abilitare l’accesso agli URL personalizzati
 1. Aggiungi la sezione `/vanity_urls` sotto `/farms`.
 1. Riavvia il server web Apache.
 
-Con Dispatcher **versione 4.3.6** è stato aggiunto un nuovo parametro `/loadOnStartup`. Utilizzando questo parametro, puoi configurare il caricamento degli URL personalizzati all’avvio come segue:
+Con la **versione 4.3.6** di Dispatcher è stato aggiunto un nuovo parametro `/loadOnStartup`. Utilizzando questo parametro, è possibile configurare il caricamento degli URL personalizzati all’avvio come segue:
 
-Aggiungendo `/loadOnStartup 0` (vedi l&#39;esempio seguente) puoi disabilitare il caricamento degli URL personalizzati all&#39;avvio.
+Aggiungendo `/loadOnStartup 0` (vedi l’esempio seguente) è possibile disabilitare il caricamento degli URL personalizzati all’avvio.
 
 ```
 /vanity_urls {
@@ -959,7 +959,7 @@ Aggiungendo `/loadOnStartup 0` (vedi l&#39;esempio seguente) puoi disabilitare i
       } 
 ```
 
-Mentre `/loadOnStartup 1` carica gli URL personalizzati all&#39;avvio. Tenere presente che `/loadOnStartup 1` è il valore predefinito corrente per questo parametro.
+Mentre `/loadOnStartup 1` carica gli URL personalizzati all’avvio. Tenere presente che `/loadOnStartup 1` è il valore predefinito corrente per questo parametro.
 
 ## Inoltro delle richieste di distribuzione del contenuto: `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
@@ -1828,7 +1828,7 @@ Per verificare il funzionamento e l’interazione di base del server web, di Dis
 
 In configurazioni complesse è possibile utilizzare più istanze di Dispatcher. Ad esempio, puoi utilizzare:
 
-* Un’istanza di Dispatcher per pubblicare un sito web nella Intranet.
+* Un’istanza di Dispatcher per pubblicare un sito web nella Intranet
 * Una seconda istanza di Dispatcher, con indirizzo e impostazioni di sicurezza diversi, per pubblicare lo stesso contenuto in Internet.
 
 In questo caso, accertati che ogni richiesta venga gestita tramite un’unica istanza di Dispatcher. Un’istanza di Dispatcher non gestisce le richieste provenienti da un’altra istanza di Dispatcher. Accertati pertanto che entrambe le istanze di Dispatcher accedano direttamente al sito web di AEM.
