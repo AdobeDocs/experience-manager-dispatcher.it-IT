@@ -2,10 +2,10 @@
 title: Configurazione di AEM Dispatcher
 description: Scopri come configurare Dispatcher. Scopri il supporto per IPv4 e IPv6, i file di configurazione, le variabili di ambiente e la denominazione dell’istanza. Consulta come definire le farm, identificare gli host virtuali e altro ancora.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 23dde3b2ebc6a63d5e1c50e5877338c3bd09d5d2
-workflow-type: ht
+source-git-commit: da9bf0c1f4cceccfc6be9f4871a21d2bb703f0a4
+workflow-type: tm+mt
 source-wordcount: '8938'
-ht-degree: 100%
+ht-degree: 99%
 
 ---
 
@@ -355,7 +355,7 @@ Dispatcher trova il valore dell’host virtuale più corrispondente nel modo seg
 * Se nessun valore della proprietà `virtualhosts` contiene parti delle proprietà `scheme` e `uri` corrispondenti alle proprietà `scheme` e `uri` della richiesta, viene utilizzato il primo host virtuale rilevato che corrisponde alla proprietà `host` della richiesta.
 * Se nessun valore della proprietà `virtualhosts` ha una parte host corrispondente all’host della richiesta, viene utilizzato l’host virtuale più in alto della farm più in alto.
 
-Pertanto, devi posizionare l’host virtuale predefinito nella parte superiore della proprietà `virtualhosts`. Posizionalo nella farm più in alto del file `dispatcher.any`.
+Pertanto, devi posizionare l’host virtuale predefinito nella parte superiore della proprietà `virtualhosts`. Inseriscilo nella farm più in alto del file `dispatcher.any`.
 
 ### Esempio di risoluzione dell’host virtuale {#example-virtual-host-resolution}
 
