@@ -7,10 +7,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 3b24e3eb54aa48c4891943b7458c57525897517f
+source-git-commit: b8dc67a9633c1a459a2851f4be99a5fcbec7fe79
 workflow-type: tm+mt
-source-wordcount: '2929'
-ht-degree: 100%
+source-wordcount: '3008'
+ht-degree: 97%
 
 ---
 
@@ -195,6 +195,10 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 ```
 
 Gli host virtuali ereditano il valore della proprietà [DispatcherConfig](dispatcher-install.md#main-pars-67-table-7) configurato nella sezione server principale. Gli host virtuali possono includere la propria proprietà DispatcherConfig per ignorare la configurazione del server principale.
+
+>[!NOTE]
+>
+>In AEM as a Cloud Service, è necessario utilizzare una configurazione vhost separata con un DocumentRoot di livello superiore rispetto a ciascuna delle sottopagine. Questo viene gestito per impostazione predefinita nell’archetipo, ma quando si utilizzano più DocumentRoots, è necessario utilizzare una configurazione vhost con priorità più alta in modo che l’invalidazione della cache possa essere gestita per l’intera cache in quanto non può essere configurata separatamente per ciascun sito. Il ServerAlias di questa nuova configurazione deve accettare l&#39;intestazione host &quot;localhost&quot;.
 
 ### Configurazione di Dispatcher per la gestione di più domini {#configure-dispatcher-to-handle-multiple-domains}
 
