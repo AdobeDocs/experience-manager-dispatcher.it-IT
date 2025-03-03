@@ -8,9 +8,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: b8dc67a9633c1a459a2851f4be99a5fcbec7fe79
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3008'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
@@ -198,7 +198,7 @@ Gli host virtuali ereditano il valore della proprietà [DispatcherConfig](dispat
 
 >[!NOTE]
 >
->In AEM as a Cloud Service, è necessario utilizzare una configurazione vhost separata con un DocumentRoot di livello superiore rispetto a ciascuna delle sottopagine. Questo viene gestito per impostazione predefinita nell’archetipo, ma quando si utilizzano più DocumentRoots, è necessario utilizzare una configurazione vhost con priorità più alta in modo che l’invalidazione della cache possa essere gestita per l’intera cache in quanto non può essere configurata separatamente per ciascun sito. Il ServerAlias di questa nuova configurazione deve accettare l&#39;intestazione host &quot;localhost&quot;.
+>In AEM as a Cloud Service, è necessario utilizzare una configurazione vhost separata con un DocumentRoot di livello superiore rispetto a ciascuna delle sottopagine. Questo viene gestito per impostazione predefinita nell’archetipo, ma quando si utilizzano più DocumentRoot, è necessario utilizzare una configurazione vhost con priorità più alta in modo che l’annullamento della validità della cache possa essere gestito per l’intera cache in quanto non può essere configurato separatamente per ciascun sito. Il ServerAlias di questa nuova configurazione deve accettare l’intestazione host “localhost”.
 
 ### Configurazione di Dispatcher per la gestione di più domini {#configure-dispatcher-to-handle-multiple-domains}
 
