@@ -3,9 +3,9 @@ title: Configurazione di AEM Dispatcher
 description: Scopri come configurare Dispatcher. Scopri il supporto per IPv4 e IPv6, i file di configurazione, le variabili di ambiente e la denominazione dell’istanza. Consulta come definire le farm, identificare gli host virtuali e altro ancora.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: a9ef9d7d2fe5c421cd8039579fd84961ea901def
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8941'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -1037,7 +1037,7 @@ Lo statfile non ha contenuto. Quando il contenuto viene aggiornato, Dispatcher a
 
 La proprietà `/serveStaleOnError` definisce se Dispatcher deve restituire i documenti invalidati quando il server di rendering restituisce un errore. Per impostazione predefinita, quando uno statfile viene toccato e invalida il contenuto memorizzato nella cache, Dispatcher elimina tale contenuto. Questa azione viene eseguita la volta successiva che sarà richiesta.
 
-Se `/serveStaleOnError` è impostato su `"1"`, Dispatcher non elimina dalla cache il contenuto invalidato. Ovvero, a meno che il server di rendering non restituisca una risposta positiva. In caso di risposta 502, 503 o 504 di AEM o di timeout della connessione, Dispatcher distribuisce il contenuto obsoleto e risponde con e lo stato HTTP 111 (riconvalida non riuscita).
+Se `/serveStaleOnError` è impostato su `"1"`, Dispatcher non elimina dalla cache il contenuto invalidato. Ovvero, a meno che il server di rendering non restituisca una risposta positiva. Se da AEM viene restituita una risposta 502, 503 o 504 o un timeout di connessione, Dispatcher distribuisce il contenuto obsoleto e risponde con lo stato HTTP 111 (riconvalida non riuscita).
 
 ### Caching nel momento in cui viene utilizzata l’autenticazione {#caching-when-authentication-is-used}
 
