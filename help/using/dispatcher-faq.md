@@ -2,10 +2,10 @@
 title: Problemi principali di Dispatcher
 description: Problemi principali di Adobe Experience Manager Dispatcher
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '1547'
-ht-degree: 100%
+source-wordcount: '1538'
+ht-degree: 99%
 
 ---
 
@@ -121,7 +121,7 @@ Visita le pagine [Elenco di controllo di protezione di Dispatcher](security-chec
 
 **Domanda**: l’azienda ha recentemente affrontato un problema a livello di Dispatcher. Una delle chiamate AJAX che otteneva alcuni dati dall’archivio CQ aveva all’interno `jcr:content`. È stato codificato in `jcr%3acontent` risultando in un set di risultati errato.
 
-**Risposta**: utilizza il metodo `ResourceResolver.map()` per ottenere un URL “Amichevole” da usare/inviare richieste GET e anche risolvere il problema di caching con Dispatcher. Il metodo map() codifica i due punti `:` in sottolineato e il metodo resolve() li ridecodifica nel formato leggibile SLING JCR. Utilizza il metodo map() per generare l’URL utilizzato nella chiamata Ajax.
+**Risposta**: chiamare `ResourceResolver.map()` per generare un URL descrittivo per le richieste di GET e risolvere i problemi di caching di Dispatcher. Il metodo map() codifica i due punti `:` in sottolineato e il metodo resolve() li ridecodifica nel formato leggibile SLING JCR. Utilizza il metodo map() per generare l’URL utilizzato nella chiamata Ajax.
 
 Ulteriori informazioni: [https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
 
@@ -133,7 +133,7 @@ Visita la pagina [Replica](https://experienceleague.adobe.com/it/docs/experience
 
 ### Come si risolvono i problemi di flushing di Dispatcher?
 
-[Vedi questi articoli per la risoluzione dei problemi](https://experienceleague.adobe.com/search.html?lang=it#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]).
+[Vedi questi articoli per la risoluzione dei problemi](https://experienceleague.adobe.com/search.html?lang=it#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]).
 
 Se le operazioni di eliminazione provocano il flush di Dispatcher, [utilizza la soluzione suggerita in questo post di blog della community scritto da Sensei Martin](https://mkalugin-cq.blogspot.com/2012/04/i-have-been-working-on-following.html).
 

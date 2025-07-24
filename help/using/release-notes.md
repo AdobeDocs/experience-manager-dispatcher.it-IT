@@ -5,10 +5,10 @@ topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: 5f743be9c143e1e720e59304feebaa2e272dad87
-workflow-type: ht
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
+workflow-type: tm+mt
 source-wordcount: '1062'
-ht-degree: 100%
+ht-degree: 99%
 
 ---
 
@@ -126,7 +126,7 @@ Per istruzioni dettagliate, vedi [Installazione di Dispatcher](dispatcher-instal
 * DISP-714 - La gestione delle sessioni basata su cookie non funziona in IIS
 * DISP-715 - Flag sicuro per il cookie renderid
 * DISP-720 - I file temporanei non chiusi possono causare la saturazione (troppi file aperti)
-* DISP-721 - Dispatcher interrompe il poll() quando Apache effettua un graceful restart dell’elemento figlio
+* DISP-721 - Dispatcher interrompe il poll() quando Apache effettua un riavvio graceful dell’elemento secondario
 * DISP-722 - I file cache vengono creati con modalità ottale 0600
 * DISP-723 - Timeout implicito di 10 minuti (e nuovo tentativo) quando i timeout del rendering sono impostati su 0
 * DISP-725 - I caratteri finali dopo le stringhe vengono automaticamente convertiti in valori senza nome

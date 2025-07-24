@@ -10,10 +10,10 @@ feature-set: Experience Manager
 feature: Dispatcher
 topic: Administration
 role: Admin
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '82'
-ht-degree: 100%
+source-wordcount: '81'
+ht-degree: 50%
 
 ---
 
@@ -22,17 +22,17 @@ ht-degree: 100%
 
 + [Panoramica](dispatcher.md)
 + Guida introduttiva {#getting-started}
-   + [Installazione di Dispatcher](dispatcher-install.md)
+   + [Installare Dispatcher](dispatcher-install.md)
    + [Elenco di controllo della sicurezza di Dispatcher](security-checklist.md)
    + [Note sulla versione di AEM Dispatcher](release-notes.md)
 + Configurazione {#configuring}
-   + [Configurazione di Dispatcher](dispatcher-configuration.md)
-   + [Annullamento della validità delle pagine in cache da AEM](page-invalidate.md)
-   + [Ottimizzazione delle prestazioni della cache di un sito web](https://experienceleague.adobe.com/it/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
-   + [Caching di contenuto protetto](permissions-cache.md)
-   + [Utilizzo di AEM Dispatcher con più domini](dispatcher-domains.md)
-   + [Utilizzo di SSL con AEM Dispatcher](dispatcher-ssl.md)
-   + [Configurazione di AEM Dispatcher per impedire attacchi CSRF](configuring-dispatcher-to-prevent-csrf.md)
-+ Risoluzione dei problemi {#troubleshooting}
+   + [Configura Dispatcher](dispatcher-configuration.md)
+   + [Annullare La Validità Delle Pagine In Cache Da AEM](page-invalidate.md)
+   + [Ottimizzare un sito Web per le prestazioni della cache](https://experienceleague.adobe.com/it/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
+   + [Memorizza nella cache contenuto protetto](permissions-cache.md)
+   + [Utilizzare AEM Dispatcher con più domini](dispatcher-domains.md)
+   + [Utilizzare SSL con AEM Dispatcher](dispatcher-ssl.md)
+   + [Configurare AEM Dispatcher per impedire attacchi CSRF](configuring-dispatcher-to-prevent-csrf.md)
++ Risoluzione di problemi {#troubleshooting}
    + [Risoluzione dei problemi di Dispatcher](dispatcher-troubleshooting.md)
    + [Domande frequenti sui principali problemi di Dispatcher](dispatcher-faq.md)

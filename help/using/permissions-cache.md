@@ -1,19 +1,19 @@
 ---
-title: Caching di contenuto protetto
+title: Memorizza nella cache contenuto protetto
 description: Scopri come funziona il caching sensibile alle autorizzazioni in Dispatcher.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '924'
-ht-degree: 100%
+source-wordcount: '923'
+ht-degree: 97%
 
 ---
 
-# Caching di contenuto protetto {#caching-secured-content}
+# Memorizza nella cache il contenuto protetto {#caching-secured-content}
 
 Il caching sensibile alle autorizzazioni consente di memorizzare in cache le pagine protette. Dispatcher controlla che l’utente sia autorizzato ad accedere a una pagina memorizzata in cache prima di distribuirla.
 
@@ -56,7 +56,7 @@ I diagrammi seguenti illustrano l’ordine degli eventi che si verificano quando
 1. Il motore di rendering chiama il servlet di autorizzazione di AEM (diverso dal servlet AuthChcker di Dispatcher) per eseguire un controllo di sicurezza. Quando l’utente viene autorizzato, il rendering include la pagina sottoposta a rendering nel corpo del messaggio di risposta.
 1. Dispatcher inoltra la risposta al browser. Dispatcher memorizza in cache il corpo del messaggio di risposta del rendering.
 
-## Implementazione del caching sensibile alle autorizzazioni {#implementing-permission-sensitive-caching}
+## Implementare il caching sensibile alle autorizzazioni {#implementing-permission-sensitive-caching}
 
 Per implementare il caching sensibile alle autorizzazioni, esegui le operazioni sotto riportate:
 
@@ -70,7 +70,7 @@ Per implementare il caching sensibile alle autorizzazioni, esegui le operazioni 
 >[!NOTE]
 >
 >Quando è presente una CDN (o qualsiasi altra cache) davanti a Dispatcher, è consigliabile impostare le intestazioni di memorizzazione nella cache in modo tale che la CDN non memorizzi il contenuto privato. Ad esempio: `Header always set Cache-Control private`.
->Per AEM as a Cloud Service consulta la pagina [Memorizzazione in cache](https://experienceleague.adobe.com/it/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) per ulteriori dettagli su come impostare intestazioni private di memorizzazione in cache.
+>>Per AEM as a Cloud Service consulta la pagina [Memorizzazione in cache](https://experienceleague.adobe.com/it/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) per ulteriori dettagli su come impostare intestazioni private di memorizzazione in cache.
 
 ## Crea il servlet Auth Checker {#create-the-auth-checker-servlet}
 
@@ -92,7 +92,7 @@ Il seguente esempio di servlet ottiene l’URL della risorsa richiesta dalla ric
 
 >[!NOTE]
 >
->Il valore della proprietà sling.servlet.paths deve essere abilitato nel servizio Sling Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver).
+>Il valore della proprietà sling.servlet.paths deve essere abilitato nel servizio `Sling` Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver).
 
 ### Esempio di servlet {#example-servlet}
 

@@ -9,10 +9,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '539'
-ht-degree: 100%
+source-wordcount: '472'
+ht-degree: 93%
 
 ---
 
@@ -26,9 +26,9 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->Per ulteriori informazioni, controlla la [Knowledge Base di Dispatcher](https://helpx.adobe.com/it/experience-manager/kb/index/dispatcher.html), la [Risoluzione dei problemi di svuotamento di Dispatcher](https://experienceleague.adobe.com/search.html?lang=it#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]) e le [Domande frequenti sui problemi principali di Dispatcher](dispatcher-faq.md).
+>Per ulteriori informazioni, consulta <!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[Risoluzione dei problemi di scaricamento di Dispatcher](https://experienceleague.adobe.com/search.html?lang=it#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]) e [Domande frequenti sui problemi principali di Dispatcher](dispatcher-faq.md).
 
-## Controlla la configurazione di base {#check-the-basic-configuration}
+## Verifica la configurazione di base {#check-the-basic-configuration}
 
 Come sempre, i primi passaggi consistono nel controllare le nozioni di base:
 
@@ -54,16 +54,17 @@ IIS fornisce vari strumenti di trace, a seconda della versione effettiva:
 
 Questi strumenti possono aiutarti a monitorare l’attività.
 
-## Impossibile trovare IIS e 404 {#iis-and-not-found}
+<!-- Both URLs in this topic 404! >
+## IIS and 404 Not Found {#iis-and-not-found}
 
-Quando si utilizza IIS, è possibile che venga restituito `404 Not Found` in vari scenari. In questo caso, vedi i seguenti articoli della Knowledge Base.
+When using IIS, you might experience `404 Not Found` being returned in various scenarios. If so, see the following Knowledge Base articles.
 
-* [IIS 6/7: Il metodo POST restituisce 404](https://helpx.adobe.com/it/experience-manager/kb/IIS6IsapiFilters.html)
-* [IIS 6: richieste a URL contenenti il percorso base `/bin` restituiscono un `404 Not Found`](https://helpx.adobe.com/it/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6/7: POST method returns 404](https://helpx.adobe.com/experience-manager/kb/IIS6IsapiFilters.html)
+* [IIS 6: Requests to URLs that contain the base path `/bin` return a `404 Not Found`](https://helpx.adobe.com/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-È inoltre necessario verificare che la radice della cache del Dispatcher e la radice del documento di IIS siano impostate sulla stessa directory.
+Also check that the Dispatcher cache root and the IIS document root are set to the same directory. -->
 
-## Problemi durante l’eliminazione dei modelli di flussi di lavoro {#problems-deleting-workflow-models}
+## Problemi durante l’eliminazione dei modelli di flusso di lavoro {#problems-deleting-workflow-models}
 
 **Sintomi**
 

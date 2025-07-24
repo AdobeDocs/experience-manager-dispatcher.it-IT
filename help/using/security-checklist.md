@@ -10,10 +10,10 @@ index: y
 internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '590'
-ht-degree: 100%
+source-wordcount: '582'
+ht-degree: 85%
 
 ---
 
@@ -36,7 +36,7 @@ Prima di procedere con la produzione, Adobe consiglia di completare l’elenco d
 >
 >Completa l’elenco di controllo della sicurezza della tua versione di AEM prima prima della pubblicazione. Consulta la [Documentazione di Adobe Experience Manager](https://experienceleague.adobe.com/it/docs/experience-manager-65/content/security/security-checklist) corrispondente.
 
-## Utilizzo della versione più recente di Dispatcher {#use-the-latest-version-of-dispatcher}
+## Usa la versione più recente di Dispatcher {#use-the-latest-version-of-dispatcher}
 
 Installa la versione più recente disponibile per la tua piattaforma. Aggiorna l’istanza di Dispatcher per utilizzare la versione più recente e usufruire dei miglioramenti a livello di prodotto e sicurezza. Consulta [Installazione di Dispatcher](dispatcher-install.md).
 
@@ -48,7 +48,7 @@ Installa la versione più recente disponibile per la tua piattaforma. Aggiorna l
 >
 >Per trovare il file di registro, controlla la configurazione di Dispatcher in `httpd.conf`.
 
-## Limita il numero dei client che possono eseguire il flushing della cache {#restrict-clients-that-can-flush-your-cache}
+## Limita i client che possono eseguire il flushing della cache {#restrict-clients-that-can-flush-your-cache}
 
 Adobe consiglia di [limitare il numero dei client che possono eseguire il flushing della cache.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
 
@@ -73,23 +73,23 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
  -->
 
-## Limitare l’accesso {#restrict-access}
+## Limita l’accesso {#restrict-access}
 
 Durante la configurazione di Dispatcher, limita il più possibile l’accesso esterno. Vedi [Esempio di sezione /filter](dispatcher-configuration.md#main-pars_184_1_title) nella documentazione di Dispatcher.
 
-## Accertati che l’accesso agli URL amministrativi sia interdetto {#make-sure-access-to-administrative-urls-is-denied}
+## Assicurati che l’accesso agli URL amministrativi sia negato {#make-sure-access-to-administrative-urls-is-denied}
 
 Utilizza i filtri per bloccare l’accesso esterno a qualsiasi URL amministrativo, ad esempio alla console Web.
 
 Per un elenco degli URL da bloccare, consulta [Test di sicurezza di Dispatcher](dispatcher-configuration.md#testing-dispatcher-security).
 
-## Utilizza gli elenchi Consentiti invece degli elenchi Bloccati {#use-allowlists-instead-of-blocklists}
+## Utilizzare i Inserire nell&#39;elenco Consentiti Inserisce nell&#39;elenco Bloccati di invece di quelli di {#use-allowlists-instead-of-blocklists}
 
 Gli elenchi Consentiti permettono un migliore controllo degli accessi, in quanto presuppongono che tutte le richieste di accesso debbano essere negate, a meno che non facciano parte esplicitamente dell’elenco Consentiti. Questo modello offre un controllo più restrittivo sulle nuove richieste che potrebbero non essere state ancora esaminate o prese in considerazione durante una determinata fase della configurazione.
 
 ## Eseguire Dispatcher con un utente di sistema dedicato {#run-dispatcher-with-a-dedicated-system-user}
 
-Quando configuri Dispatcher, accertati che il server web sia gestito da un utente dedicato con privilegi minimi. Si consiglia di concedere l’accesso in scrittura solo alla cartella della cache di Dispatcher.
+Configura Dispatcher in modo che un account utente dedicato con privilegi minimi esegua il server web. Adobe consiglia di concedere l’accesso in scrittura solo alla cartella della cache di Dispatcher.
 
 Inoltre, gli utenti IIS devono configurare il proprio sito web nel modo seguente:
 
@@ -146,7 +146,7 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
  -->
 
-## Configura Dispatcher per impedire gli attacchi CSRF {#configure-dispatcher-to-prevent-csrf-attacks}
+## Configurare Dispatcher per impedire attacchi CSRF {#configure-dispatcher-to-prevent-csrf-attacks}
 
 AEM fornisce un [framework](https://experienceleague.adobe.com/it/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps) per prevenire gli attacchi di tipo Cross-Site Request Forgery. Per utilizzare in modo appropriato questo framework, inserisci nell’elenco Consentiti il supporto per token CSRF in Dispatcher effettuando le seguenti operazioni:
 
@@ -161,5 +161,5 @@ Per ulteriori informazioni sul clickjacking, consulta il [sito OWASP](https://ow
 
 ## Eseguire un test di penetrazione {#perform-a-penetration-test}
 
-Adobe consiglia vivamente di eseguire un test di penetrazione dell’infrastruttura AEM prima di procedere alla produzione.
+Adobe consiglia di eseguire un test di penetrazione dell’infrastruttura AEM prima di procedere alla produzione.
 

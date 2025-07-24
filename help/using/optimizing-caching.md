@@ -1,18 +1,18 @@
 ---
-title: Ottimizzazione delle prestazioni della cache di un sito web
+title: Ottimizzare le prestazioni della cache di un sito web
 description: Scopri come progettare il sito web per massimizzare i vantaggi del caching.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-redirecttarget: https://helpx.adobe.com/it/experience-manager/6-4/sites/deploying/using/configuring-performance.html
+redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: y
 internal: n
 snippet: y
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
 source-wordcount: '1128'
-ht-degree: 100%
+ht-degree: 96%
 
 ---
 
@@ -44,7 +44,7 @@ Dispatcher offre una serie di meccanismi incorporati che si possono utilizzare p
 >
 >In generale, molte strategie di caching richiedono la selezione di URL validi e non utilizzano questi dati aggiuntivi.
 
-## Utilizzo di una codifica coerente delle pagine {#using-consistent-page-encoding}
+## Usa codifica coerente delle pagine {#using-consistent-page-encoding}
 
 Le intestazioni delle richieste HTTP non vengono memorizzate in cache, pertanto possono verificarsi dei problemi se si memorizzano le informazioni di codifica della pagina nell’intestazione. In questa situazione, quando distribuisce una pagina dalla cache, Dispatcher utilizza la codifica predefinita del server web. Esistono due modi per evitare questo problema:
 
@@ -55,7 +55,7 @@ Le intestazioni delle richieste HTTP non vengono memorizzate in cache, pertanto 
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
 ```
 
-## Evita i parametri URL {#avoid-url-parameters}
+## Evitare i parametri URL {#avoid-url-parameters}
 
 Se possibile, evita i parametri URL per le pagine che vuoi memorizzare in cache. Ad esempio, se hai una galleria di immagini, il seguente URL non viene mai memorizzato in cache (a meno che Dispatcher non sia [configurato per farlo](dispatcher-configuration.md#main-pars_title_24)):
 
@@ -95,7 +95,7 @@ www.myCompany.com/news/main.large.html
 >
 >Utilizzando il globbing dello script della definizione del modello, puoi specificare uno script separato che esegue il rendering delle pagine da stampare.
 
-## Annullamento della validità dei file di immagine utilizzati come titoli {#invalidating-image-files-used-as-titles}
+## Invalidare i file immagine utilizzati come titoli {#invalidating-image-files-used-as-titles}
 
 Se esegui il rendering dei titoli di pagina o di altro testo, come immagini, memorizza i file in modo che vengano eliminati al momento di un aggiornamento del contenuto della pagina:
 
@@ -110,7 +110,7 @@ Ad esempio, puoi memorizzare il titolo della pagina myPage.html nel file myPage.
 >
 >Il file di immagine non esiste necessariamente nell’istanza AEM. Puoi utilizzare uno script che crea il file di immagine in modo dinamico. Dispatcher memorizza quindi il file sul server web.
 
-## Annullamento della validità dei file di immagine utilizzati per la navigazione {#invalidating-image-files-used-for-navigation}
+## Annulla validità dei file immagine utilizzati per la navigazione {#invalidating-image-files-used-for-navigation}
 
 Se utilizzi le immagini per le voci di navigazione, il metodo è sostanzialmente lo stesso utilizzato per i titoli, anche se leggermente più complesso. Memorizza tutte le immagini di navigazione con le pagine di destinazione. Se utilizzi due immagini per la modalità normale e attiva, puoi utilizzare i seguenti script:
 

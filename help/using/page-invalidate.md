@@ -1,5 +1,5 @@
 ---
-title: Annullamento della validità delle pagine in cache da AEM
+title: Annullare La Validità Delle Pagine In Cache Da AEM
 description: Scopri come configurare l’interazione tra Dispatcher e AEM per garantire un’efficace gestione della cache.
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -9,26 +9,26 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
 source-wordcount: '1407'
-ht-degree: 100%
+ht-degree: 95%
 
 ---
 
-# Annullamento della validità delle pagine in cache da AEM {#invalidating-cached-pages-from-aem}
+# Annullare la validità delle pagine memorizzate in cache da AEM {#invalidating-cached-pages-from-aem}
 
 Quando utilizzi Dispatcher con AEM, l’interazione deve essere configurata per garantire un’efficace gestione della cache. A seconda dell’ambiente, la configurazione può anche migliorare le prestazioni.
 
-## Configurazione degli account utente AEM {#setting-up-aem-user-accounts}
+## Configurare gli account utente di AEM {#setting-up-aem-user-accounts}
 
 L’account utente predefinito `admin` viene utilizzato per autenticare gli agenti di replica installati per impostazione predefinita. Crea un account utente dedicato da utilizzare con gli agenti di replica.
 
-Per ulteriori informazioni, vedi la sezione [Configurare gli utenti di replica e trasporto](https://experienceleague.adobe.com/it/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) dell’elenco di controllo della sicurezza di AEM.
+Per ulteriori informazioni, vedere la sezione [Configurare gli utenti di replica e trasporto](https://experienceleague.adobe.com/it/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) dell&#39;elenco di controllo della sicurezza di AEM.
 
-<!-- OLD URL from above https://helpx.adobe.com/it/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
-## Annullamento della validità della cache di Dispatcher dall’ambiente di authoring {#invalidating-dispatcher-cache-from-the-authoring-environment}
+## Invalidare la cache di Dispatcher dall’ambiente di authoring {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
 Un agente di replica sull’istanza Autore AEM invia una richiesta di annullamento della validità della cache a Dispatcher quando viene pubblicata una pagina. Dispatcher aggiorna il file alla fine nella cache quando viene pubblicato un nuovo contenuto.
 
@@ -80,7 +80,7 @@ Questo approccio presenta due potenziali problemi:
 
 * La pubblicazione e l’annullamento della validità della cache avvengono contemporaneamente. A seconda della tempistica, un utente potrebbe richiedere una pagina subito dopo che è stata rimossa dalla cache e appena prima della pubblicazione della nuova pagina. AEM ora restituisce la pagina obsoleta e Dispatcher la memorizza nuovamente in cache. Questo è un problema piuttosto serio per i siti di grandi dimensioni.
 
-## Annullamento della validità della cache di Dispatcher da un’istanza di pubblicazione {#invalidating-dispatcher-cache-from-a-publishing-instance}
+## Annullare la validità della cache di Dispatcher da un’istanza Publish {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
 In determinate circostanze è possibile ottenere vantaggi in termini di prestazioni trasferendo la gestione della cache dall’ambiente di authoring a un’istanza di pubblicazione. Sarà quindi l’ambiente di pubblicazione (non l’ambiente di authoring AEM) a inviare una richiesta di annullamento della validità della cache a Dispatcher quando viene ricevuta una pagina pubblicata.
 
@@ -120,7 +120,7 @@ Dopo la configurazione, quando attivi una pagina da Autore a Publish, questo age
 
 1. `<publishserver> 13:29:47 127.0.0.1 POST /dispatcher/invalidate.cache 200`
 
-## Annullamento manuale della validità della cache di Dispatcher {#manually-invalidating-the-dispatcher-cache}
+## Annullare manualmente la validità della cache di Dispatcher {#manually-invalidating-the-dispatcher-cache}
 
 Per annullare la validità (o eseguire lo svuotamento) della cache del Dispatcher senza attivare una pagina, puoi inviare una richiesta HTTP al Dispatcher. Ad esempio, puoi creare un’applicazione AEM che consente agli amministratori o ad altre applicazioni di eseguire lo svuotamento della cache.
 
@@ -169,7 +169,7 @@ page_path1
 page_pathn
 ```
 
-I percorsi delle pagine per la rimemorizzazione nella cache immediata sono elencati su righe separate nel corpo del messaggio. Il valore di `CQ-Handle` è il percorso di una pagina che invalida le pagine da rimemorizzare in cache. (Vedi il parametro `/statfileslevel` dell’elemento di configurazione [Cache](dispatcher-configuration.md#main-pars_146_44_0010)). Il seguente messaggio di richiesta HTTP elimina e quindi rimemorizza in cache la `/content/geometrixx-outdoors/en.html page`:
+I percorsi delle pagine per la rimemorizzazione nella cache immediata sono elencati su righe separate nel corpo del messaggio. Il valore di `CQ-Handle` è il percorso di una pagina che invalida le pagine da rimemorizzare in cache. (Vedi il parametro `/statfileslevel` dell&#39;elemento di configurazione [Cache](dispatcher-configuration.md#main-pars_146_44_0010).) Il seguente messaggio di richiesta HTTP elimina e rimemorizza in cache `/content/geometrixx-outdoors/en.html page`:
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  
