@@ -26,7 +26,7 @@ L’account utente predefinito `admin` viene utilizzato per autenticare gli agen
 
 Per ulteriori informazioni, consulta la sezione [Configurazione degli utenti di replica e trasporto](https://experienceleague.adobe.com/it/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) dell’elenco di controllo della sicurezza di AEM.
 
-<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+<!-- OLD URL from above https://helpx.adobe.com/it/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
 ## Annullamento della validità della cache di Dispatcher dall’ambiente di authoring {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
