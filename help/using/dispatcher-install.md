@@ -1,15 +1,15 @@
 ---
 title: Installare Dispatcher
-description: Scopri come installare il modulo Dispatcher su Microsoft&reg; Internet Information Server, server web Apache e Sun&trade; Java Web Server-iPlanet.
+description: Scopri come installare il modulo Dispatcher su Microsoft&reg; Internet Information Server, server Web Apache e Sun&trade; Java Web Server-iPlanet.
 contentOwner: User
 converted: true
 topic-tags: dispatcher
 content-type: reference
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3720'
-ht-degree: 94%
+ht-degree: 100%
 
 ---
 
@@ -150,7 +150,7 @@ La tabella che segue descrive le singole proprietà.
 | `logfile` | Posizione del file `dispatcher.log`. Se questa posizione non è impostata, i messaggi del registro vanno nel registro eventi di Windows. |
 | `loglevel` | Definisce il livello di registro utilizzato per inviare messaggi al registro eventi. È possibile specificare i seguenti valori a livello del file di registro: <br/>0 - solo messaggi di errore. <br/>1 - errori e avvisi. <br/>2 - errori, avvisi e messaggi informativi <br/>3 - errori, avvisi, messaggi informativi e di debug. <br/>**Nota**: impostare il livello di registro su 3 durante l’installazione e il test, quindi su 0 quando l’esecuzione avviene in un ambiente di produzione. |
 | `replaceauthorization` | Specifica come vengono gestite le intestazioni di autorizzazione nella richiesta HTTP. Sono validi i seguenti valori:<br/>0 - Le intestazioni di autorizzazione non vengono modificate. <br/>1 - Sostituisce qualsiasi intestazione denominata &quot;Authorization&quot; diversa da &quot;Basic&quot; con il suo `Basic <IIS:LOGON\_USER>` equivalente.<br/> |
-| `servervariables` | Definisce il modo in cui vengono elaborate le variabili del server.<br/>0 - Le variabili del server IIS non vengono inviate né a Dispatcher né ad AEM. <br/>1 - tutte le variabili del server IIS (come `LOGON\_USER, QUERY\_STRING, ...`) vengono inviate a Dispatcher, insieme alle intestazioni richieste (e anche all&#39;istanza di AEM, se non memorizzate in cache).  <br/>Le variabili del server includono `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` e molte altre. Vedi la documentazione di IIS per l’elenco completo delle variabili con relativi dettagli. |
+| `servervariables` | Definisce il modo in cui vengono elaborate le variabili del server.<br/>0 - Le variabili del server IIS non vengono inviate né a Dispatcher né ad AEM. <br/>1 - Tutte le variabili del server IIS (come `LOGON\_USER, QUERY\_STRING, ...`) vengono inviate a Dispatcher, insieme alle intestazioni delle richieste (e anche all’istanza di AEM, se non memorizzate in cache).  <br/>Le variabili del server includono `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` e molte altre. Vedi la documentazione di IIS per l’elenco completo delle variabili con relativi dettagli. |
 | `enable_chunked_transfer` | Definisce se abilitare (1) o disabilitare (0) il trasferimento a blocchi per la risposta del client. Il valore predefinito è 0. |
 
 Esempio di configurazione:
@@ -163,21 +163,21 @@ servervariables=1
 replaceauthorization=0
 ```
 
-### Configurare Microsoft® IIS {#configuring-microsoft-iis}
+### Configurazione di Microsoft® IIS {#configuring-microsoft-iis}
 
 Configura IIS in modo da integrare il modulo ISAPI di Dispatcher. In IIS si utilizza la mappatura di applicazioni con caratteri jolly.
 
-### Configurare l’accesso anonimo: IIS 8.5 e 10 {#configuring-anonymous-access-iis-and}
+### Configurazione dell’accesso anonimo: IIS 8.5 e 10 {#configuring-anonymous-access-iis-and}
 
-L&#39;agente di replica `Flush` predefinito nell&#39;istanza di authoring è configurato in modo da non inviare credenziali di sicurezza con richieste di scaricamento. Pertanto, il sito web in cui utilizzi la cache di Dispatcher deve consentire l’accesso anonimo.
+L’agente di replica `Flush` predefinito sull’istanza di authoring è configurato in modo da non inviare credenziali di sicurezza con le richieste di flushing. Pertanto, il sito web che utilizzi come cache di Dispatcher deve consentire l’accesso anonimo.
 
-Se il sito Web utilizza un metodo di autenticazione, l&#39;agente di replica `Flush` deve essere configurato di conseguenza.
+Se il sito web utilizza un metodo di autenticazione, l’agente di replica `Flush` deve essere configurato di conseguenza.
 
-1. Apri IIS Manager e seleziona il sito web che stai utilizzando come cache di Dispatcher.
+1. Apri IIS Manager e seleziona il sito Web che stai utilizzando come cache di Dispatcher.
 1. Utilizzando la modalità Visualizzazione funzionalità, fai doppio clic su Autenticazione nella sezione IIS.
 1. Se l’autenticazione anonima non è abilitata, seleziona Autenticazione anonima e nell’area Azioni fai clic su Abilita.
 
-### Integrare il modulo ISAPI di Dispatcher: IIS 8.5 e 10 {#integrating-the-dispatcher-isapi-module-iis-and}
+### Integrazione del modulo ISAPI di Dispatcher: IIS 8.5 e 10 {#integrating-the-dispatcher-isapi-module-iis-and}
 
 Per aggiungere il modulo ISAPI di Dispatcher a IIS, utilizza la procedura descritta di seguito.
 
@@ -197,9 +197,9 @@ Per aggiungere il modulo ISAPI di Dispatcher a IIS, utilizza la procedura descri
 1. (IIS 8.0) Nell’elenco delle mappature degli handler, seleziona quella appena creata e nell’area Azioni fai clic su Modifica.
 1. (IIS 8.0) Nella finestra di dialogo Modifica mappatura di script, fai clic sul pulsante Restrizioni richieste.
 1. (IIS 8.0) Per garantire che l’handler sia utilizzato per i file e le cartelle che non sono ancora memorizzati in cache, deseleziona **Richiama handler solo se la richiesta è mappata su**. Fai clic su **OK**.
-1. (IIS 8.0) Nella finestra di dialogo Modifica mapping di script, fai clic su OK.
+1. (IIS 8.0) Nella finestra di dialogo Modifica mappatura script, fai clic su OK.
 
-### Configurare l’accesso alla cache: IIS 8.5 e 10 {#configuring-access-to-the-cache-iis-and}
+### Configurazione dell’accesso alla cache: IIS 8.5 e 10 {#configuring-access-to-the-cache-iis-and}
 
 Fornisci all’utente del pool di applicazioni predefinito l’accesso in scrittura alla cartella che viene utilizzata come cache di Dispatcher.
 
@@ -217,7 +217,7 @@ Fornisci all’utente del pool di applicazioni predefinito l’accesso in scritt
 1. Fai clic sul pulsante Controlla nomi. Quando Windows risolve l’account utente, fai clic su OK.
 1. Nella finestra di dialogo Autorizzazioni per la cartella di Dispatcher, seleziona l’account appena aggiunto, abilita tutte le autorizzazioni per l’account **eccetto Controllo completo** e fai clic su OK. Fai clic su OK per chiudere la finestra di dialogo Proprietà.
 
-### Registra il tipo MIME JSON: IIS 8.5 e 10 {#registering-the-json-mime-type-iis-and}
+### Registrazione del tipo MIME JSON: IIS 8.5 e 10 {#registering-the-json-mime-type-iis-and}
 
 Utilizza la seguente procedura per registrare il tipo MIME JSON quando vuoi che Dispatcher consenta le chiamate JSON.
 
@@ -227,14 +227,14 @@ Utilizza la seguente procedura per registrare il tipo MIME JSON quando vuoi che 
    * Estensione nome file: `.json`
    * Tipo MIME: `application/json`
 
-### Rimuovere il segmento nascosto bin: IIS 8.5 e 10 {#removing-the-bin-hidden-segment-iis-and}
+### Rimozione del segmento nascosto bin: IIS 8.5 e 10 {#removing-the-bin-hidden-segment-iis-and}
 
 Per rimuovere il segmento nascosto `bin`, utilizza la procedura descritta di seguito. I siti Web che non sono nuovi possono contenere questo segmento nascosto.
 
 1. In IIS Manager, seleziona il tuo sito web e, utilizzando la vista Funzioni, fai doppio clic su Filtraggio richieste.
 1. Seleziona il segmento `bin`, fai clic su Rimuovi e nella finestra di dialogo di conferma fai clic su Sì.
 
-### Registra messaggi IIS in un file: IIS 8.5 e 10 {#logging-iis-messages-to-a-file-iis-and}
+### Registrazione dei messaggi IIS in un file: IIS 8.5 e 10 {#logging-iis-messages-to-a-file-iis-and}
 
 Utilizza la procedura seguente per scrivere i messaggi di registro di Dispatcher in un file di registro invece che nel registro eventi di Windows. Configura Dispatcher in modo che utilizzi il file di registro e fornisci a IIS l’accesso in scrittura al file.
 
@@ -274,9 +274,9 @@ Prima di poter iniziare a utilizzare Dispatcher è necessario sapere ciò che se
 >
 >Le istruzioni per l’installazione in **Windows** e **Unix®** sono riportate qui. Fai molta attenzione durante l’esecuzione di questi passaggi.
 
-### Installare il server web Apache {#installing-apache-web-server}
+### Installazione del server web Apache {#installing-apache-web-server}
 
-Per informazioni sull’installazione di un server web Apache, leggere il manuale di installazione [online](https://httpd.apache.org/) o nella distribuzione.
+Per informazioni sull’installazione di un server Web Apache, consulta il manuale di installazione [online](https://httpd.apache.org/) o nella distribuzione.
 
 >[!CAUTION]
 >
@@ -286,7 +286,7 @@ Per informazioni sull’installazione di un server web Apache, leggere il manual
 
 Vedi anche i [suggerimenti sulla sicurezza](https://httpd.apache.org/docs/2.4/misc/security_tips.html) e i [rapporti sulla sicurezza](https://httpd.apache.org/security_report.html) di Apache HTTP Server.
 
-### Server web Apache: aggiungi il modulo Dispatcher {#apache-web-server-add-the-dispatcher-module}
+### Server web Apache: aggiungere il modulo Dispatcher {#apache-web-server-add-the-dispatcher-module}
 
 Dispatcher viene fornito per:
 
@@ -297,7 +297,7 @@ L’archivio di installazione contiene i seguenti file, a seconda che sia stato 
 
 | File | Descrizione |
 |--- |--- |
-| d`isp_apache<x.y>.dll` | Windows: il file DLL di Dispatcher. |
+| d`isp_apache<x.y>.dll` | Windows: il file della libreria del collegamento dinamico di Dispatcher. |
 | `dispatcher-apacheM<x.y>-<rel-nr>.so` | UNIX®: Dispatcher ha condiviso il file libreria oggetto |
 | `mod_dispatcher.so` | UNIX®: un esempio di collegamento. |
 | `http.conf.disp<x>` | Un esempio di file di configurazione del server Apache. |
@@ -319,7 +319,7 @@ Per aggiungere Dispatcher al server web Apache, esegui i seguenti passaggi:
 
    **Nota:** puoi posizionare il file in una posizione diversa, purché la proprietà DispatcherLog del modulo Dispatcher sia configurata di conseguenza. (Vedi qui di seguito Voci di configurazione specifiche per Dispatcher).
 
-### Server web Apache: configura le proprietà SELinux {#apache-web-server-configure-selinux-properties}
+### Server web Apache: configurare le proprietà SELinux {#apache-web-server-configure-selinux-properties}
 
 Se esegui Dispatcher su RedHat® Linux® Kernel 2.6 con SELinux abilitato, potresti ricevere messaggi di errore come questo nel file di registro di Dispatcher.
 
@@ -550,7 +550,7 @@ Dispatcher utilizza OpenSSL per implementare una comunicazione sicura tramite HT
 
 >[!NOTE]
 >
->Se si utilizza una versione personalizzata di Apache, assicurarsi che Apache e Dispatcher siano compilati con la stessa versione di OpenSSL. <!-- URL has connection error [OpenSSL] (https://www.openssl.org/source/). -->
+>Se utilizzi una versione personalizzata di Apache, accertati che Apache e Dispatcher siano compilati con la stessa versione di OpenSSL. <!-- URL has connection error [OpenSSL] (https://www.openssl.org/source/). -->
 
 ### Passaggi successivi {#next-steps-1}
 
@@ -574,7 +574,7 @@ Per informazioni complete su come installare questi server Web, consulta la rela
 * Sun Java™ System Web Server
 * iPlanet Web Server
 
-### Sun Java™ System Web Server / iPlanet: aggiunta del modulo Dispatcher {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
+### Sun Java System Web Server / iPlanet: aggiungere il modulo Dispatcher {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
 
 Dispatcher viene fornito per:
 
@@ -585,7 +585,7 @@ L’archivio di installazione contiene i seguenti file, a seconda che sia stato 
 
 | File | Descrizione |
 |---|---|
-| `disp_ns.dll` | Windows: il file DLL di Dispatcher. |
+| `disp_ns.dll` | Windows: il file della libreria del collegamento dinamico di Dispatcher. |
 | `dispatcher.so` | UNIX®: Dispatcher ha condiviso il file libreria oggetto |
 | `dispatcher.so` | UNIX®: un esempio di collegamento. |
 | `obj.conf.disp` | Un esempio di file di configurazione per Sun Java™ System Web Server / iPlanet. |

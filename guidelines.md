@@ -1,8 +1,8 @@
 ---
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '714'
-ht-degree: 96%
+ht-degree: 100%
 
 ---
 # Linee guida per contribuire alla documentazione di Adobe Experience Manager
@@ -31,7 +31,7 @@ La documentazione di AEM riguarda i casi d’uso standard. I casi di utilizzo ch
 
 La documentazione di AEM riguarda i casi d’uso standard. Per questo motivo, i bug, gli effetti causati dai bug e le soluzioni per ovviare ai bug non sono documentati.
 
-Fanno eccezione le note sulla versione, in cui possono essere elencati i problemi noti con possibili soluzioni approvate dal team di gestione del prodotto.
+Fanno eccezione a questa regola le note sulla versione, in cui possono essere elencati i problemi noti con possibili soluzioni approvate dal team di gestione del prodotto.
 
 ### I contributi alla documentazione non devono essere usati per rispondere a domande tecniche.
 

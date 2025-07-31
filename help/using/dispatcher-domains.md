@@ -1,6 +1,6 @@
 ---
-title: Usa Dispatcher con più domini
-description: Scopri come utilizzare Dispatcher per elaborare le richieste di pagine in più domini web.
+title: Utilizzo di Dispatcher con più domini
+description: Scopri come utilizzare Dispatcher per elaborare le richieste di pagine in più domini Web.
 contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -8,13 +8,13 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '2986'
-ht-degree: 89%
+ht-degree: 100%
 
 ---
 
-# Utilizzare Dispatcher con più domini {#using-dispatcher-with-multiple-domains}
+# Utilizzo di Dispatcher con più domini {#using-dispatcher-with-multiple-domains}
 
 <!-- This article is missing required metadata image ALT tags throughout -->
 
@@ -54,19 +54,19 @@ Quando i client inviano richieste HTTP al server web, l’URL della pagina richi
 1. Dispatcher determina se i file memorizzati in cache sono validi. In caso affermativo, i file memorizzati in cache vengono trasmessi al client.
 1. Se i file memorizzati in cache non sono validi, Dispatcher richiede all’istanza di pubblicazione di AEM le pagine appena sottoposte a rendering.
 
-## Annullamento validità cache
+## Annullamento della validità della cache
 
-Quando gli agenti di replica `Dispatcher Flush` richiedono che Dispatcher invalidi i file memorizzati in cache, il percorso del contenuto nell&#39;archivio deve essere risolto nel contenuto della cache.
+Quando gli agenti di replica `Dispatcher Flush` richiedono che Dispatcher invalidi i file memorizzati in cache, il percorso del contenuto nell’archivio deve essere risolto nel contenuto della cache.
 
 ![](assets/chlimage_1-9.png)
 
 * a - viene attivata una pagina nell’istanza di authoring di AEM e il contenuto viene replicato nell’istanza di pubblicazione.
-* b - L&#39;agente `Dispatcher Flush` chiama Dispatcher per invalidare la cache per il contenuto replicato.
+* b - L’agente di `Dispatcher Flush` del Dispatcher invia una chiamata al Dispatcher per invalidare la cache per il contenuto replicato.
 * c - Il Dispatcher utilizza uno o più file .stat per invalidare i file memorizzati nella cache.
 
 Per utilizzare Dispatcher con più domini, devi configurare AEM, Dispatcher e il server Web. Le soluzioni descritte in questa pagina sono generali e si applicano alla maggior parte degli ambienti. A causa della complessità di alcune topologie AEM, la soluzione può richiedere ulteriori configurazioni personalizzate per risolvere problemi particolari. È probabile che sarà necessario adattare gli esempi per soddisfare i criteri di gestione e dell’infrastruttura IT esistenti.
 
-## Mappatura URL {#url-mapping}
+## Mappatura degli URL {#url-mapping}
 
 Per consentire agli URL del dominio e ai percorsi del contenuto di risolvere i file memorizzati in cache, è necessario convertire un percorso di file o un URL di pagina. Vengono fornite descrizioni delle seguenti strategie comuni, in cui le conversioni di percorsi o URL avvengono in punti diversi del processo:
 
@@ -200,9 +200,9 @@ Gli host virtuali ereditano il valore della proprietà [DispatcherConfig](dispat
 
 >[!NOTE]
 >
->In AEM as a Cloud Service, è necessario utilizzare una configurazione vhost separata con un DocumentRoot di livello superiore rispetto a ciascuna delle sottopagine. Questo processo viene gestito per impostazione predefinita nell’archetipo. Tuttavia, quando si utilizzano più DocumentRoots, è necessaria una configurazione vhost con priorità più alta per gestire l’annullamento della validità della cache per l’intera cache, perché non può essere configurata separatamente per ciascun sito. Il ServerAlias di questa nuova configurazione deve accettare l&#39;intestazione host &quot;localhost&quot;.
+>In AEM as a Cloud Service, è necessario utilizzare una configurazione vhost separata con un DocumentRoot di livello superiore rispetto a ciascuna delle sottopagine. Questo processo viene gestito per impostazione predefinita nell’archetipo. Tuttavia, quando vengono utilizzati più DocumentRoots, è necessaria una configurazione vhost con priorità più alta per gestire l’annullamento della validità della cache per l’intera cache, perché non può essere configurata separatamente per ciascun sito. Il ServerAlias di questa nuova configurazione deve accettare l’intestazione host “localhost”.
 
-### Configurare Dispatcher per gestire più domini {#configure-dispatcher-to-handle-multiple-domains}
+### Configurazione di Dispatcher per la gestione di più domini {#configure-dispatcher-to-handle-multiple-domains}
 
 Per supportare gli URL che includono i nomi di dominio e i corrispondenti host virtuali, definisci le seguenti farm di Dispatcher:
 
@@ -284,11 +284,11 @@ Dispatcher initializing (build 4.1.2)
 [Fri Nov 02 16:27:18 2012] [I] [24974(140006182991616)] Dispatcher initialized (build 4.1.2)
 ```
 
-### Configurare il mapping Sling per la risoluzione delle risorse {#configure-sling-mapping-for-resource-resolution}
+### Configurazione della mappatura Sling per la risoluzione delle risorse {#configure-sling-mapping-for-resource-resolution}
 
-Utilizza il mapping `Sling` per la risoluzione delle risorse in modo che gli URL basati sul dominio vengano risolti nel contenuto nell&#39;istanza AEM Publish. Il mapping delle risorse converte gli URL in ingresso da Dispatcher (originariamente dalle richieste HTTP dei client) ai nodi di contenuto.
+Utilizza la mappatura `Sling` per la risoluzione delle risorse in modo che gli URL basati sul dominio possano risolvere il contenuto nell’istanza AEM Publish. La mappatura delle risorse converte gli URL in ingresso da Dispatcher (originariamente dalle richieste HTTP dei client) ai nodi di contenuto.
 
-Per informazioni sul mapping delle risorse `Sling`, vedere [Mapping per la risoluzione delle risorse](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html) nella documentazione di `Sling`.
+Per informazioni sulla mappatura delle risorse `Sling`, consulta [Mappature per la risoluzione delle risorse](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html) nella documentazione di `Sling`.
 
 In genere, le mappature sono necessarie per le risorse seguenti, sebbene possano essere necessarie mappature aggiuntive:
 
@@ -304,7 +304,7 @@ Dopo aver creato la mappatura per la pagina del contenuto, utilizza un browser w
 
 >[!NOTE]
 >
->Il trasformatore Linkchecker del rewriter predefinito di Apache `Sling` modifica automaticamente i collegamenti ipertestuali nella pagina per evitare collegamenti interrotti. Tuttavia, la riscrittura dei collegamenti viene eseguita solo quando la destinazione del collegamento è un file HTML o HTM. Per aggiornare i collegamenti ad altri tipi di file, crea un componente di trasformazione e aggiungilo a una pipeline del rewriter HTML.
+>La trasformazione della verifica collegamenti del rewriter predefinito di Apache `Sling` modifica automaticamente i collegamenti ipertestuali nella pagina per evitare che vengano interrotti. Tuttavia, la riscrittura dei collegamenti viene eseguita solo quando la destinazione del collegamento è un file HTML o HTM. Per aggiornare i collegamenti ad altri tipi di file, crea un componente di trasformazione e aggiungilo a una pipeline del rewriter HTML.
 
 ### Esempio di nodi di mappatura delle risorse
 
@@ -318,9 +318,9 @@ Nella tabella che segue sono elencati i nodi che implementano il mapping delle r
 | `/etc/map/http/branda.com/etc/designs` | `sling:Mapping` | `Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/designs` |
 | `/etc/map/http/branda.com/etc/clientlibs` | `sling:Mapping` | `Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/clientlibs` |
 
-## Configurare l’agente di replica di Dispatcher Flush {#configuring-the-dispatcher-flush-replication-agent}
+## Configurazione dell’agente di replica di Dispatcher Flush {#configuring-the-dispatcher-flush-replication-agent}
 
-L&#39;agente di replica `Dispatcher Flush` nell&#39;istanza di pubblicazione di AEM deve inviare richieste di annullamento della validità alla farm di Dispatcher corretta. Per eseguire il targeting di una farm, utilizzare la proprietà URI dell&#39;agente di replica `Dispatcher Flush` (nella scheda Trasporto). Includi il valore della proprietà `/virtualhost` per la farm di Dispatcher configurata per invalidare la cache:
+L’agente di replica di `Dispatcher Flush` nell’istanza AEM Publish deve inviare richieste di annullamento della validità alla farm di Dispatcher corretta. Per individuare la farm corretta, utilizza la proprietà URI dell’agente di replica di `Dispatcher Flush` (nella scheda Trasporto). Includi il valore della proprietà `/virtualhost` per la farm di Dispatcher configurata per invalidare la cache:
 
 `https://*webserver_name*:*port*/*virtual_host*/dispatcher/invalidate.cache`
 
@@ -414,7 +414,7 @@ LoadModule dispatcher_module modules/mod_dispatcher.so
 DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 ```
 
-### Configurare una farm di Dispatcher {#configure-a-dispatcher-farm}
+### Configurazione di una farm di Dispatcher {#configure-a-dispatcher-farm}
 
 Quando il server web riscrive gli URL, Dispatcher richiede una singola farm definita in base a quanto riportato in [Configurazione di Dispatcher](dispatcher-configuration.md). Per supportare gli host virtuali del server web e le regole di ridenominazione degli URL sono necessarie le seguenti configurazioni:
 
@@ -500,17 +500,17 @@ Come sempre, la directory principale dei documenti nella cache è la stessa dell
 
 >[!NOTE]
 >
->Poiché è definita una singola farm di Dispatcher, l&#39;agente di replica `Dispatcher Flush` nell&#39;istanza di pubblicazione di AEM non richiede configurazioni speciali.
+>Poiché è definita una sola farm di Dispatcher, l’agente di replica `Dispatcher Flush` sull’istanza AEM Publish non richiede configurazioni speciali.
 
-## Riscrivi collegamenti a file non HTML {#rewriting-links-to-non-html-files}
+## Riscrittura dei collegamenti ai file non HTML {#rewriting-links-to-non-html-files}
 
 Per riscrivere i riferimenti ai file con estensioni diverse da .html o .htm, crea un componente trasformatore del rewriter Sling e aggiungilo alla pipeline predefinita del rewriter.
 
 Riscrivi i riferimenti nel caso in cui i percorsi delle risorse non vengano risolti correttamente nel contesto del server web. Ad esempio, è necessario un trasformatore quando i componenti che generano immagini creano collegamenti del tipo /content/sitea/en/products.navimage.png. Il componente `topnav` indicato in [Come creare un sito web Internet completo](https://experienceleague.adobe.com/it/docs/experience-manager-65/content/implementing/developing/introduction/the-basics) crea questi collegamenti.
 
-Il rewriter [`Sling`](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) è un modulo che esegue la post-elaborazione dell&#39;output `Sling`. Le implementazioni della pipeline SAX del rewriter sono costituite da un generatore, uno o più trasformatori e un serializzatore:
+Il rewriter](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) di [`Sling` è un modulo che esegue la post-elaborazione dell’output di `Sling`. Le implementazioni della pipeline SAX del rewriter sono costituite da un generatore, uno o più trasformatori e un serializzatore:
 
-* **Generatore:** analizza il flusso di output `Sling` (documento HTML) e genera eventi SAX quando incontra tipi di elementi specifici.
+* **Generatore:** analizza il flusso di output di `Sling` (documento HTML) e genera eventi SAX quando incontra tipi di elementi specifici.
 * **Trasformatore:** ascolta gli eventi SAX e modifica di conseguenza la destinazione dell’evento (un elemento HTML). Una pipeline del rewriter contiene zero o più trasformatori. I trasformatori vengono eseguiti in sequenza, trasferendo gli eventi SAX al successivo trasformatore nella sequenza.
 * **Serializzatore:** serializza l’output, incluse le modifiche apportate da ciascun trasformatore.
 
@@ -647,7 +647,7 @@ public class MyRewriterTransformer extends AbstractSAXPipe implements Transforme
 }
 ```
 
-### Aggiungere il trasformatore a una pipeline del rewriter {#adding-the-transformer-to-a-rewriter-pipeline}
+### Aggiunta del trasformatore a una pipeline del rewriter {#adding-the-transformer-to-a-rewriter-pipeline}
 
 Crea un nodo JCR che definisce una pipeline che utilizza il tuo trasformatore. La seguente definizione del nodo crea una pipeline che elabora file di testo/html. Vengono utilizzati il generatore e il parser predefiniti di AEM per HTML.
 

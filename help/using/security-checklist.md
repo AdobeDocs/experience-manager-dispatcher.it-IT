@@ -11,9 +11,9 @@ internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '582'
-ht-degree: 85%
+ht-degree: 100%
 
 ---
 
@@ -36,7 +36,7 @@ Prima di procedere con la produzione, Adobe consiglia di completare l’elenco d
 >
 >Completa l’elenco di controllo della sicurezza della tua versione di AEM prima prima della pubblicazione. Consulta la [Documentazione di Adobe Experience Manager](https://experienceleague.adobe.com/it/docs/experience-manager-65/content/security/security-checklist) corrispondente.
 
-## Usa la versione più recente di Dispatcher {#use-the-latest-version-of-dispatcher}
+## Utilizzo della versione più recente di Dispatcher {#use-the-latest-version-of-dispatcher}
 
 Installa la versione più recente disponibile per la tua piattaforma. Aggiorna l’istanza di Dispatcher per utilizzare la versione più recente e usufruire dei miglioramenti a livello di prodotto e sicurezza. Consulta [Installazione di Dispatcher](dispatcher-install.md).
 
@@ -48,9 +48,9 @@ Installa la versione più recente disponibile per la tua piattaforma. Aggiorna l
 >
 >Per trovare il file di registro, controlla la configurazione di Dispatcher in `httpd.conf`.
 
-## Limita i client che possono eseguire il flushing della cache {#restrict-clients-that-can-flush-your-cache}
+## Limita il numero dei client che possono eseguire lo svuotamento della cache {#restrict-clients-that-can-flush-your-cache}
 
-Adobe consiglia di [limitare il numero dei client che possono eseguire il flushing della cache.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
+Adobe consiglia di [limitare il numero dei client che possono eseguire lo svuotamento della cache.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
 
 ## Abilitare HTTPS per la sicurezza del livello di trasporto {#enable-https-for-transport-layer-security}
 
@@ -73,17 +73,17 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
  -->
 
-## Limita l’accesso {#restrict-access}
+## Limitare l’accesso {#restrict-access}
 
-Durante la configurazione di Dispatcher, limita il più possibile l’accesso esterno. Vedi [Esempio di sezione /filter](dispatcher-configuration.md#main-pars_184_1_title) nella documentazione di Dispatcher.
+Durante la configurazione di Dispatcher, limita il più possibile l’accesso esterno. Consulta l’[esempio/filtra Sezione](dispatcher-configuration.md#main-pars_184_1_title) nella documentazione di Dispatcher.
 
-## Assicurati che l’accesso agli URL amministrativi sia negato {#make-sure-access-to-administrative-urls-is-denied}
+## Accertati che l’accesso agli URL amministrativi sia interdetto {#make-sure-access-to-administrative-urls-is-denied}
 
 Utilizza i filtri per bloccare l’accesso esterno a qualsiasi URL amministrativo, ad esempio alla console Web.
 
 Per un elenco degli URL da bloccare, consulta [Test di sicurezza di Dispatcher](dispatcher-configuration.md#testing-dispatcher-security).
 
-## Utilizzare i Inserire nell&#39;elenco Consentiti Inserisce nell&#39;elenco Bloccati di invece di quelli di {#use-allowlists-instead-of-blocklists}
+## Utilizzare gli elenchi Consentiti invece degli elenchi Bloccati {#use-allowlists-instead-of-blocklists}
 
 Gli elenchi Consentiti permettono un migliore controllo degli accessi, in quanto presuppongono che tutte le richieste di accesso debbano essere negate, a meno che non facciano parte esplicitamente dell’elenco Consentiti. Questo modello offre un controllo più restrittivo sulle nuove richieste che potrebbero non essere state ancora esaminate o prese in considerazione durante una determinata fase della configurazione.
 
@@ -96,7 +96,7 @@ Inoltre, gli utenti IIS devono configurare il proprio sito web nel modo seguente
 1. Nell’impostazione del percorso fisico per il sito web, seleziona **Connetti come utente specifico**.
 1. Imposta l’utente.
 
-## Previeni gli attacchi Denial of Service (DoS) {#prevent-denial-of-service-dos-attacks}
+## Prevenire gli attacchi Denial of Service (DoS, Aattacchi di negazione del servizio) {#prevent-denial-of-service-dos-attacks}
 
 Un attacco Denial of Service (DoS) è un tentativo di rendere la risorsa di un computer indisponibile per gli utenti a cui è destinata.
 
@@ -146,9 +146,9 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
  -->
 
-## Configurare Dispatcher per impedire attacchi CSRF {#configure-dispatcher-to-prevent-csrf-attacks}
+## Configurare Dispatcher per impedire gli attacchi CSRF {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM fornisce un [framework](https://experienceleague.adobe.com/it/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps) per prevenire gli attacchi di tipo Cross-Site Request Forgery. Per utilizzare in modo appropriato questo framework, inserisci nell’elenco Consentiti il supporto per token CSRF in Dispatcher effettuando le seguenti operazioni:
+AEM fornisce un [framework](https://experienceleague.adobe.com/it/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps) per prevenire gli attacchi di vulnerabilità Cross-Site Request Forgery. Per utilizzare in modo appropriato questo framework, inserisci nell’elenco Consentiti il supporto per token CSRF in Dispatcher effettuando le seguenti operazioni:
 
 1. Crea un filtro per consentire il percorso `/libs/granite/csrf/token.json`;
 1. Aggiungi l’intestazione `CSRF-Token` alla sezione `clientheaders` della configurazione di Dispatcher.

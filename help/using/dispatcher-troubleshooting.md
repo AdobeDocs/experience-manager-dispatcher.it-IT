@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '472'
-ht-degree: 93%
+ht-degree: 100%
 
 ---
 
@@ -26,9 +26,9 @@ ht-degree: 93%
 
 >[!NOTE]
 >
->Per ulteriori informazioni, consulta <!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[Risoluzione dei problemi di scaricamento di Dispatcher](https://experienceleague.adobe.com/search.html?lang=it#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]) e [Domande frequenti sui problemi principali di Dispatcher](dispatcher-faq.md).
+>Per ulteriori informazioni, controlla la sezione <!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[Risoluzione dei problemi di svuotamento di Dispatcher](https://experienceleague.adobe.com/search.html?lang=it#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]) e le [Domande frequenti sui problemi principali di Dispatcher](dispatcher-faq.md).
 
-## Verifica la configurazione di base {#check-the-basic-configuration}
+## Controlla la configurazione di base {#check-the-basic-configuration}
 
 Come sempre, i primi passaggi consistono nel controllare le nozioni di base:
 
@@ -64,7 +64,7 @@ When using IIS, you might experience `404 Not Found` being returned in various s
 
 Also check that the Dispatcher cache root and the IIS document root are set to the same directory. -->
 
-## Problemi durante l’eliminazione dei modelli di flusso di lavoro {#problems-deleting-workflow-models}
+## Problemi durante l’eliminazione dei modelli di flussi di lavoro {#problems-deleting-workflow-models}
 
 **Sintomi**
 

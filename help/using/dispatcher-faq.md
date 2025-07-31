@@ -3,9 +3,9 @@ title: Problemi principali di Dispatcher
 description: Problemi principali di Adobe Experience Manager Dispatcher
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1538'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -119,9 +119,9 @@ Visita le pagine [Elenco di controllo di protezione di Dispatcher](security-chec
 
 ### Problema di Dispatcher `jcr:content` modificato in `jcr%3acontent`
 
-**Domanda**: l’azienda ha recentemente affrontato un problema a livello di Dispatcher. Una delle chiamate AJAX che otteneva alcuni dati dall’archivio CQ aveva all’interno `jcr:content`. È stato codificato in `jcr%3acontent` risultando in un set di risultati errato.
+**Domanda**: l’azienda ha recentemente affrontato un problema a livello di Dispatcher. Una delle chiamate AJAX che otteneva alcuni dati dall’archivio CQ aveva all’interno `jcr:content`. È stato codificato in `jcr%3acontent` determinando un set di risultati errato.
 
-**Risposta**: chiamare `ResourceResolver.map()` per generare un URL descrittivo per le richieste di GET e risolvere i problemi di caching di Dispatcher. Il metodo map() codifica i due punti `:` in sottolineato e il metodo resolve() li ridecodifica nel formato leggibile SLING JCR. Utilizza il metodo map() per generare l’URL utilizzato nella chiamata Ajax.
+**Risposta**: chiamare `ResourceResolver.map()` per generare un URL descrittivo per le richieste GET e risolvere i problemi di memorizzazione in cache di Dispatcher. Il metodo map() codifica i due punti `:` in sottolineato e il metodo resolve() li ridecodifica nel formato leggibile SLING JCR. Utilizza il metodo map() per generare l’URL utilizzato nella chiamata Ajax.
 
 Ulteriori informazioni: [https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
 
