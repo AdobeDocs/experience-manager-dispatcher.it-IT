@@ -5,9 +5,9 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '3073'
+source-git-commit: 5cdfdb6d49f7d37a309fef9c5a4eb72409b54b13
+workflow-type: tm+mt
+source-wordcount: '3075'
 ht-degree: 100%
 
 ---
@@ -129,7 +129,7 @@ In un aggiornamento del contenuto uno o più documenti AEM cambiano. AEM invia u
 Tieni presente le seguenti considerazioni:
 
 * Gli aggiornamenti di contenuto vengono in genere utilizzati insieme a un sistema di authoring che “sa” cosa deve essere sostituito.
-* Gli aggiornamenti del contenuto che interessano i file vengono rimossi, ma non sostituiti immediatamente. La volta successiva in cui un tale file viene richiesto, Dispatcher lo recupera dall’istanza AEM e lo inserisce nella cache, sovrascrivendo il vecchio contenuto.
+* I file interessati da un aggiornamento del contenuto vengono rimossi, ma non sostituiti immediatamente. La prossima volta che un tale file viene richiesto, Dispatcher recupera il nuovo file dall’istanza di AEM e lo inserisce nella cache, sovrascrivendo il vecchio contenuto.
 * In genere, le immagini generate automaticamente che incorporano testo di una pagina vengono archiviate in file di immagine che iniziano con lo stesso handle, in modo da garantire l’associazione per l’eliminazione. Ad esempio, puoi archiviare il testo del titolo della pagina mypage.html come immagine mypage.titlePicture.gif nella stessa cartella. In questo modo l’immagine viene eliminata automaticamente dalla cache ogni volta che la pagina viene aggiornata e potrai essere sicuro che l’immagine rispecchierà sempre la versione corrente della pagina.
 * Possono esistere diversi statfile, ad esempio uno per cartella della lingua. Se una pagina viene aggiornata, AEM cerca la cartella padre successiva contenente uno statfile e *tocca* tale file.
 
@@ -297,7 +297,7 @@ Per un controllo più granulare, l’annullamento della validità basato su API 
 }
 ```
 
-Puoi utilizzare un’istanza di Dispatcher prima di un’istanza Autore per migliorare le prestazioni di authoring. Per configurare un’istanza di Dispatcher per l’authoring, effettua le seguenti operazioni:
+Puoi utilizzare un’istanza di Dispatcher prima di un’istanza di authoring per migliorare le prestazioni di authoring. Per configurare un’istanza di Dispatcher per l’authoring, effettua le seguenti operazioni:
 
 1. Installa il Dispatcher in un server web (può essere un server web Apache o IIS; consulta [Installazione Dispatcher](dispatcher-install.md)).
 1. Testa il Dispatcher appena installato rispetto a un’istanza di pubblicazione AEM funzionante. In questo modo si garantisce che sia stata effettuata un’installazione corretta della linea di base.
@@ -318,7 +318,7 @@ Puoi utilizzare un’istanza di Dispatcher prima di un’istanza Autore per migl
 
 >[!CAUTION]
 >
->Se hai usato un Dispatcher per l’authoring configurato in precedenza e hai attivato l’*agente di svuotamento del Dispatcher*, effettua le seguenti operazioni:
+>Se hai usato un Dispatcher per l’authoring configurato in precedenza e hai abilitato l’*agente di svuotamento del Dispatcher*, effettua le seguenti operazioni:
 
 1. Elimina o disattiva l’agente di svuotamento del **Dispatcher di authoring** nell’istanza di authoring di AEM.
 1. Ripeti la configurazione del Dispatcher di authoring seguendo le nuove istruzioni riportate sopra.
