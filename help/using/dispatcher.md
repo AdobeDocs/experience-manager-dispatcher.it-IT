@@ -281,7 +281,7 @@ Per un controllo più granulare, l’annullamento della validità basato su API 
 
 >[!NOTE]
 >
->Consulta anche la presentazione su [Sicurezza di AEM (CQ) Dispatcher e memorizzazione in cache di rete CDN e browser](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) nonché la presentazione registrata sulla [memorizzazione in cache in Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
+>Consulta anche la presentazione su [Sicurezza di AEM (CQ) Dispatcher e memorizzazione in cache di rete CDN e browser](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) nonché la presentazione registrata sulla [memorizzazione in cache in Dispatcher](https://experienceleague.adobe.com/it/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Utilizzo di un Dispatcher con un server di authoring {#using-a-dispatcher-with-an-author-server}
 
