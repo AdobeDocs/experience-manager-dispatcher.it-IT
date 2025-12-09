@@ -5,10 +5,10 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 5cdfdb6d49f7d37a309fef9c5a4eb72409b54b13
+source-git-commit: b7ab59ad2da1b73ebbf7819670f056a68162796d
 workflow-type: tm+mt
-source-wordcount: '3075'
-ht-degree: 100%
+source-wordcount: '3065'
+ht-degree: 98%
 
 ---
 
@@ -129,7 +129,7 @@ In un aggiornamento del contenuto uno o più documenti AEM cambiano. AEM invia u
 Tieni presente le seguenti considerazioni:
 
 * Gli aggiornamenti di contenuto vengono in genere utilizzati insieme a un sistema di authoring che “sa” cosa deve essere sostituito.
-* I file interessati da un aggiornamento del contenuto vengono rimossi, ma non sostituiti immediatamente. La prossima volta che un tale file viene richiesto, Dispatcher recupera il nuovo file dall’istanza di AEM e lo inserisce nella cache, sovrascrivendo il vecchio contenuto.
+* I file interessati da un aggiornamento del contenuto vengono rimossi, ma non sostituiti immediatamente. Alla successiva richiesta del file, Dispatcher recupera la versione aggiornata dall’istanza di AEM e sostituisce la copia memorizzata in cache.
 * In genere, le immagini generate automaticamente che incorporano testo di una pagina vengono archiviate in file di immagine che iniziano con lo stesso handle, in modo da garantire l’associazione per l’eliminazione. Ad esempio, puoi archiviare il testo del titolo della pagina mypage.html come immagine mypage.titlePicture.gif nella stessa cartella. In questo modo l’immagine viene eliminata automaticamente dalla cache ogni volta che la pagina viene aggiornata e potrai essere sicuro che l’immagine rispecchierà sempre la versione corrente della pagina.
 * Possono esistere diversi statfile, ad esempio uno per cartella della lingua. Se una pagina viene aggiornata, AEM cerca la cartella padre successiva contenente uno statfile e *tocca* tale file.
 
@@ -281,7 +281,7 @@ Per un controllo più granulare, l’annullamento della validità basato su API 
 
 >[!NOTE]
 >
->Consulta anche la presentazione su [Sicurezza di AEM (CQ) Dispatcher e memorizzazione in cache di rete CDN e browser](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) nonché la presentazione registrata sulla [memorizzazione in cache in Dispatcher](https://experienceleague.adobe.com/it/docs/events/experience-manager-gems-recordings/gems2015/aem-dispatcher-caching-new-features-and-optimizations).
+>Consulta anche la presentazione su [Sicurezza di AEM (CQ) Dispatcher e memorizzazione in cache di rete CDN e browser](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) nonché la presentazione registrata sulla [memorizzazione in cache in Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Utilizzo di un Dispatcher con un server di authoring {#using-a-dispatcher-with-an-author-server}
 
