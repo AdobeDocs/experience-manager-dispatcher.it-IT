@@ -9,9 +9,9 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '472'
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+workflow-type: tm+mt
+source-wordcount: '488'
 ht-degree: 100%
 
 ---
@@ -54,7 +54,8 @@ IIS fornisce vari strumenti di trace, a seconda della versione effettiva:
 
 Questi strumenti possono aiutarti a monitorare l’attività.
 
-<!-- Both URLs in this topic 404! >
+<!-- 
+Both URLs in this topic 404! >
 ## IIS and 404 Not Found {#iis-and-not-found}
 
 When using IIS, you might experience `404 Not Found` being returned in various scenarios. If so, see the following Knowledge Base articles.
@@ -62,13 +63,14 @@ When using IIS, you might experience `404 Not Found` being returned in various s
 * [IIS 6/7: POST method returns 404](https://helpx.adobe.com/experience-manager/kb/IIS6IsapiFilters.html)
 * [IIS 6: Requests to URLs that contain the base path `/bin` return a `404 Not Found`](https://helpx.adobe.com/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-Also check that the Dispatcher cache root and the IIS document root are set to the same directory. -->
+Also check that the Dispatcher cache root and the IIS document root are set to the same directory. 
+-->
 
 ## Problemi durante l’eliminazione dei modelli di flussi di lavoro {#problems-deleting-workflow-models}
 
 **Sintomi**
 
-Problemi durante il tentativo di eliminare i modelli di flussi di lavoro quando si accede a un’istanza Autore AEM tramite Dispatcher.
+Problemi durante il tentativo di eliminare i modelli di flussi di lavoro quando si accede a un’istanza di authoring di AEM tramite Dispatcher.
 
 **Passaggi da riprodurre:**
 

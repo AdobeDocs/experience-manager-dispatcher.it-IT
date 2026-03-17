@@ -5,9 +5,9 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: b7ab59ad2da1b73ebbf7819670f056a68162796d
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
 workflow-type: tm+mt
-source-wordcount: '3065'
+source-wordcount: '3227'
 ht-degree: 98%
 
 ---
@@ -281,7 +281,7 @@ Per un controllo più granulare, l’annullamento della validità basato su API 
 
 >[!NOTE]
 >
->Consulta anche la presentazione su [Sicurezza di AEM (CQ) Dispatcher e memorizzazione in cache di rete CDN e browser](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) nonché la presentazione registrata sulla [memorizzazione in cache in Dispatcher](https://experienceleague.adobe.com/it/docs/events/experience-manager-gems-recordings/overview#).
+>Consulta anche la presentazione su [Sicurezza di AEM (CQ) Dispatcher e memorizzazione in cache di rete CDN e browser](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) nonché la presentazione registrata sulla [memorizzazione in cache in Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Utilizzo di un Dispatcher con un server di authoring {#using-a-dispatcher-with-an-author-server}
 
@@ -312,13 +312,13 @@ Puoi utilizzare un’istanza di Dispatcher prima di un’istanza di authoring pe
 1. Elimina tutti i file esistenti nella directory `/cache` > `/docroot` configurata in precedenza.
 1. Riavvia il server web.
 
->[!NOTE]
->
->Con la configurazione `author_dispatcher.any` fornita, quando installi un pacchetto di funzioni, hotfix o un pacchetto di codice dell’applicazione CQ5 che interessa un qualsiasi contenuto in `/libs` o `/apps`, devi eliminare i file memorizzati nella cache. I file si trovano in tali directory nella cache di Dispatcher. In questo modo, si assicura che alla successiva richiesta vengano recuperati i nuovi file aggiornati e non quelli vecchi memorizzati nella cache.
+   >[!NOTE]
+   >
+   >Con la configurazione `author_dispatcher.any` fornita, quando installi un pacchetto di funzioni, hotfix o un pacchetto di codice dell’applicazione CQ5 che interessa un qualsiasi contenuto in `/libs` o `/apps`, devi eliminare i file memorizzati nella cache. I file si trovano in tali directory nella cache di Dispatcher. In questo modo, si assicura che alla successiva richiesta vengano recuperati i nuovi file aggiornati e non quelli vecchi memorizzati nella cache.
 
->[!CAUTION]
->
->Se hai usato un Dispatcher per l’authoring configurato in precedenza e hai abilitato l’*agente di svuotamento del Dispatcher*, effettua le seguenti operazioni:
+   >[!CAUTION]
+   >
+   >Se hai usato un Dispatcher per l’authoring configurato in precedenza e hai abilitato l’*agente di svuotamento del Dispatcher*, effettua le seguenti operazioni:
 
 1. Elimina o disattiva l’agente di svuotamento del **Dispatcher di authoring** nell’istanza di authoring di AEM.
 1. Ripeti la configurazione del Dispatcher di authoring seguendo le nuove istruzioni riportate sopra.
@@ -326,7 +326,9 @@ Puoi utilizzare un’istanza di Dispatcher prima di un’istanza di authoring pe
 <!--
 [Author Dispatcher configuration file (Dispatcher 4.1.2 or later)](assets/author_dispatchernew.any)
 -->
-<!--[!NOTE]
+
+<!--
+>[!NOTE]
 >
 >A related knowledge base article can be found here:  
 >[How to configure the dispatcher in front of an authoring environment](https://helpx.adobe.com/cq/kb/HowToConfigureDispatcherForAuthoringEnvironment.html)
