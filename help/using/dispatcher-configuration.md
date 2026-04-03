@@ -2,10 +2,10 @@
 title: Configurare AEM Dispatcher
 description: Scopri come configurare Dispatcher. Scopri il supporto per IPv4 e IPv6, i file di configurazione, le variabili di ambiente e la denominazione dell’istanza. Consulta come definire le farm, identificare gli host virtuali e altro ancora.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+source-git-commit: 97c7cec0b89dd20532e35e026281c19a55aa61f9
 workflow-type: tm+mt
 source-wordcount: '9194'
-ht-degree: 99%
+ht-degree: 97%
 
 ---
 
@@ -127,7 +127,7 @@ Ad esempio, se i file da `farm_1.any` a `farm_5.any` contengono la configurazion
 
 Puoi utilizzare le variabili di ambiente nelle proprietà con valori stringa nel file dispatcher.any, invece di utilizzare valori a codifica fissa (hard-coding). Per includere il valore di una variabile di ambiente, utilizza il formato `${variable_name}`.
 
-Ad esempio, se il file dispatcher.any si trova nella stessa directory della cache, è possibile utilizzare il seguente valore per la proprietà [docroot](#specifying-the-cache-directory):
+Ad esempio, se il file `dispatcher.any` si trova nella stessa directory della cache, è possibile utilizzare il seguente valore per la proprietà [docroot](#specifying-the-cache-directory):
 
 ```xml
 /docroot "${PWD}/cache"
@@ -1643,7 +1643,7 @@ I valori `glob` possono includere caratteri jolly e caratteri alfanumerici per d
 |--- |--- |--- |
 | `*` | Corrisponde a zero o più istanze contigue di qualsiasi carattere nella stringa. Il carattere finale della corrispondenza è determinato da una delle seguenti situazioni: <br/>un carattere nella stringa corrisponde al carattere successivo nel modello o il carattere del modello ha le seguenti caratteristiche:<br/><ul><li>Non è un `*`</li><li>Non è un `?`</li><li>Un carattere letterale (incluso uno spazio) o una classe di caratteri.</li><li>Viene raggiunta la fine del modello.</li></ul>All’interno di una classe di caratteri, il carattere viene interpretato letteralmente. | `*/geo*` Corrisponde a qualsiasi pagina sotto i nodi `/content/geometrixx` e `/content/geometrixx-outdoors`. Le seguenti richieste HTTP corrispondono al modello glob: <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` <br/>Corrisponde a qualsiasi pagina sotto il nodo `/content/geometrixx-outdoors`. Ad esempio, la seguente richiesta HTTP corrisponde al modello glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
 | `?` | Corrisponde a qualsiasi carattere singolo. Da utilizzare al di fuori delle classi di caratteri. All’interno di una classe di caratteri, questo carattere viene interpretato letteralmente. | `*outdoors/??/*`<br/> Corrisponde alle pagine in qualsiasi lingua del sito geometrixx-outdoors. Ad esempio, la seguente richiesta HTTP corrisponde al modello glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>La seguente richiesta non corrisponde al modello glob: <br/><ul><li>“GET /content/geometrixx-outdoors/en.html”</li></ul> |
-| `[ and ]` | Richiama l’inizio e la fine di una classe di caratteri. Le classi di caratteri possono includere uno o più intervalli di caratteri e caratteri singoli.<br/>Si verifica una corrispondenza se il carattere di destinazione corrisponde a uno qualsiasi dei caratteri della classe di caratteri o all&#39;interno di un intervallo definito.<br/>Se la parentesi quadra di chiusura non è inclusa, il modello non produce corrispondenze. | `*[o]men.html*`<br/> Corrisponde alla seguente richiesta HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Non corrisponde alla seguente richiesta HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Corrisponde alle seguenti richieste HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `[ and ]` | Richiama l’inizio e la fine di una classe di caratteri. Le classi di caratteri possono includere uno o più intervalli di caratteri e caratteri singoli.<br/>Si verifica una corrispondenza se il carattere di destinazione corrisponde a uno qualsiasi dei caratteri della classe di caratteri o all&#39;interno di un intervallo definito.<br/>Se si omette la parentesi quadra di chiusura, il modello non produce alcuna corrispondenza. | `*[o]men.html*`<br/> Corrisponde alla seguente richiesta HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Non corrisponde alla seguente richiesta HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Corrisponde alle seguenti richieste HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | Indica un intervallo di caratteri. Da utilizzare nelle classi di caratteri. Al di fuori di una classe di caratteri, questo carattere viene interpretato letteralmente. | `*[m-p]men.html*` Corrisponde alla seguente richiesta HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>Non corrisponde alla seguente richiesta HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | Ignora il carattere o la classe di che segue. Da utilizzare solo per ignorare caratteri e intervalli di caratteri all’interno delle classi di caratteri. Equivalente a `^ wildcard`. <br/>Al di fuori di una classe di caratteri, questo carattere viene interpretato letteralmente. | `*[ !o]men.html*`<br/> Corrisponde alla seguente richiesta HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Non corrisponde alla seguente richiesta HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[ !o!/]men.html*`<br/> Non corrisponde alla seguente richiesta HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` oppure `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | Ignora il carattere o l’intervallo di caratteri che segue. Da utilizzare solo per ignorare caratteri e intervalli di caratteri all’interno delle classi di caratteri. Equivalente al carattere jolly `!`. <br/>Al di fuori di una classe di caratteri, questo carattere viene interpretato letteralmente. | Gli esempi relativi al carattere jolly `!` valgono, ma previa sostituzione, negli esempi di modelli, dei caratteri `!` con i caratteri `^`. |
@@ -1870,18 +1870,18 @@ Di seguito è riportato un elenco contenente le intestazioni di risposta che `X-
   Il file di destinazione è contenuto nella cache e Dispatcher ha stabilito che è valido per la distribuzione.
 * **caching**\
   Il file di destinazione non è contenuto nella cache e Dispatcher ha stabilito che è valido per il caching dell’output e per la distribuzione.
-* **Memorizzazione in cache: il file stat è più recente**
+* **caching: il file stat è più recente**
 Il file di destinazione è contenuto nella cache. Tuttavia, un file stat più recente può invalidarlo. Dispatcher elimina il file di destinazione, lo ricrea dall’output e lo distribuisce.
-* **non memorizzabile in cache: nessuna directory principale dei documenti**
-La configurazione della farm non contiene una directory principale dei documenti (elemento di configurazione `cache.docroot`).
+* **non memorizzabile in cache: radice del documento inesistente**
+La configurazione della farm non contiene una radice documento (elemento di configurazione `cache.docroot`).
 * **non memorizzabile in cache: percorso del file della cache troppo lungo**\
   Il file di destinazione, ovvero la concatenazione di directory principale del documento e file URL, supera la lunghezza massima consentita per i nomi di file sul sistema.
 * **non memorizzabile in cache: percorso del file temporaneo troppo lungo**\
   Il modello di nome file temporaneo supera la lunghezza massima consentita per i nomi di file sul sistema. Dispatcher crea un file temporaneo prima di creare o sovrascrivere effettivamente il file memorizzato in cache. Il nome del file temporaneo è il nome del file di destinazione con i caratteri `_YYYYXXXXXX` aggiunti alla fine, in cui i caratteri `Y` e `X` verranno sostituiti per creare un nome univoco.
 * **non memorizzabile in cache: l’URL della richiesta è priva di estensione**\
   L’URL della richiesta non ha un’estensione oppure un percorso segue l’estensione del file, ad esempio: `/test.html/a/path`.
-* **non memorizzabile in cache: la richiesta doveva essere GET o HEAD**
-Il metodo HTTP non è né GET né HEAD. Dispatcher presuppone che l’output contenga dati dinamici che non devono essere memorizzati nella cache.
+* **non memorizzabile in cache: la richiesta deve essere GET o HEAD**
+Il metodo HTTP non è GET o HEAD. Dispatcher presuppone che l’output contenga dati dinamici che non devono essere memorizzati nella cache.
 * **non memorizzabile in cache: la richiesta conteneva una stringa di query**\
   La richiesta conteneva una stringa di query. Dispatcher presume che l’output dipenda dalla stringa di query specificata e pertanto non la memorizza in cache.
 * **non memorizzabile in cache: il gestore di sessione deve autenticarsi**\
@@ -1897,9 +1897,9 @@ Il metodo HTTP non è né GET né HEAD. Dispatcher presuppone che l’output con
 * **non memorizzabile in cache: accesso negato dal modulo AuthChecker**\
   Il modulo AuthChecker della farm ha negato l’accesso al file memorizzato in cache.
 * **non memorizzabile in cache: sessione non valida**
-Un gestore di sessione (la configurazione contiene un nodo `sessionmanagement`) gestisce la cache della farm e la sessione dell’utente non è valida o ha cessato di esserlo.
+Un gestore di sessione (configurazione contenente un nodo `sessionmanagement`) gestisce la cache della farm e la sessione dell&#39;utente non è o non è più valida.
 * **non memorizzabile in cache: la risposta contiene`no_cache`**
-Il server remoto ha restituito un’intestazione `Dispatcher: no_cache` che vieta a Dispatcher di memorizzare in cache l’output.
+Il server remoto ha restituito un&#39;intestazione `Dispatcher: no_cache`, impedendo al Dispatcher di memorizzare l&#39;output nella cache.
 * **non memorizzabile in cache: la lunghezza del contenuto della risposta è zero**
 La lunghezza del contenuto della risposta è zero; Dispatcher non crea un file di lunghezza zero.
 
