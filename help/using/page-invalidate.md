@@ -9,10 +9,14 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '1407'
-ht-degree: 100%
+TQID: https://experienceleague.adobe.com/yeMU0lrfxz38PkwRYZ6tcXVBp4obt9qxJAiGi0GGsX4
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
+workflow-type: tm+mt
+source-wordcount: 1447
+ht-degree: 98%
 
 ---
 
@@ -26,11 +30,11 @@ L’account utente predefinito `admin` viene utilizzato per autenticare gli agen
 
 Per ulteriori informazioni, consulta la sezione [Configurazione degli utenti di replica e trasporto](https://experienceleague.adobe.com/it/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) dell’elenco di controllo della sicurezza di AEM.
 
-<!-- OLD URL from above https://helpx.adobe.com/it/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
 ## Annullamento della validità della cache di Dispatcher dall’ambiente di authoring {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
-Un agente di replica sull’istanza Author AEM invia una richiesta di annullamento della validità della cache a Dispatcher quando viene pubblicata una pagina. Dispatcher aggiorna il file alla fine nella cache quando viene pubblicato un nuovo contenuto.
+Un agente di replica sull’istanza di authoring di AEM invia una richiesta di annullamento della validità della cache a Dispatcher quando viene pubblicata una pagina. Dispatcher aggiorna il file alla fine nella cache quando viene pubblicato un nuovo contenuto.
 
 <!-- 
 
@@ -110,7 +114,7 @@ Un agente di replica che opera sull’istanza di pubblicazione controlla lo svuo
 1. Nella scheda Trasporto, accedi a Dispatcher immettendo l’URI necessario.\
    Se utilizzi l’agente di eliminazione di Dispatcher standard, dovrai aggiornare il nome host e la porta; ad esempio, `http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache`
 
-   **Nota:** per gli agenti di svuotamento del Dispatcher, la proprietà URI viene utilizzata solo se usi voci di host virtuali basate sul percorso per differenziare le farm. Utilizza questo campo per individuare la farm da invalidare. Ad esempio, la farm n. 1 ha l’host virtuale `www.mysite.com/path1/*` e la farm n. 2 ha l’host virtuale `www.mysite.com/path2/*`. Puoi utilizzare l’URL `/path1/invalidate.cache` per individuare la prima farm e `/path2/invalidate.cache` per individuare la seconda farm. Per ulteriori informazioni, vedi [Utilizzo di Dispatcher con più domini](dispatcher-domains.md).
+   **Nota:** per gli agenti di svuotamento del Dispatcher, la proprietà URI viene utilizzata solo se utilizzi voci host virtuali basate sul percorso per differenziare le farm. Utilizza questo campo per individuare la farm da invalidare. Ad esempio, la farm n. 1 ha l’host virtuale `www.mysite.com/path1/*` e la farm n. 2 ha l’host virtuale `www.mysite.com/path2/*`. Puoi utilizzare l’URL `/path1/invalidate.cache` per individuare la prima farm e `/path2/invalidate.cache` per individuare la seconda farm. Per ulteriori informazioni, vedi [Utilizzo di Dispatcher con più domini](dispatcher-domains.md).
 
 1. Configura altri parametri come richiesto.
 1. Accedi all’istanza di pubblicazione e convalida la configurazione dell’agente di svuotamento. Assicurati inoltre che sia abilitato.
@@ -153,7 +157,7 @@ L’annullamento della validità (ovvero toccare i file .stat) può essere imped
 
 Invia una richiesta HTTP che induca Dispatcher a eliminare i file memorizzati nella cache e a recuperarli e rimemorizzarli immediatamente nella cache. Elimina e rimemorizza in cache immediatamente i file quando è probabile che i siti web ricevano dai client richieste simultanee per la stessa pagina. Il re-caching immediato garantisce che Dispatcher recuperi e memorizzi in cache la pagina una sola volta, invece di una volta per ciascuna delle richieste simultanee inviate dai client.
 
-**Nota:** l’eliminazione e la rimemorizzazione nella cache dei file dovrebbero essere eseguite solo nell’istanza di pubblicazione. Quando viene eseguita dall’istanza Autore, si verificano condizioni di estrema competizione quando i tentativi di recuperare le risorse vengono effettuati prima che le risorse siano pubblicate.
+**Nota:** l’eliminazione e la rimemorizzazione nella cache dei file dovrebbero essere eseguite solo nell’istanza di pubblicazione. Quando viene eseguita dall’istanza di authoring, si verificano condizioni di tipo “race condition” se si tenta di rimemorizzare le risorse nella cache prima che queste siano state pubblicate.
 
 La richiesta HTTP ha il seguente formato:
 
@@ -169,7 +173,7 @@ page_path1
 page_pathn
 ```
 
-I percorsi delle pagine per la rimemorizzazione nella cache immediata sono elencati su righe separate nel corpo del messaggio. Il valore di `CQ-Handle` è il percorso di una pagina che invalida le pagine da memorizzare nuovamente in cache. (Visualizza il parametro `/statfileslevel` dell’elemento di configurazione [Cache](dispatcher-configuration.md#main-pars_146_44_0010)). Il seguente messaggio di richiesta HTTP elimina e memorizza nuovamente nella cache `/content/geometrixx-outdoors/en.html page`:
+I percorsi delle pagine per la rimemorizzazione nella cache immediata sono elencati su righe separate nel corpo del messaggio. Il valore di `CQ-Handle` è il percorso di una pagina che invalida le pagine da memorizzare nuovamente in cache. (Vedi il parametro `/statfileslevel` dell&#39;elemento di configurazione [Cache](dispatcher-configuration.md#main-pars_146_44_0010).) Il seguente messaggio di richiesta HTTP elimina e rimemorizza in cache `/content/geometrixx-outdoors/en.html page`:
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  

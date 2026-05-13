@@ -1,15 +1,19 @@
 ---
 title: Installare Dispatcher
-description: Scopri come installare il modulo Dispatcher su Microsoft&reg; Internet Information Server, server Web Apache e Sun&trade; Java Web Server-iPlanet.
+description: Scopri come installare il modulo Dispatcher su Microsoft&reg; Internet Information Server, server web Apache e Sun Java &trade; Web Server-iPlanet.
 contentOwner: User
 converted: true
 topic-tags: dispatcher
 content-type: reference
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '3720'
-ht-degree: 100%
+TQID: https://experienceleague.adobe.com/o-B8WewNSKJhcw8UXJsWg6scuVEgrUU30R1q6VkYMnQ
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
+workflow-type: tm+mt
+source-wordcount: 3754
+ht-degree: 97%
 
 ---
 
@@ -91,7 +95,7 @@ Comment Type: draft
 Per informazioni su come installare questo server web, consulta le risorse seguenti:
 
 * Documentazione di Microsoft® su Internet Information Server
-* [“Sito ufficiale Microsoft® IIS”](https://www.iis.net/)
+* [&quot;Sito ufficiale Microsoft® IIS&quot;](https://www.iis.net/)
 
 ### Componenti IIS richiesti {#required-iis-components}
 
@@ -114,7 +118,7 @@ Il file ZIP contiene i seguenti file:
 | `disp_iis.dll` | File DLL (Dynamic Link Library) di Dispatcher. |
 | `disp_iis.ini` | File di configurazione per IIS. Questo esempio può essere aggiornato in base alle tue esigenze. **Nota**: il file ini deve avere lo stesso nome-radice del file DLL. |
 | `dispatcher.any` | Esempio di file di configurazione per Dispatcher. |
-| `author_dispatcher.any` | Un esempio di file di configurazione per Dispatcher che funziona con l’istanza Autore. |
+| `author_dispatcher.any` | Un esempio di file di configurazione per Dispatcher che funziona con l’istanza di authoring. |
 | README | File Readme contenente istruzioni di installazione e informazioni dell’ultimo minuto. **Nota**: leggi questo file prima di iniziare l’installazione. |
 | CHANGES | File Changes in sui sono elencati i problemi risolti in questa e nelle precedenti versioni. |
 
@@ -126,8 +130,8 @@ Per copiare i file Dispatcher nella posizione corretta, utilizza la procedura de
 
    * `disp_iis.dll`
    * `disp_iis.ini`
-   * Uno dei file seguenti, a seconda che Dispatcher funzioni con un’istanza di AEM di authoring o di pubblicazione:
-      * Istanza Autore: `author_dispatcher.any`
+   * Uno dei file seguenti, a seconda che Dispatcher funzioni con un’istanza di authoring o di pubblicazione di AEM:
+      * Istanza di authoring: `author_dispatcher.any`
       * Istanza Publish: `dispatcher.any`
 
 ## Microsoft® IIS: configurare il file INI di Dispatcher {#microsoft-iis-configure-the-dispatcher-ini-file}
@@ -150,7 +154,7 @@ La tabella che segue descrive le singole proprietà.
 | `logfile` | Posizione del file `dispatcher.log`. Se questa posizione non è impostata, i messaggi del registro vanno nel registro eventi di Windows. |
 | `loglevel` | Definisce il livello di registro utilizzato per inviare messaggi al registro eventi. È possibile specificare i seguenti valori a livello del file di registro: <br/>0 - solo messaggi di errore. <br/>1 - errori e avvisi. <br/>2 - errori, avvisi e messaggi informativi <br/>3 - errori, avvisi, messaggi informativi e di debug. <br/>**Nota**: impostare il livello di registro su 3 durante l’installazione e il test, quindi su 0 quando l’esecuzione avviene in un ambiente di produzione. |
 | `replaceauthorization` | Specifica come vengono gestite le intestazioni di autorizzazione nella richiesta HTTP. Sono validi i seguenti valori:<br/>0 - Le intestazioni di autorizzazione non vengono modificate. <br/>1 - Sostituisce qualsiasi intestazione denominata &quot;Authorization&quot; diversa da &quot;Basic&quot; con il suo `Basic <IIS:LOGON\_USER>` equivalente.<br/> |
-| `servervariables` | Definisce il modo in cui vengono elaborate le variabili del server.<br/>0 - Le variabili del server IIS non vengono inviate né a Dispatcher né ad AEM. <br/>1 - Tutte le variabili del server IIS (come `LOGON\_USER, QUERY\_STRING, ...`) vengono inviate a Dispatcher, insieme alle intestazioni delle richieste (e anche all’istanza di AEM, se non memorizzate in cache).  <br/>Le variabili del server includono `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` e molte altre. Vedi la documentazione di IIS per l’elenco completo delle variabili con relativi dettagli. |
+| `servervariables` | Definisce la modalità di elaborazione delle variabili del server.<br/>0 - Le variabili del server IIS non vengono inviate a Dispatcher o AEM. <br/>1 - Tutte le variabili del server IIS (come `LOGON\_USER, QUERY\_STRING, ...`) vengono inviate a Dispatcher, insieme alle intestazioni delle richieste (e anche all’istanza di AEM, se non memorizzate in cache).  <br/>Le variabili del server includono `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` e molte altre. Vedi la documentazione di IIS per l’elenco completo delle variabili con relativi dettagli. |
 | `enable_chunked_transfer` | Definisce se abilitare (1) o disabilitare (0) il trasferimento a blocchi per la risposta del client. Il valore predefinito è 0. |
 
 Esempio di configurazione:
@@ -409,9 +413,9 @@ I singoli parametri di configurazione:
 | DispatcherConfig | Posizione e nome del file di configurazione di Dispatcher. <br/>Quando questa proprietà si trova nella configurazione del server principale, tutti gli host virtuali ereditano il valore della proprietà stessa. Tuttavia, gli host virtuali possono includere la proprietà DispatcherConfig per ignorare la configurazione del server principale. |
 | DispatcherLog | Posizione e nome del file di registro. |
 | DispatcherLogLevel | Livello del file di registro: <br/>0 - Errori <br/>1 - Avvisi <br/>2 - Informazioni <br/>3 - Debug <br/>**Nota**: imposta il livello del file di registro su 3 durante l’installazione e il test, quindi su 0 quando l’esecuzione avviene in un ambiente di produzione. |
-| DispatcherNoServerHeader | *Questo parametro è obsoleto e inefficace.*<br/><br/> Definisce l’intestazione del server da utilizzare: <br/><ul><li>indefinito oppure 0 - L’intestazione del server HTTP contiene la versione di AEM. </li><li>1 - Viene utilizzata l’intestazione del server Apache.</li></ul> |
+| DispatcherNoServerHeader | *Questo parametro è obsoleto e non è valido.*<br/><br/> Definisce l&#39;intestazione del server da utilizzare: <br/><ul><li>indefinito oppure 0 - L’intestazione del server HTTP contiene la versione di AEM. </li><li>1 - Viene utilizzata l’intestazione del server Apache.</li></ul> |
 | DispatcherDeclineRoot | Definisce se rifiutare le richieste alla radice “/”: <br/>**0** - accetta le richieste a / <br/>**1** - Il Dispatcher non gestisce le richieste inviate a /. Per una corretta mappatura, utilizza invece mod_alias. |
-| DispatcherUseProcessedURL | Definisce se utilizzare URL preelaborati per tutte le ulteriori elaborazioni da parte di Dispatcher: <br/>**0** - Utilizza l’URL originale inviato al server web. <br/>**1**: Dispatcher utilizza l’URL già elaborato dagli handler che precedono Dispatcher (vale a dire, `mod_rewrite`) invece dell’URL originale inviato al server web. Ad esempio, l’URL originale o quello elaborato corrisponde ai filtri di Dispatcher. L’URL viene utilizzato anche come base per la struttura del file della cache. Per informazioni su mod_rewrite, consulta la documentazione del sito web di Apache; ad esempio, Apache 2.4. Durante l’utilizzo di mod_rewrite, usa il flag “passthrough” (passa all’handler successivo) per forzare il motore di riscrittura a impostare il campo URI della struttura request_rec interna sul valore del campo filename. |
+| DispatcherUseProcessedURL | Definisce se utilizzare URL preelaborati per tutte le ulteriori elaborazioni da parte di Dispatcher: <br/>**0** - Utilizza l’URL originale inviato al server web. <br/>**1**: Dispatcher utilizza l’URL già elaborato dagli handler che precedono Dispatcher (vale a dire, `mod_rewrite`) invece dell’URL originale inviato al server web. Ad esempio, l’URL originale o quello elaborato corrisponde ai filtri di Dispatcher. L’URL viene utilizzato anche come base per la struttura del file della cache. Per informazioni su mod_rewrite, vedi la documentazione del sito web di Apache; ad esempio, Apache 2.4. Quando si utilizza mod_rewrite, utilizzare il flag &#39;passthrough&#39; (passare all&#39;handler successivo) per forzare il motore di riscrittura a impostare il campo URI della struttura request_rec interna sul valore del campo filename. |
 | DispatcherPassError | Definisce come supportare i codici di errore per la gestione di ErrorDocument: <br/>**0** - Dispatcher effettua lo spool di tutte le risposte di errore inviate al client. <br/>**1**: Dispatcher non effettua lo spooling di una risposta di errore inviata al client (se il codice di stato è maggiore di o uguale a 400). Al contrario, passa il codice di stato ad Apache, che consente a una direttiva ErrorDocument di elaborarlo. <br/>**Intervallo di codici** - Specifica un intervallo di codici di errore per i quali la risposta viene inviata ad Apache. Gli altri codici di errore vengono inviati al client. Ad esempio, la seguente configurazione invia al client le risposte per l’errore 412 e tutti gli altri errori vengono inviati ad Apache: DispatcherPassError 400-411,413-417 |
 | DispatcherKeepAliveTimeout | Specifica il timeout keep-alive espresso in secondi. A partire dalla versione 4.2.0 di Dispatcher, il valore keep-alive predefinito è 60. Il valore 0 disattiva keep-alive. |
 | DispatcherNoCanonURL | Impostando questo parametro su Attivo, l’URL non elaborato viene inviato al backend invece che alla destinazione canonica e vengono ignorate tutte le impostazioni di DispatcherUseProcessedURL. Il valore predefinito è Disattivato. <br/>**Nota**: le regole dei filtri nella configurazione di Dispatcher verranno sempre valutate in base all’URL bonificato e non all’URL non elaborato. |
