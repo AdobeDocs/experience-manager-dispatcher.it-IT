@@ -2,9 +2,24 @@
 title: Configurare AEM Dispatcher
 description: Scopri come configurare Dispatcher. Scopri il supporto per IPv4 e IPv6, i file di configurazione, le variabili di ambiente e la denominazione dell’istanza. Consulta come definire le farm, identificare gli host virtuali e altro ancora.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 97c7cec0b89dd20532e35e026281c19a55aa61f9
+TQID: https://experienceleague.adobe.com/WO5uTj8LfJmEXNS7Sk-oW9Du0JR0jsUdHjhcHEuV4tA
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2:
+  - id: eb3ad9f8-54a2-45f3-abb1-d3976415a718
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
+  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
+  - id: c1579802-ddd4-4214-8a91-97b2066abe11
+  - id: ce44533e-8ec8-4e11-a9e9-78b0fe561832
+  - id: d095671a-1355-40aa-8b5f-06c33c68080b
+  - id: e0eb8757-182f-49f3-94a4-1587d16f5094
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: baa06172b3954af08dbeeef4eb7dbd24ce46ad60
 workflow-type: tm+mt
-source-wordcount: '9194'
+source-wordcount: 9194
 ht-degree: 97%
 
 ---
@@ -588,7 +603,7 @@ Ogni elemento della sezione `/filter` include un tipo e un modello corrispondent
 >
 >`/glob "* *.css *"`
 >
->Utilizzare
+>Utilizza
 >
 >`/url "*.css"`
 
@@ -1544,7 +1559,7 @@ Per ulteriori informazioni sul flag `httponly`, leggi [questa pagina](https://ow
 
 ### `secure` {#secure}
 
-Quando le connessioni permanenti sono abilitate, il modulo Dispatcher imposta il cookie `renderid`. Questo cookie non ha il flag `secure`, che deve essere aggiunto per migliorare la sicurezza. Per aggiungere il flag `secure`, imposta la proprietà `secure` nel nodo `/stickyConnections` di un file di configurazione `dispatcher.any`. Il valore della proprietà (`0` oppure `1`) definisce se al cookie `renderid` viene aggiunto l’attributo `secure`. Il valore predefinito è `0`, il che significa che l’attributo viene aggiunto **se** la richiesta in ingresso è sicura. Se il valore è impostato su `1`, il flag secure viene aggiunto indipendentemente dal fatto che la richiesta in ingresso sia sicura o meno.
+Quando le connessioni permanenti sono abilitate, il modulo Dispatcher imposta il cookie `renderid`. Questo cookie non ha il flag `secure`, che però deve essere aggiunto per rafforzare la sicurezza. Per aggiungere il flag `secure`, imposta la proprietà `secure` nel nodo `/stickyConnections` di un file di configurazione `dispatcher.any`. Il valore della proprietà (`0` oppure `1`) definisce se al cookie `renderid` viene aggiunto l’attributo `secure`. Il valore predefinito è `0`, il che significa che l’attributo viene aggiunto **se** la richiesta in ingresso è sicura. Se il valore è impostato su `1`, il flag secure viene aggiunto indipendentemente dal fatto che la richiesta in ingresso sia sicura o meno.
 
 ## Gestione degli errori di connessione del rendering {#handling-render-connection-errors}
 
