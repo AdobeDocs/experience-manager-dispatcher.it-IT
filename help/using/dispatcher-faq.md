@@ -13,8 +13,8 @@ topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 1625
-ht-degree: 100%
+source-wordcount: 1530
+ht-degree: 97%
 
 ---
 
@@ -113,8 +113,8 @@ Content-Length: 0
 Dispatcher elimina i file e le cartelle memorizzati in cache con nomi che corrispondono al valore dell’intestazione CQ-Handle. Ad esempio, il CQ-Handle `/content/geomtrixx-outdoors/en` corrisponde ai seguenti elementi:
 
 Tutti i file (con qualsiasi estensione) denominati en nella directory geometrixx-outdoors.
-Tutte le directory denominate `_jcr_content` sotto la directory en (che, se esiste, contiene i rendering memorizzati nella cache dei sottonodi della pagina).
-La directory `en` viene eliminata solo se `CQ-Action` è `Delete` o `Deactivate`.
+Qualsiasi directory denominata `_jcr_content` sotto la directory en (che, se esiste, contiene i rendering memorizzati nella cache dei sottonodi della pagina).
+La directory `en` verrà eliminata solo se `CQ-Action` è `Delete` o `Deactivate`.
 
 Per ulteriori dettagli su questo argomento, vedi [Annullamento manuale della validità della cache di Dispatcher](page-invalidate.md).
 
@@ -159,10 +159,10 @@ Per abilitare questa funzione:
 ## Varie
 
 In che modo Dispatcher determina se un documento è aggiornato?
-Per determinare se un documento è aggiornato, Dispatcher esegue le azioni seguenti:
+Per determinare se un documento è aggiornato, Dispatcher esegue le azioni riportate di seguito.
 
-Verifica se il documento è soggetto ad annullamento automatico della validità. In caso contrario, il documento viene considerato aggiornato.
-Se il documento è configurato per l’annullamento automatico della validità, Dispatcher controlla se è più o meno recente dell’ultima modifica disponibile. Se è meno recente, Dispatcher richiede la versione corrente dall’istanza di AEM e sostituisce la versione nella cache.
+Controlla se il documento è soggetto ad annullamento automatico della validità. In caso contrario, il documento viene considerato aggiornato.
+Se il documento è configurato per l’annullamento automatico della validità, Dispatcher controlla se è più vecchio o più recente dell’ultima modifica disponibile. Se è precedente, Dispatcher richiede la versione corrente dall’istanza di AEM e sostituisce la versione nella cache.
 
 ### In che modo Dispatcher restituisce i documenti?
 

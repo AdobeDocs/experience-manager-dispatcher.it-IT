@@ -18,7 +18,7 @@ topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 3227
+source-wordcount: 3169
 ht-degree: 96%
 
 ---
@@ -276,10 +276,10 @@ Esistono diversi modi per controllare per quanto tempo una rete CDN memorizza in
 1. Configurazione esplicita.
 Configura per quanto tempo determinate risorse vengono mantenute nella cache della rete CDN, a seconda del tipo MIME, dell’estensione, del tipo di richiesta e così via.
 
-1. Intestazioni di scadenza e controllo della cache.
-La maggior parte delle reti CDN rispetta le intestazioni HTTP `Expires:` e `Cache-Control:` se inviate dal server upstream. A questo scopo è possibile usare il modulo Apache [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html).
+1. Intestazioni di scadenza e controllo cache.
+La maggior parte delle reti CDN rispetta `Expires:` e `Cache-Control:` intestazioni HTTP se inviate dal server upstream. Questo metodo può essere ottenuto, ad esempio, utilizzando il modulo Apache [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html).
 
-1. Annullamento manuale della validità.
+1. Annullamento manuale della validità
 Le reti CDN consentono di rimuovere risorse dalla cache tramite interfacce web.
 1. Annullamento della validità basato su API.\
    La maggior parte delle reti CDN offre anche un’API REST e/o SOAP che consente di rimuovere le risorse dalla cache.

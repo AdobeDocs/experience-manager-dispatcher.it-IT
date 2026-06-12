@@ -19,7 +19,7 @@ topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: baa06172b3954af08dbeeef4eb7dbd24ce46ad60
 workflow-type: tm+mt
-source-wordcount: 9194
+source-wordcount: 9174
 ht-degree: 97%
 
 ---
@@ -603,7 +603,7 @@ Ogni elemento della sezione `/filter` include un tipo e un modello corrispondent
 >
 >`/glob "* *.css *"`
 >
->Utilizza
+>Utilizzare
 >
 >`/url "*.css"`
 
@@ -1319,7 +1319,7 @@ Per specificare quali parametri ignorare, aggiungi regole glob alla proprietà `
 
 >[!NOTE]
 >
->Durante la configurazione della proprietà glob, tieni presente che deve corrispondere al nome del parametro query. Ad esempio, per ignorare il parametro “p1” dall’URL `http://example.com/path/test.html?p1=test&p2=v2`, la proprietà glob sarà configurata così:
+>Durante la configurazione della proprietà glob, questa deve corrispondere al nome del parametro della query. Ad esempio, se desideri ignorare il parametro &quot;p1&quot; dal seguente URL `http://example.com/path/test.html?p1=test&p2=v2`, la proprietà glob deve essere:
 > `/0002 { /glob "p1" /type "allow" }`
 
 Il codice di esempio seguente fa sì che Dispatcher ignori tutti i parametri, tranne il parametro `nocache`. Dispatcher non memorizza mai in cache gli URL di richiesta che includono il parametro `nocache`:
@@ -1660,7 +1660,7 @@ I valori `glob` possono includere caratteri jolly e caratteri alfanumerici per d
 | `?` | Corrisponde a qualsiasi carattere singolo. Da utilizzare al di fuori delle classi di caratteri. All’interno di una classe di caratteri, questo carattere viene interpretato letteralmente. | `*outdoors/??/*`<br/> Corrisponde alle pagine in qualsiasi lingua del sito geometrixx-outdoors. Ad esempio, la seguente richiesta HTTP corrisponde al modello glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>La seguente richiesta non corrisponde al modello glob: <br/><ul><li>“GET /content/geometrixx-outdoors/en.html”</li></ul> |
 | `[ and ]` | Richiama l’inizio e la fine di una classe di caratteri. Le classi di caratteri possono includere uno o più intervalli di caratteri e caratteri singoli.<br/>Si verifica una corrispondenza se il carattere di destinazione corrisponde a uno qualsiasi dei caratteri della classe di caratteri o all&#39;interno di un intervallo definito.<br/>Se si omette la parentesi quadra di chiusura, il modello non produce alcuna corrispondenza. | `*[o]men.html*`<br/> Corrisponde alla seguente richiesta HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Non corrisponde alla seguente richiesta HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Corrisponde alle seguenti richieste HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | Indica un intervallo di caratteri. Da utilizzare nelle classi di caratteri. Al di fuori di una classe di caratteri, questo carattere viene interpretato letteralmente. | `*[m-p]men.html*` Corrisponde alla seguente richiesta HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>Non corrisponde alla seguente richiesta HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `!` | Ignora il carattere o la classe di che segue. Da utilizzare solo per ignorare caratteri e intervalli di caratteri all’interno delle classi di caratteri. Equivalente a `^ wildcard`. <br/>Al di fuori di una classe di caratteri, questo carattere viene interpretato letteralmente. | `*[ !o]men.html*`<br/> Corrisponde alla seguente richiesta HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Non corrisponde alla seguente richiesta HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[ !o!/]men.html*`<br/> Non corrisponde alla seguente richiesta HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` oppure `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
+| `!` | Ignora il carattere o la classe di che segue. Da utilizzare solo per ignorare caratteri e intervalli di caratteri all’interno delle classi di caratteri. Equivalente a `^ wildcard`. <br/>Al di fuori di una classe di caratteri, questo carattere viene interpretato letteralmente. | `*[!o]men.html*`<br/> Corrisponde alla seguente richiesta HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Non corrisponde alla seguente richiesta HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> Non corrisponde alla seguente richiesta HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` oppure `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | Ignora il carattere o l’intervallo di caratteri che segue. Da utilizzare solo per ignorare caratteri e intervalli di caratteri all’interno delle classi di caratteri. Equivalente al carattere jolly `!`. <br/>Al di fuori di una classe di caratteri, questo carattere viene interpretato letteralmente. | Gli esempi relativi al carattere jolly `!` valgono, ma previa sostituzione, negli esempi di modelli, dei caratteri `!` con i caratteri `^`. |
 
 
@@ -1896,7 +1896,7 @@ La configurazione della farm non contiene una radice documento (elemento di conf
 * **non memorizzabile in cache: l’URL della richiesta è priva di estensione**\
   L’URL della richiesta non ha un’estensione oppure un percorso segue l’estensione del file, ad esempio: `/test.html/a/path`.
 * **non memorizzabile in cache: la richiesta deve essere GET o HEAD**
-Il metodo HTTP non è GET o HEAD. Dispatcher presuppone che l’output contenga dati dinamici che non devono essere memorizzati nella cache.
+Il metodo HTTP non è un metodo GET o HEAD. Dispatcher presuppone che l’output contenga dati dinamici che non devono essere memorizzati nella cache.
 * **non memorizzabile in cache: la richiesta conteneva una stringa di query**\
   La richiesta conteneva una stringa di query. Dispatcher presume che l’output dipenda dalla stringa di query specificata e pertanto non la memorizza in cache.
 * **non memorizzabile in cache: il gestore di sessione deve autenticarsi**\
