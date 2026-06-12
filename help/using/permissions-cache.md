@@ -16,8 +16,8 @@ topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 948
-ht-degree: 100%
+source-wordcount: 926
+ht-degree: 96%
 
 ---
 
@@ -77,8 +77,8 @@ Per implementare il caching sensibile alle autorizzazioni, esegui le operazioni 
 
 >[!NOTE]
 >
->Quando è presente una CDN (o qualsiasi altra cache) davanti a Dispatcher, è consigliabile impostare le intestazioni di memorizzazione nella cache in modo tale che la CDN non memorizzi il contenuto privato. Ad esempio: `Header always set Cache-Control private`.
->Per AEM as a Cloud Service consulta la pagina [Memorizzazione in cache](https://experienceleague.adobe.com/it/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) per ulteriori dettagli su come impostare intestazioni private di memorizzazione in cache.
+>Se davanti al Dispatcher è presente una rete CDN (o qualsiasi altra cache), è necessario impostare di conseguenza le intestazioni di memorizzazione in cache in modo che la rete CDN non memorizzi in cache il contenuto privato. Esempio: `Header always set Cache-Control private`.
+>Per AEM as a Cloud Service, consulta la pagina [Memorizzazione in cache](https://experienceleague.adobe.com/it/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) per ulteriori dettagli su come impostare le intestazioni di memorizzazione in cache private.
 
 ## Crea il servlet Auth Checker {#create-the-auth-checker-servlet}
 
