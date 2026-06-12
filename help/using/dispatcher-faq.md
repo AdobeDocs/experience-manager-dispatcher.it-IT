@@ -3,18 +3,13 @@ title: Problemi principali di Dispatcher
 description: Problemi principali di Adobe Experience Manager Dispatcher
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 TQID: https://experienceleague.adobe.com/NQdA2gQ1pBYAiVrjO1arci4qp6cGIKpZZHWimEfB9T0
-product_v2:
-  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: c1579802-ddd4-4214-8a91-97b2066abe11
-  - id: d095671a-1355-40aa-8b5f-06c33c68080b
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: c1579802-ddd4-4214-8a91-97b2066abe11id: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 1625
-ht-degree: 100%
+source-wordcount: 1530
+ht-degree: 97%
 
 ---
 
@@ -113,8 +108,8 @@ Content-Length: 0
 Dispatcher elimina i file e le cartelle memorizzati in cache con nomi che corrispondono al valore dell’intestazione CQ-Handle. Ad esempio, il CQ-Handle `/content/geomtrixx-outdoors/en` corrisponde ai seguenti elementi:
 
 Tutti i file (con qualsiasi estensione) denominati en nella directory geometrixx-outdoors.
-Tutte le directory denominate `_jcr_content` sotto la directory en (che, se esiste, contiene i rendering memorizzati nella cache dei sottonodi della pagina).
-La directory `en` viene eliminata solo se `CQ-Action` è `Delete` o `Deactivate`.
+Qualsiasi directory denominata `_jcr_content` sotto la directory en (che, se esiste, contiene i rendering memorizzati nella cache dei sottonodi della pagina).
+La directory `en` verrà eliminata solo se `CQ-Action` è `Delete` o `Deactivate`.
 
 Per ulteriori dettagli su questo argomento, vedi [Annullamento manuale della validità della cache di Dispatcher](page-invalidate.md).
 
@@ -159,10 +154,10 @@ Per abilitare questa funzione:
 ## Varie
 
 In che modo Dispatcher determina se un documento è aggiornato?
-Per determinare se un documento è aggiornato, Dispatcher esegue le azioni seguenti:
+Per determinare se un documento è aggiornato, Dispatcher esegue le azioni riportate di seguito.
 
-Verifica se il documento è soggetto ad annullamento automatico della validità. In caso contrario, il documento viene considerato aggiornato.
-Se il documento è configurato per l’annullamento automatico della validità, Dispatcher controlla se è più o meno recente dell’ultima modifica disponibile. Se è meno recente, Dispatcher richiede la versione corrente dall’istanza di AEM e sostituisce la versione nella cache.
+Controlla se il documento è soggetto ad annullamento automatico della validità. In caso contrario, il documento viene considerato aggiornato.
+Se il documento è configurato per l’annullamento automatico della validità, Dispatcher controlla se è più vecchio o più recente dell’ultima modifica disponibile. Se è precedente, Dispatcher richiede la versione corrente dall’istanza di AEM e sostituisce la versione nella cache.
 
 ### In che modo Dispatcher restituisce i documenti?
 

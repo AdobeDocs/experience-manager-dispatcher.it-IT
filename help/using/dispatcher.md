@@ -6,19 +6,13 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 TQID: https://experienceleague.adobe.com/Ir-slXay90FcQsvKGLioMgFhmhsaTfkYxIQJzfjDsfY
-product_v2:
-  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
-feature_v2:
-  - id: b1210526-416b-4ef6-bcc0-1692e99f30e9
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: c1579802-ddd4-4214-8a91-97b2066abe11
-  - id: d095671a-1355-40aa-8b5f-06c33c68080b
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2: id: b1210526-416b-4ef6-bcc0-1692e99f30e9
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: c1579802-ddd4-4214-8a91-97b2066abe11id: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 3227
+source-wordcount: 3169
 ht-degree: 96%
 
 ---
@@ -276,10 +270,10 @@ Esistono diversi modi per controllare per quanto tempo una rete CDN memorizza in
 1. Configurazione esplicita.
 Configura per quanto tempo determinate risorse vengono mantenute nella cache della rete CDN, a seconda del tipo MIME, dell’estensione, del tipo di richiesta e così via.
 
-1. Intestazioni di scadenza e controllo della cache.
-La maggior parte delle reti CDN rispetta le intestazioni HTTP `Expires:` e `Cache-Control:` se inviate dal server upstream. A questo scopo è possibile usare il modulo Apache [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html).
+1. Intestazioni di scadenza e controllo cache.
+La maggior parte delle reti CDN rispetta `Expires:` e `Cache-Control:` intestazioni HTTP se inviate dal server upstream. Questo metodo può essere ottenuto, ad esempio, utilizzando il modulo Apache [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html).
 
-1. Annullamento manuale della validità.
+1. Annullamento manuale della validità
 Le reti CDN consentono di rimuovere risorse dalla cache tramite interfacce web.
 1. Annullamento della validità basato su API.\
    La maggior parte delle reti CDN offre anche un’API REST e/o SOAP che consente di rimuovere le risorse dalla cache.
@@ -292,7 +286,7 @@ Per un controllo più granulare, l’annullamento della validità basato su API 
 
 >[!NOTE]
 >
->Consulta anche la presentazione su [Sicurezza di AEM (CQ) Dispatcher e memorizzazione in cache di rete CDN e browser](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) nonché la presentazione registrata sulla [memorizzazione in cache in Dispatcher](https://experienceleague.adobe.com/it/docs/events/experience-manager-gems-recordings/overview#).
+>Consulta anche la presentazione su [Sicurezza di AEM (CQ) Dispatcher e memorizzazione in cache di rete CDN e browser](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) nonché la presentazione registrata sulla [memorizzazione in cache in Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Utilizzo di un Dispatcher con un server di authoring {#using-a-dispatcher-with-an-author-server}
 
